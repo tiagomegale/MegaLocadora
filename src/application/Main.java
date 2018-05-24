@@ -2,6 +2,8 @@ package application;
 	
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.application.Application;
@@ -43,6 +45,17 @@ public class Main extends Application {
 		try {
 			connection = DriverManager
 			.getConnection("jdbc:mysql://localhost:3306/MEGALOCADORA","root", "");
+
+			String query = "SELECT * FROM VEICULO";
+			
+			PreparedStatement ps = connection.prepareStatement(query);
+		    ResultSet resultSet = ps.executeQuery();
+		    
+		    while(resultSet.next()) {
+		    	System.out.println(resultSet.getInt(1));
+		    	System.out.println(resultSet.getString(2));
+		    }
+		
 
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
