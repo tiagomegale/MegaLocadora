@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -63,10 +64,13 @@
                   <Font name="Segoe UI Bold" size="34.0" />
                </font>
             </Label>
-            <Button layoutX="35.0" layoutY="104.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Alugar Veículo">
+            <Button accessibleHelp="Aluga um veículo" accessibleText="Alugar Veículo" layoutX="35.0" layoutY="104.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Alugar Veículo">
                <font>
                   <Font name="Segoe UI" size="13.0" />
                </font>
+               <tooltip>
+                  <Tooltip text="Aluga um veículo" />
+               </tooltip>
             </Button>
             <Button layoutX="35.0" layoutY="142.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Devolver Veículo">
                <font>
