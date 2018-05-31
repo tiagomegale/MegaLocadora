@@ -14,19 +14,9 @@ import javafx.scene.control.Label;
 
 public class Controller implements Initializable{
 	
-/*	@FXML
-	private Label labelMarcaDoVeiculo;
-	
-	Veiculo veiculo = new Veiculo("Honda", "HMP-0774");
-	
- */
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 		connectToLocalDatabase();
-//		labelMarcaDoVeiculo.setText(veiculo.getMarca());
-		
 	}
 	
 	public static void connectToLocalDatabase() {
