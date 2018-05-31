@@ -1,6 +1,6 @@
 package application;
 
-public class Carro {
+public class Veiculo {
 	
 	String marca;
 	String placa;
@@ -20,15 +20,15 @@ public class Carro {
 	
 	@Override
 	public String toString() {
-		return "Carro [marca=" + marca + ", placa=" + placa + "]";
+		return "Veiculo [marca=" + marca + ", placa=" + placa + "]";
 	}
 	
-	public Carro(String marca, String placa) {
+	public Veiculo(String marca, String placa) {
 		super();
 		this.marca = marca;
 		this.placa = placa;
 	}
-	public Carro() {
+	public Veiculo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

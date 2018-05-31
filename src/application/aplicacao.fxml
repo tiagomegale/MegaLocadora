@@ -63,7 +63,7 @@
                   <Font name="Segoe UI Bold" size="34.0" />
                </font>
             </Label>
-            <Button fx:id="botaoAlugarEvento" accessibleHelp="Aluga um veículo" accessibleText="Alugar Veículo" layoutX="35.0" layoutY="104.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Alugar Veículo">
+            <Button accessibleHelp="Aluga um veículo" accessibleText="Alugar Veículo" layoutX="35.0" layoutY="104.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Alugar Veículo">
                <font>
                   <Font name="Segoe UI" size="13.0" />
                </font>
@@ -104,9 +104,7 @@
             </Label>
             <Separator layoutX="37.0" layoutY="84.0" prefHeight="8.0" prefWidth="183.0" />
             <Separator layoutX="37.0" layoutY="296.0" prefHeight="8.0" prefWidth="183.0" />
-            <Label fx:id="labelMarcaDoCarro" layoutX="480.0" layoutY="136.0" prefHeight="17.0" prefWidth="152.0" text="mm" />
             <Label layoutX="486.0" layoutY="170.0" prefHeight="17.0" prefWidth="152.0" />
-            <Label fx:id="labelMarcaDoCarro1" layoutX="322.0" layoutY="137.0" prefHeight="17.0" prefWidth="152.0" text="MarcaDoCarro" />
          </children>
       </Pane>
    </children>

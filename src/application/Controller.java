@@ -14,18 +14,18 @@ import javafx.scene.control.Label;
 
 public class Controller implements Initializable{
 	
-	@FXML
-	private Label labelMarcaDoCarro;
+/*	@FXML
+	private Label labelMarcaDoVeiculo;
 	
-	Carro carro = new Carro("Honda", "HMP-0774");
-
+	Veiculo veiculo = new Veiculo("Honda", "HMP-0774");
+	
+ */
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
 		connectToLocalDatabase();
-		labelMarcaDoCarro.setText(carro.getMarca());
+//		labelMarcaDoVeiculo.setText(veiculo.getMarca());
 		
 	}
 	

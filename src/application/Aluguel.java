@@ -4,7 +4,7 @@ public class Aluguel {
 	
 	String dataDeInicio;
 	String dataDeTermino;
-	Carro carro;
+	Veiculo veiculo;
 	Cliente cliente;
 	
 	public String getDataDeInicio() {
@@ -19,11 +19,11 @@ public class Aluguel {
 	public void setDataDeTermino(String dataDeTermino) {
 		this.dataDeTermino = dataDeTermino;
 	}
-	public Carro getCarro() {
-		return carro;
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
-	public void setCarro(Carro carro) {
-		this.carro = carro;
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -34,15 +34,15 @@ public class Aluguel {
 	
 	@Override
 	public String toString() {
-		return "Aluguel [dataDeInicio=" + dataDeInicio + ", dataDeTermino=" + dataDeTermino + ", carro=" + carro
+		return "Aluguel [dataDeInicio=" + dataDeInicio + ", dataDeTermino=" + dataDeTermino + ", Veiculo=" + veiculo
 				+ ", cliente=" + cliente + "]";
 	}
 	
-	public Aluguel(String dataDeInicio, String dataDeTermino, Carro carro, Cliente cliente) {
+	public Aluguel(String dataDeInicio, String dataDeTermino, Veiculo veiculo, Cliente cliente) {
 		super();
 		this.dataDeInicio = dataDeInicio;
 		this.dataDeTermino = dataDeTermino;
-		this.carro = carro;
+		this.veiculo = veiculo;
 		this.cliente = cliente;
 	}
 	

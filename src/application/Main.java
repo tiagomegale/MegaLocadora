@@ -27,13 +27,13 @@ public class Main extends Application {
 
 		System.out.println("Início");
 
-		Carro carro = new Carro("Honda", "HMP-0774");
-		System.out.println("criado carro: " +  carro);
+		Veiculo veiculo = new Veiculo("Honda", "HMP-0774");
+		System.out.println("criado Veiculo: " +  veiculo);
 
 		Cliente cliente = new Cliente("Tereza", "067.522.516-73");
 		System.out.println("criado cliente: " + cliente);
 
-		Aluguel aluguel = new Aluguel("12/04/1984", "15/04,1984", carro, cliente);
+		Aluguel aluguel = new Aluguel("12/04/1984", "15/04,1984", veiculo, cliente);
 		System.out.println("criado aluguel: " + aluguel);
 
 		System.out.println("Fim");
