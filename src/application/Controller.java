@@ -9,23 +9,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 public class Controller implements Initializable{
 	
-	public Button botaoAlugarEvento;
-	Carro carro = new Carro("Honda", "HMP-0774");
-
-	public void apareceCarro() {
-		botaoAlugarEvento.setText(carro.getMarca());
-		
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 		connectToLocalDatabase();
+		
+
 		
 	}
 	
