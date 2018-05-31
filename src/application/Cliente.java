@@ -14,8 +14,8 @@ public class Cliente {
 	public String getCPF() {
 		return CPF;
 	}
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF(String CPF) {
+		CPF = CPF;
 	}
 	
 	@Override
@@ -23,10 +23,10 @@ public class Cliente {
 		return "Cliente [nome=" + nome + ", CPF=" + CPF + "]";
 	}
 	
-	public Cliente(String nome, String cPF) {
+	public Cliente(String nome, String CPF) {
 		super();
 		this.nome = nome;
-		CPF = cPF;
+		CPF = CPF;
 	}
 	public Cliente() {
 		super();
