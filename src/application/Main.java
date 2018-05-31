@@ -1,5 +1,5 @@
 package application;
-	
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,8 +18,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			//BorderPane root = new BorderPane();
-			Parent root = FXMLLoader.load(getClass().getResource("OiBotao.fxml"));
-			Scene scene = new Scene(root,600,250);
+			Parent root = FXMLLoader.load(getClass().getResource("aplicacao.fxml"));
+			Scene scene = new Scene(root,1024,768);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -44,18 +44,18 @@ public class Main extends Application {
 
 		try {
 			connection = DriverManager
-			.getConnection("jdbc:mysql://localhost:3306/MEGALOCADORA","root", "");
+					.getConnection("jdbc:mysql://localhost:3306/MEGALOCADORA","root", "");
 
 			String query = "SELECT * FROM VEICULO";
-			
+
 			PreparedStatement ps = connection.prepareStatement(query);
-		    ResultSet resultSet = ps.executeQuery();
-		    
-		    while(resultSet.next()) {
-		    	System.out.println(resultSet.getInt(1));
-		    	System.out.println(resultSet.getString(2));
-		    }
-		
+			ResultSet resultSet = ps.executeQuery();
+
+			while(resultSet.next()) {
+				System.out.println(resultSet.getInt(1));
+				System.out.println(resultSet.getString(2));
+			}
+
 
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
@@ -68,7 +68,7 @@ public class Main extends Application {
 		} else {
 			System.out.println("Failed to make connection!");
 		}
-	  }
+	}
 
 
 	public static void main(String[] args) {
