@@ -8,17 +8,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 public class Controller implements Initializable{
+	
+	@FXML
+	private Label labelMarcaDoCarro;
+	
+	Carro carro = new Carro("Honda", "HMP-0774");
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
 		connectToLocalDatabase();
-		
-
+		labelMarcaDoCarro.setText(carro.getMarca());
 		
 	}
 	
@@ -64,8 +71,5 @@ public class Controller implements Initializable{
 			System.out.println("Failed to make connection!");
 		}
 	}
-	
-	
-	
-	
+		
 }
