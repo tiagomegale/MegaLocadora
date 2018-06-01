@@ -28,9 +28,6 @@ public class Veiculo {
 		this.marca = marca;
 		this.placa = placa;
 	}
-	public Veiculo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	
 }

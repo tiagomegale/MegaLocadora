@@ -8,11 +8,14 @@ public class ConnectionManager {
 	
 	private static Connection connection = null;
 	
-	public ConnectionManager() {
-		super();
+	private ConnectionManager() {
 		
+	}
+
+	private static Connection createConnection() {
+		Connection connection = null;
 		ConnectionConfig connectionConfig = new ConnectionConfig();
-		
+		 
 		connectionConfig.setDriver("com.mysql.cj.jdbc.Driver");
 		connectionConfig.setDatabase("/MEGALOCADORA");
 		connectionConfig.setUri("jdbc:mysql://localhost:3306");
@@ -33,14 +36,13 @@ public class ConnectionManager {
 			System.out.println("Erro ao criar conexão com o Connection Manager: Classe não encontrada!");
 			e.printStackTrace();
 		}
+		return connection;
 	}
 	
-	public static Connection getMysqlConnection() throws SQLException {
-		
-		ConnectionManager connectionManager = null;
+	public static Connection getMysqlConnection()  {
 		
 		if (connection == null) {
-			connectionManager = new ConnectionManager();
+			connection = createConnection();
 		}
 		
 		return connection;

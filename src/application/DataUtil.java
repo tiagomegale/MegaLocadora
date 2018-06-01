@@ -23,9 +23,9 @@ public abstract class DataUtil {
 			ResultSet resultSet = clienteDAO.listaTodos();
 			
 			while (resultSet.next()) {
-				Cliente cliente = new Cliente();
-				cliente.setCPF(resultSet.getString("CPF"));
-				cliente.setNome(resultSet.getString("NOME"));
+				Cliente cliente = new Cliente(resultSet.getString("CPF"),resultSet.getString("NOME"));
+				//cliente.setCPF();
+				//cliente.setNome(resultSet.getString("NOME"));
 				listaDeClientes.add(cliente);
 			}
 			

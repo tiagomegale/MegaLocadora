@@ -27,11 +27,6 @@ public class Cliente {
 		this.CPF = CPF;
 	}
 
-	public Cliente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", CPF=" + CPF + "]";

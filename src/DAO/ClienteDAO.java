@@ -16,12 +16,7 @@ public class ClienteDAO {
 
 	public ClienteDAO() {
 		//Connection conexao;
-		try {
-			this.conexao = ConnectionManager.getMysqlConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
+	    this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
 

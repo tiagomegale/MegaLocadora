@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Connection.ConnectionManager;
 import DAO.ClienteDAO;
 import Domain.Cliente;
 import javafx.fxml.FXML;
@@ -41,7 +42,7 @@ public class Controller implements Initializable{
 			labelAvisoCadastroCliente.setText("O nome é: " + nomeCliente.getText() + "\n CPF é: " + cpfCliente.getText());
 			Cliente cliente = new Cliente(nomeCliente.getText(),cpfCliente.getText());
 			System.out.println(cliente);
-			ClienteDAO clienteDAO = new ClienteDAO();
+			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
 			clienteDAO.inserirClienteBanco(cliente);
 			
 		}
