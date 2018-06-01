@@ -37,9 +37,4 @@ public class Cliente {
 		return "Cliente [nome=" + nome + ", CPF=" + CPF + "]";
 	}
 	
-	
-
-	
-	
-	
 }
