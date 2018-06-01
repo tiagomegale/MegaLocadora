@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import Connection.ConnectionManager;
 import DAO.ClienteDAO;
+import Domain.Cliente;
 
 public abstract class DataUtil {
 	
@@ -19,7 +20,7 @@ public abstract class DataUtil {
 		try {
 			conexao = ConnectionManager.getMysqlConnection();
 			ClienteDAO clienteDAO = new ClienteDAO(conexao);
-			ResultSet resultSet = clienteDAO.findAll)();
+			ResultSet resultSet = clienteDAO.listaTodos();
 			
 			while (resultSet.next()) {
 				Cliente cliente = new Cliente();

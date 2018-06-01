@@ -3,6 +3,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.ClienteDAO;
+import Domain.Cliente;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,14 +39,15 @@ public class Controller implements Initializable{
 		// Cliente
 		botaoCadastraCliente.setOnAction((e) -> {
 			labelAvisoCadastroCliente.setText("O nome é: " + nomeCliente.getText() + "\n CPF é: " + cpfCliente.getText());
-		});
+			Cliente cliente = new Cliente(nomeCliente.getText(),cpfCliente.getText());
+			System.out.println(cliente);
+			ClienteDAO clienteDAO = new ClienteDAO();
+			clienteDAO.inserirClienteBanco(cliente);
+			
+		}
+		);
 		
-	}
-		
-	public static void cadastraCliente() {
-		Cliente clienteSendoCriado = new Cliente();
 	}
 
-	
 	
 }

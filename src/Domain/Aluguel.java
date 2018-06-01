@@ -1,4 +1,4 @@
-package application;
+package Domain;
 
 public class Aluguel {
 	

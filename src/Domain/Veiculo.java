@@ -1,4 +1,4 @@
-package application;
+package Domain;
 
 public class Veiculo {
 	
@@ -33,8 +33,4 @@ public class Veiculo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-	
-
 }
