@@ -35,7 +35,7 @@ public class ConnectionManager {
 		}
 	}
 	
-	public static Connection getMysqlConncetion() throws SQLException {
+	public static Connection getMysqlConnection() throws SQLException {
 		
 		ConnectionManager connectionManager = null;
 		

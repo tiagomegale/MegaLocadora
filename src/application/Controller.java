@@ -1,11 +1,6 @@
 package application;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -44,12 +39,7 @@ public class Controller implements Initializable{
 			labelAvisoCadastroCliente.setText("O nome é: " + nomeCliente.getText() + "\n CPF é: " + cpfCliente.getText());
 		});
 		
-
-		
-		
 	}
-	
-
 		
 	public static void cadastraCliente() {
 		Cliente clienteSendoCriado = new Cliente();
