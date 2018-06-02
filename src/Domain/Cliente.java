@@ -1,4 +1,4 @@
-package Domain;
+package domain;
 
 public class Cliente {
 
@@ -21,15 +21,15 @@ public class Cliente {
 		this.CPF = CPF;
 	}
 	
-	public Cliente(String nome, String CPF) {
+	public Cliente(String CPF, String nome) {
 		super();
-		this.nome = nome;
 		this.CPF = CPF;
+		this.nome = nome;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", CPF=" + CPF + "]";
+		return "Cliente [CPF=" + CPF + ", nome=" + nome + "]";
 	}
 	
 }

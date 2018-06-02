@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Connection.ConnectionManager;
-import Domain.Cliente;
+import connection.ConnectionManager;
+import domain.Cliente;
 
 public class ClienteDAO {
 

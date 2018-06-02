@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Connection.ConnectionManager;
 import DAO.ClienteDAO;
-import Domain.Cliente;
+import connection.ConnectionManager;
+import domain.Cliente;
 
 public abstract class DataUtil {
 	

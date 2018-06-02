@@ -3,9 +3,9 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Connection.ConnectionManager;
 import DAO.ClienteDAO;
-import Domain.Cliente;
+import connection.ConnectionManager;
+import domain.Cliente;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,7 +40,7 @@ public class Controller implements Initializable{
 		// Cliente
 		botaoCadastraCliente.setOnAction((e) -> {
 			labelAvisoCadastroCliente.setText("O nome é: " + nomeCliente.getText() + "\n CPF é: " + cpfCliente.getText());
-			Cliente cliente = new Cliente(nomeCliente.getText(),cpfCliente.getText());
+			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
 			clienteDAO.inserirClienteBanco(cliente);
