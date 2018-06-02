@@ -39,13 +39,17 @@ public class Controller implements Initializable{
 		
 		// Cliente
 		botaoCadastraCliente.setOnAction((e) -> {
-			labelAvisoCadastroCliente.setText("O nome é: " + nomeCliente.getText() + "\n CPF é: " + cpfCliente.getText());
 			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
-			clienteDAO.inserirClienteBanco(cliente);
-			
+			if (clienteDAO.inserirClienteBanco(cliente)) {
+				labelAvisoCadastroCliente.setText("Cliente cadastrado com sucesso!");	
+			} else {
+				labelAvisoCadastroCliente.setText("Cadastro falhou.");	
+			}
 		}
+		
+		
 		);
 		
 	}

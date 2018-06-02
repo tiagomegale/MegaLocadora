@@ -15,7 +15,6 @@ public class ClienteDAO {
 	private ResultSet rs = null;
 
 	public ClienteDAO() {
-		//Connection conexao;
 	    this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
@@ -55,7 +54,7 @@ public class ClienteDAO {
 		
 	}
 
-	public void inserirClienteBanco(Cliente cliente) {
+	public boolean inserirClienteBanco(Cliente cliente) {
 		String sql = "insert into CLIENTES (cpf,nome) values (? , ?)";
 		
 		try {
@@ -64,9 +63,11 @@ public class ClienteDAO {
 			this.statement.setString(2, cliente.getNome());
 			this.statement.executeUpdate();	
 			System.out.println("Insercao ok");
+			return true;
 		} catch (SQLException e) {
 			System.out.println("Erro ao criar novo cliente: " + e.getMessage());
 			e.printStackTrace();
+			return false;
 		}
 	}
 

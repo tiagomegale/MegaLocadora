@@ -20,13 +20,13 @@ public class Veiculo {
 	
 	@Override
 	public String toString() {
-		return "Veiculo [marca=" + marca + ", placa=" + placa + "]";
+		return "Veiculo [placa=" + placa + ", marca=" + marca + "]";
 	}
 	
-	public Veiculo(String marca, String placa) {
+	public Veiculo(String placa, String marca) {
 		super();
-		this.marca = marca;
 		this.placa = placa;
+		this.marca = marca;
 	}
 
 	
