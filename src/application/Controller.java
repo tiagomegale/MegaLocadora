@@ -4,8 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import DAO.ClienteDAO;
+import DAO.VeiculoDAO;
 import connection.ConnectionManager;
 import domain.Cliente;
+import domain.Veiculo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,31 +15,42 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class Controller implements Initializable{
-	
-	
+
+
 	// Cadastro de Clientes
-	
+
 	@FXML
 	private TextField nomeCliente;
-	
+
 	@FXML
 	private TextField cpfCliente;
-	
+
 	@FXML
 	private Button botaoCadastraCliente;
-	
+
 	@FXML
 	private Label labelAvisoCadastroCliente;
-	
-	
+
 	// Cadastro de Veículos
 
-	
+	@FXML
+	private TextField marcaVeiculo;
+
+	@FXML
+	private TextField placaVeiculo;
+
+	@FXML
+	private Button botaoCadastraVeiculo;
+
+	@FXML
+	private Label labelAvisoCadastroVeiculo;
+
+
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// connectToLocalDatabase();
-		
-		// Cliente
+
 		botaoCadastraCliente.setOnAction((e) -> {
 			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
 			System.out.println(cliente);
@@ -45,14 +58,26 @@ public class Controller implements Initializable{
 			if (clienteDAO.inserirClienteBanco(cliente)) {
 				labelAvisoCadastroCliente.setText("Cliente cadastrado com sucesso!");	
 			} else {
-				labelAvisoCadastroCliente.setText("Cadastro falhou.");	
+				labelAvisoCadastroCliente.setText("Cadastro de cliente falhou.");	
 			}
-		}
-		
-		
-		);
-		
-	}
+		});
 
-	
+		botaoCadastraVeiculo.setOnAction((e) -> {
+			Veiculo veiculo = new Veiculo(placaVeiculo.getText(),marcaVeiculo.getText());
+			System.out.println(veiculo);
+			VeiculoDAO veiculoDAO = new VeiculoDAO(ConnectionManager.getMysqlConnection());
+			if (veiculoDAO.inserirVeiculoBanco(veiculo)) {
+				labelAvisoCadastroVeiculo.setText("Veículo cadastrado com sucesso!");	
+			} else {
+				labelAvisoCadastroVeiculo.setText("Cadastro de veículo falhou.");	
+			}
+		});
+
+		
+
+
+	}	
+
+
+
 }

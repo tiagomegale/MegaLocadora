@@ -54,7 +54,7 @@ public class VeiculoDAO {
 		
 	}
 
-	public void inserirVeiculoBanco(Veiculo veiculo) {
+	public boolean inserirVeiculoBanco(Veiculo veiculo) {
 		String sql = "insert into VEICULOS (placa,marca) values (? , ?)";
 		
 		try {
@@ -63,9 +63,11 @@ public class VeiculoDAO {
 			this.statement.setString(2, veiculo.getMarca());
 			this.statement.executeUpdate();	
 			System.out.println("Insercao ok");
+			return true;
 		} catch (SQLException e) {
 			System.out.println("Erro ao criar novo veículo: " + e.getMessage());
 			e.printStackTrace();
+			return false;
 		}
 	}	
 	
