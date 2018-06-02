@@ -3,6 +3,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.mysql.cj.xdevapi.Table;
+
 import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
@@ -10,11 +12,16 @@ import connection.ConnectionManager;
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable{
 
@@ -53,10 +60,32 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private Label labelAvisoCadastroAluguel;
+	
+	
+	// Tabela de Clientes
+	@FXML
+	TableView<Cliente> tabelaDeClientes;
+	
+	@FXML
+	TableColumn<Cliente, String> colunaCPF;
+	
+	@FXML
+	TableColumn<Cliente, String> colunaNome;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
+
+		// Cria Tabela Clientes
+		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
+		colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("Nome"));
+		tabelaDeClientes.setItems(listaClientes);
+		
+		
+		
+		
 		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
