@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import connection.ConnectionManager;
 import domain.Veiculo;
@@ -18,14 +19,13 @@ public class VeiculoDAO {
 	    this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
-
 	public VeiculoDAO(Connection conexao) {
 		this.conexao = conexao;
 	}
 
-	public ResultSet encontraPorPlaca (String Placa) {
+	public ResultSet encontraPorPlaca(String Placa) {
 
-		String sql = "select PLACA, codigo from VEICULOS where PLACA = ?"; 
+		String sql = "select Placa, Marca from VEICULOS where Placa = ?"; 
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -41,7 +41,7 @@ public class VeiculoDAO {
 	}
 
 	public ResultSet listaTodos() {
-		String sql = "select PLACA from CLIENTES order by marca";
+		String sql = "select Placa, Marca from VEICULOS order by Placa";
 		
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -53,9 +53,32 @@ public class VeiculoDAO {
 		return rs;
 		
 	}
+	
+	public static ArrayList<Veiculo> obterListaDeVeiculos(){
+
+		ArrayList<Veiculo> listaDeVeiculos = new ArrayList<Veiculo>();
+		Connection conexao;
+
+		try {
+			conexao = ConnectionManager.getMysqlConnection();
+			VeiculoDAO veiculoDAO = new VeiculoDAO(conexao);
+			ResultSet resultSet = veiculoDAO.listaTodos();
+
+			while (resultSet.next()) {
+				Veiculo veiculo = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
+				listaDeVeiculos.add(veiculo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listaDeVeiculos;
+
+	}
 
 	public boolean inserirVeiculoBanco(Veiculo veiculo) {
-		String sql = "insert into VEICULOS (placa,marca) values (? , ?)";
+		String sql = "insert into VEICULOS (Placa,Marca) values (? , ?)";
 		
 		try {
 			this.statement = conexao.prepareStatement(sql);
@@ -70,6 +93,9 @@ public class VeiculoDAO {
 			return false;
 		}
 	}	
+	
+	
+
 	
 	
 	

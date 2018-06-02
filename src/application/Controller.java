@@ -30,6 +30,7 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelAvisoCadastroCliente;
 
+	
 	// Cadastro de Veículos
 	@FXML
 	private TextField marcaVeiculo;
@@ -43,6 +44,7 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelAvisoCadastroVeiculo;
 
+	
 	// Cadastro de Aluguel
 	@FXML
 	private Label botaoAlugaVeiculo;
@@ -73,9 +75,11 @@ public class Controller implements Initializable{
 			}
 		});
 
-/*
+		System.out.println(ClienteDAO.obterListaDeClientes());
+		System.out.println(VeiculoDAO.obterListaDeVeiculos());
+/*		
 		botaoAlugaVeiculo.setOnAction((e) -> {
-			Aluguel aluguel = new aluguel(dataDeInicio.getText(),dataDeTermino.getText(), veiculo, cliente);
+			Aluguel aluguel = new aluguel("hoje","amanha", veiculo, encontraClientePorCPF(cpfCliente.getText()));
 			System.out.println(aluguel);
 			AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
 			if (aluguelDAO.alugaVeiculo(aluguel)) {

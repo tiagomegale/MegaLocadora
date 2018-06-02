@@ -20,7 +20,7 @@ public class Veiculo {
 	
 	@Override
 	public String toString() {
-		return "Veiculo [placa=" + placa + ", marca=" + marca + "]";
+		return "\nVeiculo [placa=" + placa + ", marca=" + marca + "]";
 	}
 	
 	public Veiculo(String placa, String marca) {
