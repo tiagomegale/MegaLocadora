@@ -57,10 +57,12 @@ public class Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		System.out.println(ClienteDAO.obterListaDeClientes());
+		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		
-		System.out.println(VeiculoDAO.obterListaDeVeiculos());
+		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		
+		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
+
 		
 		botaoCadastraCliente.setOnAction((e) -> {
 			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
@@ -101,6 +103,10 @@ public class Controller implements Initializable{
 			}
 		});		
 
+		
+		
+		
+		
 	}	
 
 

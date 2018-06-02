@@ -34,8 +34,8 @@ public class ClienteDAO {
 			rs = statement.executeQuery();
 
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para gerar o RS buscando por CPF no Banco.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
-			System.err.println("____ERRO_____Erro para encontrar por CPF.____ERRO_____");
 		}
 
 		return rs;
@@ -55,8 +55,8 @@ public class ClienteDAO {
 			return clienteSendoBuscado;
 
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para transformar Result Set em Cliente. Retornando NULL.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
-			System.err.println("____ERRO_____Erro para transformar RS em Cliente. Retornando NULL.____ERRO_____");
 			return null;
 		}
 
@@ -76,6 +76,7 @@ public class ClienteDAO {
 			this.statement = this.conexao.prepareStatement(sql);
 			rs = statement.executeQuery();
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para buscar Cliente por CPF. Retornando NULL.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -102,6 +103,7 @@ public class ClienteDAO {
 			}
 
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para obter lista de clientes.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -120,7 +122,7 @@ public class ClienteDAO {
 			System.out.println("Insercao ok");
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Erro ao criar novo cliente: " + e.getMessage());
+			System.out.println("____ERRO_____Erro para criar novo clientes.____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}

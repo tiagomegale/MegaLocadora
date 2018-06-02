@@ -34,6 +34,7 @@ public class VeiculoDAO {
 			rs = statement.executeQuery();
 
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para gerar o RS buscando pela Placa no Banco.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -54,7 +55,7 @@ public class VeiculoDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("____ERRO_____Erro para transformar RS em Veículo. Retornando NULL.____ERRO_____");
+			System.err.println("____ERRO_____Erro para transformar RS em Veículo. Retornando NULL.____ERRO_____" + e.getMessage());
 			return null;
 		}
 
@@ -75,6 +76,7 @@ public class VeiculoDAO {
 			this.statement = this.conexao.prepareStatement(sql);
 			rs = statement.executeQuery();
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para buscar Veiculo por Placa. Retornando NULL.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -99,6 +101,7 @@ public class VeiculoDAO {
 			}
 
 		} catch (SQLException e) {
+			System.err.println("____ERRO_____Erro para obter lista de veiculos.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
 		}
 
