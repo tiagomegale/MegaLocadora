@@ -1,7 +1,19 @@
-CREATE TABLE `CLIENTES` (
-  `CPF` varchar(100) NOT NULL,
-  `Nome` varchar(100) DEFAULT NULL,
-  UNIQUE KEY `CPF` (`CPF`)
+CREATE TABLE `VEICULOS` (
+  `Placa` varchar(100) NOT NULL,
+  `Marca` varchar(100) DEFAULT NULL,
+  UNIQUE KEY `Placa` (`Placa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `ALUGUEIS` (
+  `dataDeInicio` varchar(100) NOT NULL,
+  `dataDeTermino` varchar(100) NOT NULL,
+  `placa` varchar(100) NOT NULL,
+  `marca` varchar(100) DEFAULT NULL,
+  `cpf` varchar(100) NOT NULL,
+  `nome` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+
 SELECT * FROM MEGALOCADORA.CLIENTES;
+SELECT * FROM MEGALOCADORA.VEICULOS;

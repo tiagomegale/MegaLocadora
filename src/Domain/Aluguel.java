@@ -46,11 +46,5 @@ public class Aluguel {
 		this.cliente = cliente;
 	}
 	
-	public Aluguel() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 	
 }

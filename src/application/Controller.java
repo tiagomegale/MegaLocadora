@@ -18,7 +18,6 @@ public class Controller implements Initializable{
 
 
 	// Cadastro de Clientes
-
 	@FXML
 	private TextField nomeCliente;
 
@@ -32,7 +31,6 @@ public class Controller implements Initializable{
 	private Label labelAvisoCadastroCliente;
 
 	// Cadastro de Veículos
-
 	@FXML
 	private TextField marcaVeiculo;
 
@@ -45,7 +43,9 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelAvisoCadastroVeiculo;
 
-
+	// Cadastro de Aluguel
+	@FXML
+	private Label botaoAlugaVeiculo;
 
 
 	@Override
@@ -73,8 +73,18 @@ public class Controller implements Initializable{
 			}
 		});
 
-		
-
+/*
+		botaoAlugaVeiculo.setOnAction((e) -> {
+			Aluguel aluguel = new aluguel(dataDeInicio.getText(),dataDeTermino.getText(), veiculo, cliente);
+			System.out.println(aluguel);
+			AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
+			if (aluguelDAO.alugaVeiculo(aluguel)) {
+				labelAlugaVeiculo.setText("Aluguel cadastrado com sucesso!");	
+			} else {
+				labelAlugaVeiculo.setText("Cadastro de aluguel falhou.");	
+			}
+		});		
+*/
 
 	}	
 
