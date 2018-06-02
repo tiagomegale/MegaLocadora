@@ -34,8 +34,8 @@ public class Aluguel {
 	
 	@Override
 	public String toString() {
-		return "Aluguel [dataDeInicio=" + dataDeInicio + ", dataDeTermino=" + dataDeTermino + ", Veiculo=" + veiculo
-				+ ", cliente=" + cliente + "]";
+		return "Aluguel [dataDeInicio=" + dataDeInicio + ", dataDeTermino=" + dataDeTermino + ", " + veiculo
+				+ "," + cliente + "]";
 	}
 	
 	public Aluguel(String dataDeInicio, String dataDeTermino, Veiculo veiculo, Cliente cliente) {

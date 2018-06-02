@@ -3,9 +3,11 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
 import connection.ConnectionManager;
+import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
 import javafx.fxml.FXML;
@@ -47,20 +49,28 @@ public class Controller implements Initializable{
 	
 	// Cadastro de Aluguel
 	@FXML
-	private Label botaoAlugaVeiculo;
-
+	private Button botaoAlugaVeiculo;
+	
+	@FXML
+	private Label labelAvisoCadastroAluguel;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		System.out.println(ClienteDAO.obterListaDeClientes());
+		
+		System.out.println(VeiculoDAO.obterListaDeVeiculos());
+		
+		
 		botaoCadastraCliente.setOnAction((e) -> {
 			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
+			
 			if (clienteDAO.inserirClienteBanco(cliente)) {
 				labelAvisoCadastroCliente.setText("Cliente cadastrado com sucesso!");	
 			} else {
-				labelAvisoCadastroCliente.setText("Cadastro de cliente falhou.");	
+				labelAvisoCadastroCliente.setText("____ERRO_____Cadastro de cliente falhou.____ERRO_____");	
 			}
 		});
 
@@ -68,27 +78,28 @@ public class Controller implements Initializable{
 			Veiculo veiculo = new Veiculo(placaVeiculo.getText(),marcaVeiculo.getText());
 			System.out.println(veiculo);
 			VeiculoDAO veiculoDAO = new VeiculoDAO(ConnectionManager.getMysqlConnection());
+			
 			if (veiculoDAO.inserirVeiculoBanco(veiculo)) {
 				labelAvisoCadastroVeiculo.setText("Veículo cadastrado com sucesso!");	
 			} else {
-				labelAvisoCadastroVeiculo.setText("Cadastro de veículo falhou.");	
+				labelAvisoCadastroVeiculo.setText("____ERRO_____Cadastro de veículo falhou.____ERRO_____");	
 			}
 		});
 
-		System.out.println(ClienteDAO.obterListaDeClientes());
-		System.out.println(VeiculoDAO.obterListaDeVeiculos());
-/*		
 		botaoAlugaVeiculo.setOnAction((e) -> {
-			Aluguel aluguel = new aluguel("hoje","amanha", veiculo, encontraClientePorCPF(cpfCliente.getText()));
+			VeiculoDAO veiculoDAO = new VeiculoDAO();
+			ClienteDAO clienteDAO = new ClienteDAO();
+			
+			Aluguel aluguel = new Aluguel("hoje","amanha", veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()));
 			System.out.println(aluguel);
 			AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
+			
 			if (aluguelDAO.alugaVeiculo(aluguel)) {
-				labelAlugaVeiculo.setText("Aluguel cadastrado com sucesso!");	
+				labelAvisoCadastroAluguel.setText("===== Aluguel cadastrado com sucesso!======");	
 			} else {
-				labelAlugaVeiculo.setText("Cadastro de aluguel falhou.");	
+				labelAvisoCadastroAluguel.setText("____ERRO_____Cadastro de aluguel falhou.____ERRO_____");	
 			}
 		});		
-*/
 
 	}	
 

@@ -26,7 +26,7 @@ public class ClienteDAO {
 	// Método Privado que busca no banco usando CPF
 	private ResultSet buscaClienteNoBancoPorCPF(String CPF) {
 
-		String sql = "select CPF, codigo from CLIENTES where CPF = ?"; 
+		String sql = "select CPF, nome from CLIENTES where CPF = ?"; 
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class ClienteDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Erro para encontrar por CPF.");
+			System.err.println("____ERRO_____Erro para encontrar por CPF.____ERRO_____");
 		}
 
 		return rs;
@@ -47,12 +47,16 @@ public class ClienteDAO {
 		ResultSet resultSet = rs;
 
 		try {
-			Cliente clienteSendoBuscado = new Cliente(resultSet.getString("CPF"),resultSet.getString("nome"));
+				Cliente clienteSendoBuscado = null;
+				
+			while (resultSet.next()) {
+				clienteSendoBuscado = new Cliente(resultSet.getString("CPF"),resultSet.getString("nome"));
+			}
 			return clienteSendoBuscado;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Erro para transformar RS em Cliente. Retornando NULL.");
+			System.err.println("____ERRO_____Erro para transformar RS em Cliente. Retornando NULL.____ERRO_____");
 			return null;
 		}
 

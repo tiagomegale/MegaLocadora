@@ -18,7 +18,6 @@ public class AluguelDAO {
 	    this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
-
 	public AluguelDAO(Connection conexao) {
 		this.conexao = conexao;
 	}
@@ -49,16 +48,13 @@ public class AluguelDAO {
 			this.statement.setString(5, aluguel.getCliente().getCPF());
 			this.statement.setString(6, aluguel.getCliente().getNome());
 			this.statement.executeUpdate();
-			System.out.println(aluguel);
 			System.out.println("Insercao de Aluguel ok");
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Erro ao criar novo veículo: " + e.getMessage());
+			System.out.println("____ERRO_____Erro ao criar novo veículo:____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
 	}	
-	
-	
 	
 }

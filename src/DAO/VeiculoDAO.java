@@ -23,8 +23,9 @@ public class VeiculoDAO {
 		this.conexao = conexao;
 	}
 
-	public ResultSet encontraPorPlaca(String Placa) {
-
+	// Método privado que busca no banco usando Placa
+	private ResultSet buscaVeiculoNoBancoPorPlaca(String Placa) {
+		
 		String sql = "select Placa, Marca from VEICULOS where Placa = ?"; 
 
 		try {
@@ -39,8 +40,35 @@ public class VeiculoDAO {
 		return rs;
 
 	}
+	
+	// Método Privado que transforma o resultado da busca em um veiculo
+	private Veiculo transformaResultSetEmVeiculo(ResultSet rs) {
+		ResultSet resultSet = rs;
 
-	public ResultSet listaTodos() {
+		try {
+				Veiculo veiculoSendoBuscado = null;
+			while (resultSet.next()) {
+				 veiculoSendoBuscado = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
+			}
+			return veiculoSendoBuscado;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("____ERRO_____Erro para transformar RS em Veículo. Retornando NULL.____ERRO_____");
+			return null;
+		}
+
+	}
+	
+	// Método publico que vai ser usado pela aplicação
+	public Veiculo encontraVeiculoPorPlaca(String Placa) {
+		String PlacaSendoBuscada = Placa;
+		return transformaResultSetEmVeiculo(buscaVeiculoNoBancoPorPlaca(PlacaSendoBuscada));
+
+	}
+
+	// Método privado que busca no banco a lista de todos oss veiculos
+	private ResultSet listaTodos() {
 		String sql = "select Placa, Marca from VEICULOS order by Placa";
 		
 		try {
@@ -54,6 +82,7 @@ public class VeiculoDAO {
 		
 	}
 	
+	// Método publico que retorna um Array de Veiculos
 	public static ArrayList<Veiculo> obterListaDeVeiculos(){
 
 		ArrayList<Veiculo> listaDeVeiculos = new ArrayList<Veiculo>();
@@ -88,7 +117,7 @@ public class VeiculoDAO {
 			System.out.println("Insercao ok");
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Erro ao criar novo veículo: " + e.getMessage());
+			System.out.println("____ERRO_____Erro ao criar novo veículo:____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}

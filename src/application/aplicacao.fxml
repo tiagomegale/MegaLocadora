@@ -117,6 +117,8 @@
             <Button fx:id="botaoCadastraVeiculo" layoutX="426.0" layoutY="391.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
             <Label fx:id="labelAvisoCadastroCliente" layoutX="638.0" layoutY="101.0" prefHeight="159.0" prefWidth="254.0" text="." wrapText="true" />
             <Label fx:id="labelAvisoCadastroVeiculo" layoutX="631.0" layoutY="305.0" prefHeight="53.0" prefWidth="183.0" text="." />
+            <Button fx:id="botaoAlugaVeiculo" layoutX="481.0" layoutY="467.0" mnemonicParsing="false" text="Alugar Veículo" />
+            <Label fx:id="labelAvisoCadastroAluguel" layoutX="623.0" layoutY="454.0" prefHeight="53.0" prefWidth="183.0" text="." />
          </children>
       </Pane>
    </children>
