@@ -33,8 +33,8 @@ import javafx.util.Callback;
 
 public class Controller implements Initializable{
 	
-	// Menu da Aplicação - Menu Items
 	
+	// Menu da Aplicação - Menu Items
 	@FXML
 	private MenuItem menuItemHome;
 	
@@ -80,8 +80,8 @@ public class Controller implements Initializable{
 	@FXML
 	private MenuItem menuItemSobre;
 	
-	// Panes da Aplicação
 	
+	// Panes da Aplicação
 	@FXML
 	private StackPane stackPanePrincipal;
 	
@@ -150,6 +150,7 @@ public class Controller implements Initializable{
 	@FXML
 	TableColumn<Cliente, String> colunaNome;
 	
+	
 	// Tabela e Colunas de Veículos
 	@FXML
 	TableView<Veiculo> tabelaDeVeiculos;
@@ -159,6 +160,7 @@ public class Controller implements Initializable{
 	
 	@FXML
 	TableColumn<Veiculo, String> colunaMarca;
+	
 	
 	// Tabela e Colunas de Alugueis
 	@FXML
@@ -244,7 +246,7 @@ public class Controller implements Initializable{
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
 
 		
-		// Inicia o Date Picker
+		// Inicia o Date Picker e seta a data de início pra hoje.
 		final LocalDate hoje = LocalDate.now();
 		datePickerDataDeInicio.setValue(hoje);
 		datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
@@ -338,7 +340,8 @@ public class Controller implements Initializable{
 			}
 		});		
 
-		// Adiciona todos os Panes ao StackPane Pai. Inicia com o paneHome Visível e a medida que os botões são clicados, some com os outros.
+		// Adiciona todos os Panes ao StackPane panePrincipal. Inicia com o paneHome como visível e a medida que os botões são clicados, some com os outros.
+		// Implementar esse código https://o7planning.org/en/10633/javafx-stackpane-layout-tutorial
 		paneHome.setVisible(true);
 		paneClientes.setVisible(false);
 		paneVeiculos.setVisible(false);
@@ -346,14 +349,11 @@ public class Controller implements Initializable{
 		paneRelatorios.setVisible(false);
 		paneSobre.setVisible(false);
 		
+		// Items do menu. Trazem o pane pra frente, some com os outros.
 		menuItemHome.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneHome);
 			paneHome.setVisible(true);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemFechar.setOnAction((e) -> {
@@ -361,132 +361,80 @@ public class Controller implements Initializable{
 		});
 				
 		menuItemCadastrarCliente.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneHome.setVisible(false);
 			paneClientes.setVisible(true);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemAlterarCliente.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneHome.setVisible(false);
 			paneClientes.setVisible(true);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemListarClientes.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneHome.setVisible(false);
 			paneClientes.setVisible(true);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemCadastrarVeiculo.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
 			paneVeiculos.setVisible(true);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemAlterarVeiculo.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
 			paneVeiculos.setVisible(true);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemListarVeiculos.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
 			paneVeiculos.setVisible(true);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemAlugarVeiculo.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
 			paneAlugueis.setVisible(true);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemDevolverVeiculo.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
 			paneAlugueis.setVisible(true);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		 
 		menuItemAlterarAluguel.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
 			paneAlugueis.setVisible(true);
-			paneRelatorios.setVisible(false);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemAlugueisAtivos.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneRelatorios);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
 			paneRelatorios.setVisible(true);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemHistoricoAlugueis.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneRelatorios);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
 			paneRelatorios.setVisible(true);
-			paneSobre.setVisible(false);
 		});
 		
 		menuItemDocumentacao.setOnAction((e)-> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneSobre);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
 			paneSobre.setVisible(true);
 		});
 		
 		menuItemSobre.setOnAction((e) -> {
+			stackPanePrincipal.getChildren().removeAll();
 			stackPanePrincipal.getChildren().setAll(paneSobre);
-			paneHome.setVisible(false);
-			paneClientes.setVisible(false);
-			paneVeiculos.setVisible(false);
-			paneAlugueis.setVisible(false);
-			paneRelatorios.setVisible(false);
 			paneSobre.setVisible(true);
 		});
 	
