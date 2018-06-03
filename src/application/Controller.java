@@ -10,6 +10,8 @@ import connection.ConnectionManager;
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,9 +19,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class Controller implements Initializable{
 
@@ -104,7 +108,41 @@ public class Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		// Cria Tabela de Aluguéis
+		ObservableList<Aluguel> listaAlugueis = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
+		colunaDataDeInicio.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeInicio"));
+		colunaDataDeTermino.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeTermino"));
+		colunaPlacaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+	            return new SimpleStringProperty(c.getValue().getVeiculo().getPlaca());                
+	        }
+		}); 
+		
+		colunaMarcaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+	            return new SimpleStringProperty(c.getValue().getVeiculo().getMarca());                
+	        }
+		}); 		
+		
+		colunaCPFAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+	            return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
+	        }
+	        
+		}); 		
+		
+		colunaNomeAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+	            return new SimpleStringProperty(c.getValue().getCliente().getNome());                
+	        }
+		}); 				
+		tabelaDeAlugueis.setItems(listaAlugueis);	
+		
+		
 
 		// Cria Tabela de Clientes
 		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
@@ -118,17 +156,7 @@ public class Controller implements Initializable{
 		colunaMarca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Marca"));
 		tabelaDeVeiculos.setItems(listaVeiculos);	
 		
-		// Cria Tabela de Aluguéis
-		ObservableList<Aluguel> listaAlugueis = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
-		colunaDataDeInicio.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeInicio"));
-		colunaDataDeTermino.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeTermino"));
-		colunaPlacaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Placa"));
-		colunaMarcaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Marca"));
-		colunaCPFAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("CPF"));
-		colunaNomeAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Nome"));
-		tabelaDeAlugueis.setItems(listaAlugueis);	
-		
-		
+
 		
 		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		

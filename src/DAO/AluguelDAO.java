@@ -27,7 +27,7 @@ public class AluguelDAO {
 
 
 	private ResultSet listaTodos() {
-		String sql = "select dataDeInicio, dataDeTermino, Placa, Marca, CPF, Nome from ALUGUEIS order by dataDeInicio";
+		String sql = "select DataDeInicio, DataDeTermino, Placa, Marca, CPF, Nome from ALUGUEIS order by DataDeInicio";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class AluguelDAO {
 			while (resultSet.next()) {
 				Veiculo veiculo = new Veiculo(resultSet.getString("Placa"), resultSet.getString("Marca"));
 				Cliente cliente = new Cliente(resultSet.getString("CPF"), resultSet.getString("Nome"));
-				Aluguel aluguel = new Aluguel(resultSet.getString("dataDeInicio"), resultSet.getString("dataDeTermino"), veiculo, cliente);
+				Aluguel aluguel = new Aluguel(resultSet.getString("DataDeInicio"), resultSet.getString("DataDeTermino"), veiculo, cliente);
 				listaDeAlugueis.add(aluguel);
 			}
 
@@ -69,7 +69,7 @@ public class AluguelDAO {
 
 
 	public boolean alugaVeiculo(Aluguel aluguel) {
-		String sql = "insert into ALUGUEIS (dataDeInicio, dataDeTermino, Placa, Marca, CPF, Nome) values (? , ? , ? , ? , ? , ? )";
+		String sql = "insert into ALUGUEIS (DataDeInicio, DataDeTermino, Placa, Marca, CPF, Nome) values (? , ? , ? , ? , ? , ? )";
 
 		try {
 			this.statement = conexao.prepareStatement(sql);
