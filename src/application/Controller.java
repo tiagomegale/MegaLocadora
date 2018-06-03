@@ -29,7 +29,10 @@ import javafx.util.Callback;
 
 public class Controller implements Initializable{
 
-
+	// Relógio
+	@FXML
+	private Label labelRelogio;
+	
 	// Cadastro de Clientes
 	@FXML
 	private TextField nomeCliente;
@@ -171,8 +174,9 @@ public class Controller implements Initializable{
 
 		
 		// Inicia o Date Picker
-		
-		datePickerDataDeInicio.setValue(LocalDate.now());
+		labelRelogio.setText(String.valueOf(LocalDate.now()));
+		final LocalDate hoje = LocalDate.now();
+		datePickerDataDeInicio.setValue(hoje);
 		datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
 		String.valueOf(datePickerDataDeInicio.getValue());
 		String.valueOf(datePickerDataDeTermino.getValue());

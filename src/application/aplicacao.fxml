@@ -94,9 +94,11 @@
                   <TableColumn fx:id="colunaNomeAluguel" prefWidth="75.0" text="Nome" />
               </columns>
             </TableView>
-            <DatePicker fx:id="datePickerDataDeInicio" layoutX="61.0" layoutY="433.0" prefHeight="27.0" prefWidth="238.0" promptText="Selecione a data de início" />
-            <DatePicker fx:id="datePickerDataDeTermino" layoutX="61.0" layoutY="469.0" prefHeight="27.0" prefWidth="238.0" promptText="Selecione a data de término" />
+            <DatePicker fx:id="datePickerDataDeInicio" disable="true" editable="false" layoutX="79.0" layoutY="433.0" prefHeight="27.0" prefWidth="219.0" promptText="Data de Início: Hoje" />
+            <DatePicker fx:id="datePickerDataDeTermino" layoutX="79.0" layoutY="469.0" prefHeight="27.0" prefWidth="219.0" promptText="Selecione Data de término" />
          </children>
       </Pane>
+      <Label layoutX="756.0" layoutY="31.0" prefHeight="17.0" prefWidth="38.0" text="Hora:" />
+      <Label fx:id="labelRelogio" layoutX="795.0" layoutY="31.0" prefHeight="17.0" prefWidth="193.0" />
    </children>
 </AnchorPane>
