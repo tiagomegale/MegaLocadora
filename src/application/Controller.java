@@ -3,8 +3,6 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.mysql.cj.xdevapi.Table;
-
 import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
@@ -62,7 +60,7 @@ public class Controller implements Initializable{
 	private Label labelAvisoCadastroAluguel;
 	
 	
-	// Tabela de Clientes
+	// Tabela e Coluna de Clientes
 	@FXML
 	TableView<Cliente> tabelaDeClientes;
 	
@@ -72,17 +70,63 @@ public class Controller implements Initializable{
 	@FXML
 	TableColumn<Cliente, String> colunaNome;
 	
-
+	// Tabela e Colunas de Veículos
+	@FXML
+	TableView<Veiculo> tabelaDeVeiculos;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaPlaca;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaMarca;
+	
+	// Tabela e Colunas de Alugueis
+	@FXML
+	TableView<Aluguel> tabelaDeAlugueis;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaDataDeInicio;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaDataDeTermino;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaPlacaAluguel;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaMarcaAluguel;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaCPFAluguel;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaNomeAluguel;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 
-		// Cria Tabela Clientes
+		// Cria Tabela de Clientes
+		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
 		colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("Nome"));
 		tabelaDeClientes.setItems(listaClientes);
 		
+		// Cria Tabela de Veículos
+		ObservableList<Veiculo> listaVeiculos = FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos());
+		colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Placa"));
+		colunaMarca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Marca"));
+		tabelaDeVeiculos.setItems(listaVeiculos);	
+		
+		// Cria Tabela de Aluguéis
+		ObservableList<Aluguel> listaAlugueis = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
+		colunaDataDeInicio.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeInicio"));
+		colunaDataDeTermino.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeTermino"));
+		colunaPlacaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Placa"));
+		colunaMarcaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Marca"));
+		colunaCPFAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("CPF"));
+		colunaNomeAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("Nome"));
+		tabelaDeAlugueis.setItems(listaAlugueis);	
 		
 		
 		
