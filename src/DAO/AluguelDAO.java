@@ -18,17 +18,17 @@ public class AluguelDAO {
 	private ResultSet rs = null;
 
 	public AluguelDAO() {
-	    this.conexao = ConnectionManager.getMysqlConnection();
+		this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
 	public AluguelDAO(Connection conexao) {
 		this.conexao = conexao;
 	}
 
-	
+
 	private ResultSet listaTodos() {
 		String sql = "select dataDeInicio, dataDeTermino, Placa, Marca, CPF, Nome from ALUGUEIS order by dataDeInicio";
-		
+
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
 			rs = statement.executeQuery();
@@ -37,10 +37,10 @@ public class AluguelDAO {
 		}
 
 		return rs;
-		
+
 	}
 
-	
+
 	// Método publico que retorna um Array de Veiculos
 	public static ArrayList<Aluguel> obterListaDeAlugueis(){
 
@@ -66,11 +66,11 @@ public class AluguelDAO {
 		return listaDeAlugueis;
 
 	}	
-	
-	
+
+
 	public boolean alugaVeiculo(Aluguel aluguel) {
 		String sql = "insert into ALUGUEIS (dataDeInicio, dataDeTermino, Placa, Marca, CPF, Nome) values (? , ? , ? , ? , ? , ? )";
-		
+
 		try {
 			this.statement = conexao.prepareStatement(sql);
 			this.statement.setString(1, aluguel.getDataDeInicio());
@@ -88,5 +88,5 @@ public class AluguelDAO {
 			return false;
 		}
 	}	
-	
+
 }

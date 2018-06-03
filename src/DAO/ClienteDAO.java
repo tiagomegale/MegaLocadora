@@ -47,11 +47,9 @@ public class ClienteDAO {
 		ResultSet resultSet = rs;
 
 		try {
-				Cliente clienteSendoBuscado = null;
-				
-			while (resultSet.next()) {
-				clienteSendoBuscado = new Cliente(resultSet.getString("CPF"),resultSet.getString("nome"));
-			}
+			Cliente clienteSendoBuscado = null;
+			resultSet.next();
+			clienteSendoBuscado = new Cliente(resultSet.getString("CPF"),resultSet.getString("nome"));
 			return clienteSendoBuscado;
 
 		} catch (SQLException e) {
@@ -97,8 +95,6 @@ public class ClienteDAO {
 
 			while (resultSet.next()) {
 				Cliente cliente = new Cliente(resultSet.getString("CPF"),resultSet.getString("nome"));
-				//cliente.setCPF();
-				//cliente.setNome(resultSet.getString("NOME"));
 				listaDeClientes.add(cliente);
 			}
 
@@ -110,7 +106,7 @@ public class ClienteDAO {
 		return listaDeClientes;
 
 	}	
-	
+
 	public boolean inserirClienteBanco(Cliente cliente) {
 		String sql = "insert into CLIENTES (cpf,nome) values (? , ?)";
 

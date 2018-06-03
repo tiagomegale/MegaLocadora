@@ -16,7 +16,7 @@ public class VeiculoDAO {
 	private ResultSet rs = null;
 
 	public VeiculoDAO() {
-	    this.conexao = ConnectionManager.getMysqlConnection();
+		this.conexao = ConnectionManager.getMysqlConnection();
 	}
 
 	public VeiculoDAO(Connection conexao) {
@@ -25,7 +25,7 @@ public class VeiculoDAO {
 
 	// Método privado que busca no banco usando Placa
 	private ResultSet buscaVeiculoNoBancoPorPlaca(String Placa) {
-		
+
 		String sql = "select Placa, Marca from VEICULOS where Placa = ?"; 
 
 		try {
@@ -41,16 +41,15 @@ public class VeiculoDAO {
 		return rs;
 
 	}
-	
+
 	// Método Privado que transforma o resultado da busca em um veiculo
 	private Veiculo transformaResultSetEmVeiculo(ResultSet rs) {
 		ResultSet resultSet = rs;
 
 		try {
-				Veiculo veiculoSendoBuscado = null;
-			while (resultSet.next()) {
-				 veiculoSendoBuscado = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
-			}
+			Veiculo veiculoSendoBuscado = null;
+			resultSet.next();
+			veiculoSendoBuscado = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
 			return veiculoSendoBuscado;
 
 		} catch (SQLException e) {
@@ -60,7 +59,7 @@ public class VeiculoDAO {
 		}
 
 	}
-	
+
 	// Método publico que vai ser usado pela aplicação
 	public Veiculo encontraVeiculoPorPlaca(String Placa) {
 		String PlacaSendoBuscada = Placa;
@@ -71,7 +70,7 @@ public class VeiculoDAO {
 	// Método privado que busca no banco a lista de todos oss veiculos
 	private ResultSet listaTodos() {
 		String sql = "select Placa, Marca from VEICULOS order by Placa";
-		
+
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
 			rs = statement.executeQuery();
@@ -81,9 +80,9 @@ public class VeiculoDAO {
 		}
 
 		return rs;
-		
+
 	}
-	
+
 	// Método publico que retorna um Array de Veiculos
 	public static ArrayList<Veiculo> obterListaDeVeiculos(){
 
@@ -111,7 +110,7 @@ public class VeiculoDAO {
 
 	public boolean inserirVeiculoBanco(Veiculo veiculo) {
 		String sql = "insert into VEICULOS (Placa,Marca) values (? , ?)";
-		
+
 		try {
 			this.statement = conexao.prepareStatement(sql);
 			this.statement.setString(1, veiculo.getPlaca());
@@ -125,11 +124,11 @@ public class VeiculoDAO {
 			return false;
 		}
 	}	
-	
-	
 
-	
-	
-	
-	
+
+
+
+
+
+
 }
