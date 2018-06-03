@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -69,21 +70,21 @@
             <Button fx:id="botaoCadastraVeiculo" layoutX="98.0" layoutY="244.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
             <Label fx:id="labelAvisoCadastroCliente" layoutX="268.0" layoutY="27.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
             <Label fx:id="labelAvisoCadastroVeiculo" layoutX="268.0" layoutY="158.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
-            <Button fx:id="botaoAlugaVeiculo" layoutX="153.0" layoutY="285.0" mnemonicParsing="false" text="Alugar Veículo" />
-            <Label fx:id="labelAvisoCadastroAluguel" layoutX="268.0" layoutY="286.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
+            <Button fx:id="botaoAlugaVeiculo" layoutX="192.0" layoutY="504.0" mnemonicParsing="false" text="Alugar Veículo" />
+            <Label fx:id="labelAvisoCadastroAluguel" layoutX="61.0" layoutY="560.0" prefHeight="61.0" prefWidth="238.0" text="." wrapText="true" />
             <TableView fx:id="tabelaDeClientes" layoutX="631.0" layoutY="29.0" prefHeight="208.0" prefWidth="336.0">
               <columns>
                 <TableColumn fx:id="colunaCPF" prefWidth="75.0" text="CPF" />
                 <TableColumn fx:id="colunaNome" prefWidth="75.0" text="Nome" />
               </columns>
             </TableView>
-            <TableView fx:id="tabelaDeVeiculos" layoutX="631.0" layoutY="250.0" prefHeight="433.0" prefWidth="336.0">
+            <TableView fx:id="tabelaDeVeiculos" layoutX="631.0" layoutY="250.0" prefHeight="175.0" prefWidth="336.0">
               <columns>
                 <TableColumn fx:id="colunaPlaca" prefWidth="75.0" text="Placa" />
                 <TableColumn fx:id="colunaMarca" prefWidth="75.0" text="Marca" />
               </columns>
             </TableView>
-            <TableView fx:id="tabelaDeAlugueis" layoutX="14.0" layoutY="350.0" prefHeight="331.0" prefWidth="610.0">
+            <TableView fx:id="tabelaDeAlugueis" layoutX="357.0" layoutY="433.0" prefHeight="253.0" prefWidth="610.0">
               <columns>
                 <TableColumn fx:id="colunaDataDeInicio" prefWidth="75.0" text="Data De Início" />
                 <TableColumn fx:id="colunaDataDeTermino" prefWidth="75.0" text="Data de Término" />
@@ -93,7 +94,8 @@
                   <TableColumn fx:id="colunaNomeAluguel" prefWidth="75.0" text="Nome" />
               </columns>
             </TableView>
-            <Button fx:id="botaoAtualizaListaClientes" layoutX="465.0" layoutY="40.0" mnemonicParsing="false" text="Atualizar Lista Clientes" />
+            <DatePicker fx:id="datePickerDataDeInicio" layoutX="61.0" layoutY="433.0" prefHeight="27.0" prefWidth="238.0" promptText="Selecione a data de início" />
+            <DatePicker fx:id="datePickerDataDeTermino" layoutX="61.0" layoutY="469.0" prefHeight="27.0" prefWidth="238.0" promptText="Selecione a data de término" />
          </children>
       </Pane>
    </children>

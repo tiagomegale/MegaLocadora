@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import DAO.AluguelDAO;
@@ -17,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -106,9 +108,19 @@ public class Controller implements Initializable{
 	@FXML
 	TableColumn<Aluguel, String> colunaNomeAluguel;
 	
+	
+	// Date Picker Aluguel
+	@FXML
+	private DatePicker datePickerDataDeInicio;
+	
+	@FXML
+	private DatePicker datePickerDataDeTermino;
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		// Cria Tabela de Clientes
 		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
@@ -152,11 +164,19 @@ public class Controller implements Initializable{
 		}); 				
 		tabelaDeAlugueis.setItems(listaAlugueis);	
 
-		
+		// Imprime no console a lista para simples verificação
 		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
 
+		
+		// Inicia o Date Picker
+		
+		datePickerDataDeInicio.setValue(LocalDate.now());
+		datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
+		String.valueOf(datePickerDataDeInicio.getValue());
+		String.valueOf(datePickerDataDeTermino.getValue());
+		
 		
 		botaoCadastraCliente.setOnAction((e) -> {
 			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
@@ -200,7 +220,7 @@ public class Controller implements Initializable{
 			VeiculoDAO veiculoDAO = new VeiculoDAO();
 			ClienteDAO clienteDAO = new ClienteDAO();
 			
-			Aluguel aluguel = new Aluguel("hoje","amanha", veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()));
+			Aluguel aluguel = new Aluguel(String.valueOf(datePickerDataDeInicio.getValue()),String.valueOf(datePickerDataDeTermino.getValue()), veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()));
 			System.out.println(aluguel);
 			AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
 			
@@ -243,7 +263,8 @@ public class Controller implements Initializable{
 				labelAvisoCadastroAluguel.setText("____ERRO_____Cadastro de aluguel falhou.____ERRO_____");	
 			}
 		});		
-		
+
+
 		
 	}	
 
