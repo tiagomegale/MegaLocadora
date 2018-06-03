@@ -11,6 +11,7 @@ import connection.ConnectionManager;
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -356,6 +357,7 @@ public class Controller implements Initializable{
 		});
 		
 		menuItemFechar.setOnAction((e) -> {
+			Platform.exit();
 		});
 				
 		menuItemCadastrarCliente.setOnAction((e) -> {
