@@ -20,18 +20,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class Controller implements Initializable{
-
-	// Relógio
+	
+	// Menu 
+	
 	@FXML
-	private Label labelRelogio;
+	private MenuItem botaoMenuCadastrarCliente;
+	
+	@FXML
+	private MenuItem botaoMenuHome;
+	
+	@FXML
+	private Pane pane2;
+	
+	@FXML
+	private Pane paneHome;
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// Cadastro de Clientes
 	@FXML
@@ -119,8 +139,7 @@ public class Controller implements Initializable{
 	@FXML
 	private DatePicker datePickerDataDeTermino;
 	
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -269,6 +288,16 @@ public class Controller implements Initializable{
 		});		
 
 
+
+		botaoMenuCadastrarCliente.setOnAction((e) -> {
+			paneHome.setVisible(false);
+			pane2.setVisible(true);
+		});
+		
+		botaoMenuHome.setOnAction((e) -> {
+			paneHome.setVisible(true);
+			pane2.setVisible(false);
+		});
 		
 	}	
 

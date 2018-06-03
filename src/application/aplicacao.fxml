@@ -19,44 +19,47 @@
         <menus>
           <Menu text="_Arquivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Fechar" />
+                  <MenuItem fx:id="botaoMenuHome" mnemonicParsing="false" text="_Home" />
+              <MenuItem text="_Fechar" />
             </items>
           </Menu>
           <Menu text="_Clientes">
             <items>
-              <MenuItem mnemonicParsing="false" text="Cadastrar Novo Cliente" />
-                  <MenuItem mnemonicParsing="false" text="Alterar Dados de Cliente" />
+              <MenuItem fx:id="botaoMenuCadastrarCliente" text="_Cadastrar Novo Cliente" />
+                  <MenuItem text="_Alterar Dados de Cliente" />
+                  <MenuItem text="_Listar Clientes" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="_Veículos">
+            <Menu text="_Veículos">
               <items>
-                <MenuItem mnemonicParsing="false" text="Cadastrar Novo Veículo" />
-                  <MenuItem mnemonicParsing="false" text="Alterar Dados de Veículo" />
+                <MenuItem text="_Cadastrar Novo Veículo" />
+                  <MenuItem text="_Alterar Dados de Veículo" />
+                  <MenuItem text="_Listar Veículos" />
               </items>
             </Menu>
-            <Menu text="_Locação">
+            <Menu text="_Alugueis">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Alugar Veículo" />
-                  <MenuItem mnemonicParsing="false" text="Devolver Veículo" />
-                  <MenuItem mnemonicParsing="false" text="Alterar Dados de Aluguel" />
+                  <MenuItem text="_Alugar Veículo" />
+                  <MenuItem text="_Devolver Veículo" />
+                  <MenuItem text="_Alterar Dados de Aluguel" />
                </items>
             </Menu>
             <Menu text="_Relatórios">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Aluguéis Ativos" />
-                  <MenuItem mnemonicParsing="false" text="Histórico de Aluguéis" />
+                  <MenuItem text="_Aluguéis Ativos" />
+                  <MenuItem text="_Histórico de Aluguéis" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="_Ajuda">
             <items>
-                  <MenuItem text="Documentação" />
+                  <MenuItem text="_Documentação" />
                   <SeparatorMenuItem />
-              <MenuItem text="Sobre" />
+              <MenuItem text="_Sobre" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <Pane layoutX="38.0" layoutY="63.0" style="-fx-background-color: #eeeeee;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="48.0">
+      <Pane fx:id="paneHome" layoutX="38.0" layoutY="63.0" style="-fx-background-color: #eeeeee;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="48.0">
          <children>
             <Button fx:id="botaoCadastraCliente" layoutX="99.0" layoutY="102.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
             <Label layoutX="23.0" layoutY="31.0" text="Nome" />
@@ -100,5 +103,10 @@
       </Pane>
       <Label layoutX="756.0" layoutY="31.0" prefHeight="17.0" prefWidth="38.0" text="Hora:" />
       <Label fx:id="labelRelogio" layoutX="795.0" layoutY="31.0" prefHeight="17.0" prefWidth="193.0" />
+      <Pane fx:id="pane2" layoutX="20.0" layoutY="40.0" prefHeight="715.0" prefWidth="991.0" visible="false">
+         <children>
+            <Label layoutX="174.0" layoutY="131.0" text="Pane 2" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
