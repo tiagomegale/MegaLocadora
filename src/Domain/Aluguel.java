@@ -40,6 +40,12 @@ public class Aluguel {
 	
 	public Aluguel(String dataDeInicio, String dataDeTermino, Veiculo veiculo, Cliente cliente) {
 		super();
+		
+		// Passar de String pra data
+		// data De Inicio ser sempre hoje
+		// if dataDeInicio =! data de hoje dar um throw
+		// if dataDeTermino <= hoje dar outro throw
+		// if dataDeInicio
 		this.dataDeInicio = dataDeInicio;
 		this.dataDeTermino = dataDeTermino;
 		this.veiculo = veiculo;

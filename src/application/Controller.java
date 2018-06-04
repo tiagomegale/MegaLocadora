@@ -4,6 +4,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Interval;
+
 import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
@@ -250,6 +254,12 @@ public class Controller implements Initializable{
 		final LocalDate hoje = LocalDate.now();
 		datePickerDataDeInicio.setValue(hoje);
 		datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
+		
+		DateTime hojeDateTime = new DateTime();
+	    Interval interval = new Interval(hojeDateTime,hojeDateTime.plus(Days.days(5)) );
+	    System.out.println("Tempo" + interval.toDuration().getStandardDays());
+	    System.out.println("Hours = " + interval.toDuration().getStandardHours());
+		
 		String.valueOf(datePickerDataDeInicio.getValue());
 		String.valueOf(datePickerDataDeTermino.getValue());
 		
