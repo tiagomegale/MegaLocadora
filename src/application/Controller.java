@@ -259,7 +259,9 @@ public class Controller implements Initializable{
 	    Interval interval = new Interval(hojeDateTime,hojeDateTime.plus(Days.days(5)) );
 	    System.out.println("Tempo" + interval.toDuration().getStandardDays());
 	    System.out.println("Hours = " + interval.toDuration().getStandardHours());
-		
+		// para calcular a diaria faz o mod 24, se for maior que 3, adiciona 1 diária
+	    
+	    
 		String.valueOf(datePickerDataDeInicio.getValue());
 		String.valueOf(datePickerDataDeTermino.getValue());
 		
@@ -448,8 +450,7 @@ public class Controller implements Initializable{
 			paneSobre.setVisible(true);
 		});
 	
-		
-		
+			
 	}	
 
 

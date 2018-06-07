@@ -20,67 +20,72 @@
          <children>
             <Pane fx:id="paneHome" style="-fx-background-color: #eeeeee;">
                <children>
-                  <Button fx:id="botaoCadastraCliente" layoutX="99.0" layoutY="102.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
-                  <Label layoutX="23.0" layoutY="31.0" text="Nome" />
-                  <TextField fx:id="nomeCliente" layoutX="93.0" layoutY="26.0" />
-                  <Label layoutX="23.0" layoutY="69.0" text="CPF" />
-                  <TextField fx:id="cpfCliente" layoutX="93.0" layoutY="64.0" />
-                  <Label layoutX="23.0" layoutY="162.0" text="Marca" />
-                  <TextField fx:id="marcaVeiculo" layoutX="93.0" layoutY="157.0" />
-                  <Label layoutX="23.0" layoutY="211.0" text="Placa" />
-                  <TextField fx:id="placaVeiculo" layoutX="93.0" layoutY="206.0" />
-                  <Button fx:id="botaoCadastraVeiculo" layoutX="98.0" layoutY="244.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
-                  <Label fx:id="labelAvisoCadastroCliente" layoutX="268.0" layoutY="27.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
-                  <Label fx:id="labelAvisoCadastroVeiculo" layoutX="268.0" layoutY="158.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
-                  <Button fx:id="botaoAlugaVeiculo" layoutX="192.0" layoutY="504.0" mnemonicParsing="false" text="Alugar Veículo" />
-                  <Label fx:id="labelAvisoCadastroAluguel" layoutX="61.0" layoutY="560.0" prefHeight="61.0" prefWidth="238.0" text="." wrapText="true" />
-                  <TableView fx:id="tabelaDeClientes" layoutX="631.0" layoutY="29.0" prefHeight="208.0" prefWidth="336.0">
-                    <columns>
-                      <TableColumn fx:id="colunaCPF" prefWidth="75.0" text="CPF" />
-                      <TableColumn fx:id="colunaNome" prefWidth="75.0" text="Nome" />
-                    </columns>
+                  <Label layoutX="179.0" layoutY="135.0" text="Selecionar um Cliente" />
+                  <Label layoutX="178.0" layoutY="163.0" text="Selecionar um Veículo" />
+                  <Label layoutX="352.0" layoutY="135.0" text="Buscar um cliente" />
+                  <Label layoutX="352.0" layoutY="163.0" text="Buscar um veículo" />
+                  <Label layoutX="178.0" layoutY="213.0" text="Iniciar aluguel" />
+                  <Label layoutX="178.0" layoutY="238.0" text="Iniciar aluguel" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneClientes" prefHeight="715.0" prefWidth="991.0" visible="false">
+               <children>
+                  <Button fx:id="botaoCadastraCliente" layoutX="117.0" layoutY="109.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
+                  <Label layoutX="41.0" layoutY="38.0" text="Nome" />
+                  <TextField fx:id="nomeCliente" layoutX="111.0" layoutY="33.0" />
+                  <Label layoutX="41.0" layoutY="76.0" text="CPF" />
+                  <TextField fx:id="cpfCliente" layoutX="111.0" layoutY="71.0" />
+                  <Label fx:id="labelAvisoCadastroCliente" layoutX="117.0" layoutY="154.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
+                  <TableView fx:id="tabelaDeClientes" layoutX="353.0" layoutY="8.0" prefHeight="690.0" prefWidth="620.0">
+                     <columns>
+                        <TableColumn fx:id="colunaCPF" prefWidth="93.0" text="CPF" />
+                        <TableColumn fx:id="colunaNome" prefWidth="85.0" text="Nome" />
+                     </columns>
                   </TableView>
-                  <TableView fx:id="tabelaDeVeiculos" layoutX="631.0" layoutY="250.0" prefHeight="175.0" prefWidth="336.0">
-                    <columns>
-                      <TableColumn fx:id="colunaPlaca" prefWidth="75.0" text="Placa" />
-                      <TableColumn fx:id="colunaMarca" prefWidth="75.0" text="Marca" />
-                    </columns>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVeiculos" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0" visible="false">
+               <children>
+                  <Pane layoutX="205.0" layoutY="163.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Label layoutX="43.0" layoutY="182.0" text="Marca" />
+                  <TextField fx:id="marcaVeiculo" layoutX="113.0" layoutY="177.0" />
+                  <Label layoutX="43.0" layoutY="231.0" text="Placa" />
+                  <TextField fx:id="placaVeiculo" layoutX="113.0" layoutY="226.0" />
+                  <Button fx:id="botaoCadastraVeiculo" layoutX="118.0" layoutY="264.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
+                  <Label fx:id="labelAvisoCadastroVeiculo" layoutX="288.0" layoutY="178.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
+                  <TableView fx:id="tabelaDeVeiculos" layoutX="353.0" layoutY="8.0" prefHeight="690.0" prefWidth="620.0">
+                     <columns>
+                        <TableColumn fx:id="colunaPlaca" prefWidth="75.0" text="Placa" />
+                        <TableColumn fx:id="colunaMarca" prefWidth="75.0" text="Marca" />
+                     </columns>
                   </TableView>
-                  <TableView fx:id="tabelaDeAlugueis" layoutX="357.0" layoutY="433.0" prefHeight="253.0" prefWidth="610.0">
-                    <columns>
-                      <TableColumn fx:id="colunaDataDeInicio" prefWidth="75.0" text="Data De Início" />
-                      <TableColumn fx:id="colunaDataDeTermino" prefWidth="75.0" text="Data de Término" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneAlugueis" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0" visible="false">
+               <children>
+                  <Pane layoutX="148.0" layoutY="148.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Button fx:id="botaoAlugaVeiculo" layoutX="178.0" layoutY="382.0" mnemonicParsing="false" text="Alugar Veículo" />
+                  <TableView fx:id="tabelaDeAlugueis" layoutX="343.0" layoutY="311.0" prefHeight="253.0" prefWidth="610.0">
+                     <columns>
+                        <TableColumn fx:id="colunaDataDeInicio" prefWidth="75.0" text="Data De Início" />
+                        <TableColumn fx:id="colunaDataDeTermino" prefWidth="75.0" text="Data de Término" />
                         <TableColumn fx:id="colunaPlacaAluguel" prefWidth="75.0" text="Placa" />
                         <TableColumn fx:id="colunaMarcaAluguel" prefWidth="75.0" text="Marca" />
                         <TableColumn fx:id="colunaCPFAluguel" prefWidth="75.0" text="CPF" />
                         <TableColumn fx:id="colunaNomeAluguel" prefWidth="75.0" text="Nome" />
-                    </columns>
+                     </columns>
                   </TableView>
-                  <DatePicker fx:id="datePickerDataDeInicio" disable="true" editable="false" layoutX="79.0" layoutY="433.0" prefHeight="27.0" prefWidth="219.0" promptText="Data de Início: Hoje" />
-                  <DatePicker fx:id="datePickerDataDeTermino" layoutX="79.0" layoutY="469.0" prefHeight="27.0" prefWidth="219.0" promptText="Selecione Data de término" />
+                  <DatePicker fx:id="datePickerDataDeInicio" disable="true" editable="false" layoutX="65.0" layoutY="311.0" prefHeight="27.0" prefWidth="219.0" promptText="Data de Início: Hoje" />
+                  <DatePicker fx:id="datePickerDataDeTermino" layoutX="65.0" layoutY="347.0" prefHeight="27.0" prefWidth="219.0" promptText="Selecione Data de término" />
+                  <Label fx:id="labelAvisoCadastroAluguel" layoutX="1.0" layoutY="492.0" prefHeight="61.0" prefWidth="238.0" text="." wrapText="true" />
                </children>
             </Pane>
-            <Pane fx:id="paneClientes" prefHeight="715.0" prefWidth="991.0">
-               <children>
-                  <Label layoutX="174.0" layoutY="131.0" text="Pane Clientes" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneVeiculos" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0">
-               <children>
-                  <Label layoutX="174.0" layoutY="131.0" text="Pane Veiculos" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneAlugueis" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0">
-               <children>
-                  <Label layoutX="174.0" layoutY="131.0" text="Pane Alugueis" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneRelatorios" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0">
+            <Pane fx:id="paneRelatorios" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0" visible="false">
                <children>
                   <Label layoutX="174.0" layoutY="131.0" text="Pane Relatórios" />
                </children>
             </Pane>
-            <Pane fx:id="paneSobre" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0">
+            <Pane fx:id="paneSobre" layoutX="10.0" layoutY="10.0" prefHeight="715.0" prefWidth="991.0" visible="false">
                <children>
                   <Label layoutX="174.0" layoutY="131.0" text="Pane Ajuda" />
                </children>
