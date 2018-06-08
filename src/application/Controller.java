@@ -15,7 +15,6 @@ import connection.ConnectionManager;
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,88 +24,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
 public class Controller implements Initializable{
 	
-	
-	// Menu da Aplicação - Menu Items
 	@FXML
-	private MenuItem menuItemHome;
+	private TabPane tabPaneConteudo;
 	
 	@FXML
-	private MenuItem menuItemFechar;
-	
-	@FXML
-	private MenuItem menuItemCadastrarCliente;
-	
-	@FXML
-	private MenuItem menuItemAlterarCliente;
-	
-	@FXML
-	private MenuItem menuItemListarClientes;
-	
-	@FXML
-	private MenuItem menuItemCadastrarVeiculo;
-	
-	@FXML
-	private MenuItem menuItemAlterarVeiculo;
-	
-	@FXML
-	private MenuItem menuItemListarVeiculos;
-	
-	@FXML
-	private MenuItem menuItemAlugarVeiculo;
-	
-	@FXML
-	private MenuItem menuItemDevolverVeiculo;
-	
-	@FXML
-	private MenuItem menuItemAlterarAluguel;
-	
-	@FXML
-	private MenuItem menuItemAlugueisAtivos;
-	
-	@FXML
-	private MenuItem menuItemHistoricoAlugueis;
-	
-	@FXML
-	private MenuItem menuItemDocumentacao;
-	
-	@FXML
-	private MenuItem menuItemSobre;
-	
-	
-	// Panes da Aplicação
-	@FXML
-	private StackPane stackPanePrincipal;
-	
-	@FXML 
 	private Pane paneHome;
-	
-	@FXML
-	private Pane paneClientes;
-	
-	@FXML
-	private Pane paneVeiculos;
-	
-	@FXML
-	private Pane paneAlugueis;
-	
-	@FXML
-	private Pane paneRelatorios;
-	
-	@FXML
-	private Pane paneSobre;
-	
 	
 	// Cadastro de Clientes
 	@FXML
@@ -351,106 +284,7 @@ public class Controller implements Initializable{
 				labelAvisoCadastroAluguel.setText("____ERRO_____Cadastro de aluguel falhou.____ERRO_____");	
 			}
 		});		
-
-		// Adiciona todos os Panes ao StackPane panePrincipal. Inicia com o paneHome como visível e a medida que os botões são clicados, some com os outros.
-		// Implementar esse código https://o7planning.org/en/10633/javafx-stackpane-layout-tutorial
-		paneHome.setVisible(true);
-		paneClientes.setVisible(false);
-		paneVeiculos.setVisible(false);
-		paneAlugueis.setVisible(false);
-		paneRelatorios.setVisible(false);
-		paneSobre.setVisible(false);
 		
-		// Items do menu. Trazem o pane pra frente, some com os outros.
-		menuItemHome.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneHome);
-			paneHome.setVisible(true);
-		});
-		
-		menuItemFechar.setOnAction((e) -> {
-			Platform.exit();
-		});
-				
-		menuItemCadastrarCliente.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneClientes.setVisible(true);
-		});
-		
-		menuItemAlterarCliente.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneClientes.setVisible(true);
-		});
-		
-		menuItemListarClientes.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneClientes);
-			paneClientes.setVisible(true);
-		});
-		
-		menuItemCadastrarVeiculo.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneVeiculos.setVisible(true);
-		});
-		
-		menuItemAlterarVeiculo.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneVeiculos.setVisible(true);
-		});
-		
-		menuItemListarVeiculos.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneVeiculos);
-			paneVeiculos.setVisible(true);
-		});
-		
-		menuItemAlugarVeiculo.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneAlugueis.setVisible(true);
-		});
-		
-		menuItemDevolverVeiculo.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneAlugueis.setVisible(true);
-		});
-		 
-		menuItemAlterarAluguel.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneAlugueis);
-			paneAlugueis.setVisible(true);
-		});
-		
-		menuItemAlugueisAtivos.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneRelatorios);
-			paneRelatorios.setVisible(true);
-		});
-		
-		menuItemHistoricoAlugueis.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneRelatorios);
-			paneRelatorios.setVisible(true);
-		});
-		
-		menuItemDocumentacao.setOnAction((e)-> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneSobre);
-			paneSobre.setVisible(true);
-		});
-		
-		menuItemSobre.setOnAction((e) -> {
-			stackPanePrincipal.getChildren().removeAll();
-			stackPanePrincipal.getChildren().setAll(paneSobre);
-			paneSobre.setVisible(true);
-		});
-	
-			
 	}	
 
 
