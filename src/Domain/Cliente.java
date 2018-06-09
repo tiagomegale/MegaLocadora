@@ -68,6 +68,12 @@ public class Cliente {
 		this.sexo = sexo;
 		this.dataDeNascimento = dataDeNascimento;
 	}
+	
+	public Cliente(String nome, String CPF) {
+		super();
+		this.nome = nome;
+		this.CPF = CPF;
+	}
 
 	@Override
 	public String toString() {
