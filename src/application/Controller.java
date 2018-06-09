@@ -47,7 +47,19 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private TextField cpfCliente;
-
+	
+	@FXML
+	private TextField enderecoCliente;
+	
+	@FXML
+	private TextField telefoneCliente;
+	
+	@FXML
+	private TextField sexoCliente;
+	
+	@FXML
+	private DatePicker dataDeNascimento;
+	
 	@FXML
 	private Button botaoCadastraCliente;
 
@@ -86,6 +98,20 @@ public class Controller implements Initializable{
 	
 	@FXML
 	TableColumn<Cliente, String> colunaNome;
+	
+	@FXML
+	TableColumn<Cliente, String> colunaEndereco;
+	
+	@FXML
+	TableColumn<Cliente, String> colunaTelefone;
+
+	@FXML
+	TableColumn<Cliente, String> colunaSexo;
+
+	@FXML
+	TableColumn<Cliente, String> colunaDataDeNascimento;
+	
+
 	
 	
 	// Tabela e Colunas de Veículos
@@ -133,10 +159,19 @@ public class Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		System.out.println("tentando abrir lista");
+		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
+
+		
 		// Cria Tabela de Clientes
 		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
-		colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("Nome"));
+		colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
+		colunaEndereco.setCellValueFactory(new PropertyValueFactory<Cliente,String>("endereco"));
+		colunaTelefone.setCellValueFactory(new PropertyValueFactory<Cliente,String>("telefone"));
+		colunaSexo.setCellValueFactory(new PropertyValueFactory<Cliente,String>("sexo"));
+		colunaDataDeNascimento.setCellValueFactory(new PropertyValueFactory<Cliente,String>("dataDeNascimento"));
+
 		tabelaDeClientes.setItems(listaClientes);
 		
 		// Cria Tabela de Veículos
@@ -178,7 +213,6 @@ public class Controller implements Initializable{
 
 		
 		// Imprime no console a lista para simples verificação
-		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
 
@@ -200,7 +234,7 @@ public class Controller implements Initializable{
 		
 		
 		botaoCadastraCliente.setOnAction((e) -> {
-			Cliente cliente = new Cliente(cpfCliente.getText(),nomeCliente.getText());
+			Cliente cliente = new Cliente(cpfCliente.getText(), nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getText().charAt(0), dataDeNascimento.getValue());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
 			
