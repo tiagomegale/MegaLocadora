@@ -29,6 +29,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -42,6 +43,7 @@ public class Controller implements Initializable{
 	@FXML
 	private Pane paneHome;
 	
+	
 	// Cadastro de Clientes
 	@FXML
 	private TextField nomeCliente;
@@ -50,7 +52,7 @@ public class Controller implements Initializable{
 	private TextField cpfCliente;
 	
 	@FXML
-	private TextField enderecoCliente;
+	private TextArea enderecoCliente;
 	
 	@FXML
 	private TextField telefoneCliente;
@@ -90,15 +92,16 @@ public class Controller implements Initializable{
 	private Label labelAvisoCadastroAluguel;
 	
 	
+	
 	// Tabela e Coluna de Clientes
 	@FXML
 	TableView<Cliente> tabelaDeClientes;
 	
 	@FXML
-	TableColumn<Cliente, String> colunaCPF;
+	TableColumn<Cliente, String> colunaNome;
 	
 	@FXML
-	TableColumn<Cliente, String> colunaNome;
+	TableColumn<Cliente, String> colunaCPF;
 	
 	@FXML
 	TableColumn<Cliente, String> colunaEndereco;
@@ -169,8 +172,8 @@ public class Controller implements Initializable{
 		
 		// Cria Tabela de Clientes
 		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
-		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
 		colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
+		colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
 		colunaEndereco.setCellValueFactory(new PropertyValueFactory<Cliente,String>("endereco"));
 		colunaTelefone.setCellValueFactory(new PropertyValueFactory<Cliente,String>("telefone"));
 		colunaSexo.setCellValueFactory(new PropertyValueFactory<Cliente,String>("sexo"));
@@ -238,7 +241,7 @@ public class Controller implements Initializable{
 		
 		
 		botaoCadastraCliente.setOnAction((e) -> {
-			Cliente cliente = new Cliente(cpfCliente.getText(), nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getValue().charAt(0), dataDeNascimento.getValue());
+			Cliente cliente = new Cliente(nomeCliente.getText(), cpfCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getValue().charAt(0), dataDeNascimento.getValue());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
 			
@@ -247,9 +250,14 @@ public class Controller implements Initializable{
 				
 				// Atualiza lista de clientes
 				listaClientes.setAll(FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes()));
+				colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
 				colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
-				colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("Nome"));
+				colunaEndereco.setCellValueFactory(new PropertyValueFactory<Cliente,String>("endereco"));
+				colunaTelefone.setCellValueFactory(new PropertyValueFactory<Cliente,String>("telefone"));
+				colunaSexo.setCellValueFactory(new PropertyValueFactory<Cliente,String>("sexo"));
+				colunaDataDeNascimento.setCellValueFactory(new PropertyValueFactory<Cliente,String>("dataDeNascimento"));
 				tabelaDeClientes.setItems(listaClientes);
+				
 				System.out.println("Lista de Clientes Atualizada!");
 			} else {
 				labelAvisoCadastroCliente.setText("____ERRO_____Cadastro de cliente falhou.____ERRO_____");	

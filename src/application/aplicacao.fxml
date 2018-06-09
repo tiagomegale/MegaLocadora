@@ -8,11 +8,12 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <Pane fx:id="paneHome" layoutX="329.0" layoutY="33.0" prefHeight="735.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,30 +28,30 @@
                   <content>
                     <AnchorPane prefHeight="167.0" prefWidth="286.0">
                            <children>
-                              <Button fx:id="botaoCadastraCliente" layoutX="164.0" layoutY="441.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
-                              <Label layoutX="97.0" layoutY="73.0" text="CPF" />
-                              <Label layoutX="92.0" layoutY="115.0" text="Nome" />
-                              <Label layoutX="82.0" layoutY="176.0" text="Endereço" />
-                              <Label layoutX="85.0" layoutY="227.0" text="Telefone" />
-                              <Label layoutX="90.0" layoutY="279.0" text="Gênero" />
-                              <Label layoutX="20.0" layoutY="330.0" text="Data de Nascimento" />
-                              <Label fx:id="labelAvisoCadastroCliente" layoutX="164.0" layoutY="512.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
-                              <TableView fx:id="tabelaDeClientes" layoutX="438.0" prefHeight="690.0" prefWidth="586.0">
+                              <Label layoutX="122.0" layoutY="97.0" text="CPF" />
+                              <Label layoutX="117.0" layoutY="56.0" text="Nome" />
+                              <Label layoutX="93.0" layoutY="139.0" text="Endereço" />
+                              <Label layoutX="96.0" layoutY="247.0" text="Telefone" />
+                              <Label layoutX="101.0" layoutY="289.0" text="Gênero" />
+                              <Label layoutX="25.0" layoutY="330.0" text="Data de Nascimento" />
+                              <Label fx:id="labelAvisoCadastroCliente" layoutX="162.0" layoutY="422.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
+                              <TableView fx:id="tabelaDeClientes" layoutX="359.0" prefHeight="735.0" prefWidth="921.0">
                                  <columns>
-                                    <TableColumn fx:id="colunaCPF" prefWidth="93.0" text="CPF" />
-                                    <TableColumn fx:id="colunaNome" prefWidth="85.0" text="Nome" />
-                                    <TableColumn fx:id="colunaEndereco" prefWidth="75.0" text="Endereço" />
-                                    <TableColumn fx:id="colunaTelefone" prefWidth="75.0" text="Telefone" />
-                                    <TableColumn fx:id="colunaSexo" prefWidth="75.0" text="Sexo" />
-                                    <TableColumn fx:id="colunaDataDeNascimento" prefWidth="75.0" text="Data de Nascimento" />
+                                    <TableColumn fx:id="colunaNome" prefWidth="179.0" text="Nome" />
+                                    <TableColumn fx:id="colunaCPF" prefWidth="130.0" text="CPF" />
+                                    <TableColumn fx:id="colunaEndereco" prefWidth="312.0" text="Endereço" />
+                                    <TableColumn fx:id="colunaTelefone" prefWidth="126.0" text="Telefone" />
+                                    <TableColumn fx:id="colunaSexo" prefWidth="40.0" text="Sexo" />
+                                    <TableColumn fx:id="colunaDataDeNascimento" prefWidth="133.0" text="Data de Nascimento" />
                                  </columns>
                               </TableView>
-                              <TextField fx:id="cpfCliente" layoutX="161.0" layoutY="68.0" />
-                              <TextField fx:id="nomeCliente" layoutX="161.0" layoutY="119.0" />
-                              <TextField fx:id="enderecoCliente" layoutX="161.0" layoutY="171.0" />
-                              <TextField fx:id="telefoneCliente" layoutX="161.0" layoutY="222.0" />
-                              <DatePicker fx:id="dataDeNascimento" layoutX="156.0" layoutY="325.0" />
-                              <ChoiceBox fx:id="sexoCliente" layoutX="178.0" layoutY="274.0" prefWidth="150.0" />
+                              <TextField fx:id="nomeCliente" layoutX="161.0" layoutY="51.0" prefHeight="27.0" prefWidth="165.0" />
+                              <TextField fx:id="cpfCliente" layoutX="161.0" layoutY="92.0" prefHeight="27.0" prefWidth="165.0" />
+                              <TextArea fx:id="enderecoCliente" layoutX="161.0" layoutY="139.0" prefHeight="84.0" prefWidth="165.0" wrapText="true" />
+                              <TextField fx:id="telefoneCliente" layoutX="161.0" layoutY="242.0" />
+                              <ChoiceBox fx:id="sexoCliente" layoutX="163.0" layoutY="284.0" prefHeight="27.0" prefWidth="165.0" />
+                              <DatePicker fx:id="dataDeNascimento" layoutX="160.0" layoutY="325.0" prefHeight="27.0" prefWidth="165.0" />
+                              <Button fx:id="botaoCadastraCliente" layoutX="165.0" layoutY="370.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -65,7 +66,7 @@
                               <TextField fx:id="placaVeiculo" layoutX="138.0" layoutY="62.0" />
                               <Button fx:id="botaoCadastraVeiculo" layoutX="140.0" layoutY="160.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
                               <Label fx:id="labelAvisoCadastroVeiculo" layoutX="141.0" layoutY="202.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
-                              <TableView fx:id="tabelaDeVeiculos" layoutX="393.0" prefHeight="708.0" prefWidth="631.0">
+                              <TableView fx:id="tabelaDeVeiculos" layoutX="393.0" prefHeight="708.0" prefWidth="887.0">
                                  <columns>
                                     <TableColumn fx:id="colunaPlaca" prefWidth="75.0" text="Placa" />
                                     <TableColumn fx:id="colunaMarca" prefWidth="75.0" text="Marca" />
@@ -85,7 +86,7 @@
                                  </children>
                               </Pane>
                               <Button fx:id="botaoAlugaVeiculo" layoutX="135.0" layoutY="187.0" mnemonicParsing="false" text="Alugar Veículo" />
-                              <TableView fx:id="tabelaDeAlugueis" layoutX="408.0" prefHeight="735.0" prefWidth="616.0">
+                              <TableView fx:id="tabelaDeAlugueis" layoutX="408.0" prefHeight="735.0" prefWidth="872.0">
                                  <columns>
                                     <TableColumn fx:id="colunaDataDeInicio" prefWidth="75.0" text="Data De Início" />
                                     <TableColumn fx:id="colunaDataDeTermino" prefWidth="75.0" text="Data de Término" />

@@ -27,7 +27,7 @@ public class ClienteDAO {
 	// Método Privado que busca no banco usando CPF
 	private ResultSet buscaClienteNoBancoPorCPF(String CPF) {
 
-		String sql = "select cpf, nome, endereco, telefone, sexo, dataDeNascimento from CLIENTES where cpf = ?"; 
+		String sql = "select nome, cpf, endereco, telefone, sexo, dataDeNascimento from CLIENTES where cpf = ?"; 
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class ClienteDAO {
 		try {
 			Cliente clienteSendoBuscado = null;
 			resultSet.next();
-			clienteSendoBuscado = new Cliente(resultSet.getString("cpf"), resultSet.getString("nome"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
+			clienteSendoBuscado = new Cliente(resultSet.getString("nome"), resultSet.getString("cpf"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
 			return clienteSendoBuscado;
 
 		} catch (SQLException e) {
@@ -69,7 +69,7 @@ public class ClienteDAO {
 
 	// Método privado que busca no banco a lista de todos os clientes
 	private ResultSet listaTodos() {
-		String sql = "select cpf, nome, endereco, telefone, sexo, dataDeNascimento from CLIENTES order by nome";
+		String sql = "select nome, cpf, endereco, telefone, sexo, dataDeNascimento from CLIENTES order by nome";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -95,7 +95,7 @@ public class ClienteDAO {
 			ResultSet resultSet = clienteDAO.listaTodos();
 
 			while (resultSet.next()) {
-				Cliente cliente = new Cliente(resultSet.getString("cpf"),resultSet.getString("nome"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
+				Cliente cliente = new Cliente(resultSet.getString("nome"), resultSet.getString("cpf"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
 				listaDeClientes.add(cliente);
 			}
 
@@ -108,12 +108,12 @@ public class ClienteDAO {
 	}	
 
 	public boolean inserirClienteBanco(Cliente cliente) {
-		String sql = "insert into CLIENTES (cpf,nome,endereco,telefone,sexo,dataDeNascimento) values (? , ? , ? , ? , ? , ?)";
+		String sql = "insert into CLIENTES (nome,cpf,endereco,telefone,sexo,dataDeNascimento) values (? , ? , ? , ? , ? , ?)";
 
 		try {
 			this.statement = conexao.prepareStatement(sql);
-			this.statement.setString(1, cliente.getCPF());
-			this.statement.setString(2, cliente.getNome());
+			this.statement.setString(1, cliente.getNome());
+			this.statement.setString(2, cliente.getCPF());
 			this.statement.setString(3, cliente.getEndereco());
 			this.statement.setString(4, cliente.getTelefone());
 			this.statement.setString(5, String.valueOf(cliente.getSexo()));
