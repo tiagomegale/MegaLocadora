@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -27,10 +28,12 @@
                     <AnchorPane prefHeight="167.0" prefWidth="286.0">
                            <children>
                               <Button fx:id="botaoCadastraCliente" layoutX="164.0" layoutY="441.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
-                              <Label layoutX="92.0" layoutY="115.0" text="Nome" />
-                              <TextField fx:id="nomeCliente" layoutX="161.0" layoutY="119.0" />
                               <Label layoutX="97.0" layoutY="73.0" text="CPF" />
-                              <TextField fx:id="cpfCliente" layoutX="161.0" layoutY="68.0" />
+                              <Label layoutX="92.0" layoutY="115.0" text="Nome" />
+                              <Label layoutX="82.0" layoutY="176.0" text="Endereço" />
+                              <Label layoutX="85.0" layoutY="227.0" text="Telefone" />
+                              <Label layoutX="90.0" layoutY="279.0" text="Gênero" />
+                              <Label layoutX="20.0" layoutY="330.0" text="Data de Nascimento" />
                               <Label fx:id="labelAvisoCadastroCliente" layoutX="164.0" layoutY="512.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
                               <TableView fx:id="tabelaDeClientes" layoutX="438.0" prefHeight="690.0" prefWidth="586.0">
                                  <columns>
@@ -42,14 +45,12 @@
                                     <TableColumn fx:id="colunaDataDeNascimento" prefWidth="75.0" text="Data de Nascimento" />
                                  </columns>
                               </TableView>
-                              <Label layoutX="82.0" layoutY="176.0" text="Endereço" />
-                              <Label layoutX="85.0" layoutY="227.0" text="Telefone" />
-                              <Label layoutX="108.0" layoutY="279.0" text="Sexo" />
-                              <Label layoutX="20.0" layoutY="330.0" text="Data de Nascimento" />
-                              <TextField fx:id="telefoneCliente" layoutX="161.0" layoutY="222.0" />
-                              <TextField fx:id="sexoCliente" layoutX="161.0" layoutY="274.0" />
+                              <TextField fx:id="cpfCliente" layoutX="161.0" layoutY="68.0" />
+                              <TextField fx:id="nomeCliente" layoutX="161.0" layoutY="119.0" />
                               <TextField fx:id="enderecoCliente" layoutX="161.0" layoutY="171.0" />
+                              <TextField fx:id="telefoneCliente" layoutX="161.0" layoutY="222.0" />
                               <DatePicker fx:id="dataDeNascimento" layoutX="156.0" layoutY="325.0" />
+                              <ChoiceBox fx:id="sexoCliente" layoutX="178.0" layoutY="274.0" prefWidth="150.0" />
                            </children>
                         </AnchorPane>
                   </content>

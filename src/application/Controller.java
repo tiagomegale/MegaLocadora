@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
@@ -55,7 +56,7 @@ public class Controller implements Initializable{
 	private TextField telefoneCliente;
 	
 	@FXML
-	private TextField sexoCliente;
+	private ChoiceBox<String> sexoCliente;
 	
 	@FXML
 	private DatePicker dataDeNascimento;
@@ -162,6 +163,9 @@ public class Controller implements Initializable{
 		System.out.println("tentando abrir lista");
 		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 
+		// Cria Choicebox de sexo do Cliente
+		ObservableList<String> opcoesDeSexo = FXCollections.observableArrayList("Masculino", "Feminino");
+		sexoCliente.setItems(opcoesDeSexo);
 		
 		// Cria Tabela de Clientes
 		ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
@@ -234,7 +238,7 @@ public class Controller implements Initializable{
 		
 		
 		botaoCadastraCliente.setOnAction((e) -> {
-			Cliente cliente = new Cliente(cpfCliente.getText(), nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getText().charAt(0), dataDeNascimento.getValue());
+			Cliente cliente = new Cliente(cpfCliente.getText(), nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getValue().charAt(0), dataDeNascimento.getValue());
 			System.out.println(cliente);
 			ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
 			
