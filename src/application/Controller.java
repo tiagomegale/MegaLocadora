@@ -8,6 +8,8 @@ import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
 import connection.ConnectionManager;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
@@ -16,6 +18,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,6 +28,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -32,6 +38,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
@@ -40,6 +48,8 @@ public class Controller implements Initializable{
 	// Painéis da Home
 	@FXML
 	private TabPane tabPaneConteudo;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 
 	@FXML
 	private Pane paneHome;
@@ -49,12 +59,15 @@ public class Controller implements Initializable{
 	// Tabela e Colunas de Clientes
 	@FXML
 	TableView<Cliente> tabelaDeClientesHome;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 
 	@FXML
 	TableColumn<Cliente, String> colunaNomeHome;
 
 	@FXML
 	TableColumn<Cliente, String> colunaCPFHome;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableView<Veiculo> tabelaDeVeiculosHome;
@@ -64,6 +77,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Veiculo, String> colunaNomeVeiculoHome;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private Label labelClienteSelecionadoHome;
@@ -73,7 +87,8 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private Label labelSelecioneUmCliente;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	private Label labelSelecioneUmVeiculo;
 	
@@ -82,6 +97,7 @@ public class Controller implements Initializable{
 	// Form de Cadastro de Clientes
 	@FXML
 	private TextField nomeCliente;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private TextField cpfCliente;
@@ -100,6 +116,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	private Button botaoCadastraCliente;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private Label labelAvisoCadastroCliente;
@@ -111,6 +128,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Cliente, String> colunaNome;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Cliente, String> colunaCPF;
@@ -120,6 +138,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Cliente, String> colunaTelefone;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Cliente, String> colunaSexo;
@@ -132,6 +151,7 @@ public class Controller implements Initializable{
 	// Form de Cadastro de Veículos
 	@FXML
 	private TextField placaVeiculo;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private TextField nomeVeiculo;
@@ -144,6 +164,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	private Slider anoDeFabricacao;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private Label labelSliderAnoDeFabricacao;
@@ -156,6 +177,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	private Button botaoCadastraVeiculo;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private Label labelAvisoCadastroVeiculo;
@@ -166,6 +188,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Veiculo, String> colunaPlacaVeiculo;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Veiculo, String> colunaNomeVeiculo;
@@ -178,6 +201,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Veiculo, String> colunaAnoDeFabricacao;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Veiculo, String> colunaAnoDeVenda;
@@ -193,6 +217,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	private DatePicker datePickerDataDeInicio;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	private DatePicker datePickerDataDeTermino;
@@ -202,7 +227,8 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private RadioButton radioValorDiaria59;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	private RadioButton radioValorDiaria109;
 	
@@ -211,7 +237,8 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private TextField kilometragemInicialAluguel;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	private Button botaoBuscarClientePorCPF;
 	
@@ -220,7 +247,8 @@ public class Controller implements Initializable{
 	
 	@FXML
 	private TextField textFieldBuscaClientePorCPF;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	private TextField textFieldBuscaVeiculoPorPlaca;
 	
@@ -231,12 +259,14 @@ public class Controller implements Initializable{
 	
 	@FXML
 	TableColumn<Aluguel, String> colunaDataInicioDevolucao;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	TableColumn<Aluguel, String> colunaDataTerminoDevolucao;
 		
 	@FXML
 	TableColumn<Aluguel, String> colunaNomeVeiculoDevolucao;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Aluguel, String> colunaPlacaVeiculoDevolucao;
@@ -247,7 +277,8 @@ public class Controller implements Initializable{
 	// Form Devolucao
 	@FXML
 	Label labelSelecioneUmAluguel;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	Label labelAluguelSelecionadoDevolucao;
 	
@@ -256,6 +287,7 @@ public class Controller implements Initializable{
 	
 	@FXML
 	Button botaoDevolveVeiculo;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	
 	// Tabela e Colunas de Alugueis
@@ -264,7 +296,8 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Aluguel, String> colunaIdAluguel;
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 	@FXML
 	TableColumn<Aluguel, String> colunaDataDeInicioAluguel;
 
@@ -276,6 +309,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Aluguel, String> colunaValorDiariaAluguel;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Aluguel, String> colunaTaxasAluguel;
@@ -285,6 +319,7 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Aluguel, String> colunaNomeClienteAluguel;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	@FXML
 	TableColumn<Aluguel, String> colunaCPFClienteluguel;
@@ -300,7 +335,8 @@ public class Controller implements Initializable{
 
 	@FXML
 	TableColumn<Aluguel, String> colunaKMPosAluguel;	
-	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -313,7 +349,8 @@ public class Controller implements Initializable{
 			colunaNomeHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 			colunaCPFHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("CPF"));
 			tabelaDeClientesHome.setItems(listaClientesHome);
-		
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+	
 			//Tabela de Veículos Home
 			ObservableList<Veiculo> listaVeiculosHome = FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos());
 			colunaPlacaVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placaVeiculo"));
@@ -326,7 +363,8 @@ public class Controller implements Initializable{
 				labelClienteSelecionadoHome.setText(clienteSelecionadoHome.getNome() + ". CPF: " + clienteSelecionadoHome.getCPF());
 				labelSelecioneUmCliente.setText("Cliente selecionado: ");
 			});
-			
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+		
 			tabelaDeVeiculosHome.setOnMouseClicked((e) -> {
 				Veiculo veiculoSelecionadoHome = tabelaDeVeiculosHome.getSelectionModel().getSelectedItem();
 				labelVeiculoSelecionadoHome.setText(veiculoSelecionadoHome.getMarcaVeiculo() + " " + veiculoSelecionadoHome.getNomeVeiculo() + " de Placa: " + veiculoSelecionadoHome.getPlacaVeiculo());
@@ -341,6 +379,7 @@ public class Controller implements Initializable{
 				colunaCPFHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("CPF"));
 				tabelaDeClientesHome.setItems(listaClientesHome);	
 			});
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			
 			botaoBuscarVeiculoPorPlaca.setOnAction((e) -> {
 				VeiculoDAO veiculoDAO = new VeiculoDAO(ConnectionManager.getMysqlConnection());
@@ -366,6 +405,8 @@ public class Controller implements Initializable{
 					return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 				}
 			}); 
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 			colunaNomeClienteDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 				@Override
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
@@ -386,6 +427,8 @@ public class Controller implements Initializable{
 			ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 			colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
 			colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 			colunaEndereco.setCellValueFactory(new PropertyValueFactory<Cliente,String>("endereco"));
 			colunaTelefone.setCellValueFactory(new PropertyValueFactory<Cliente,String>("telefone"));
 			colunaSexo.setCellValueFactory(new PropertyValueFactory<Cliente,String>("sexo"));
@@ -397,6 +440,7 @@ public class Controller implements Initializable{
 				Cliente cliente = new Cliente(nomeCliente.getText(), cpfCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(), sexoCliente.getValue().charAt(0), dataDeNascimento.getValue());
 				System.out.println(cliente);
 				ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 				if (clienteDAO.inserirClienteBanco(cliente)) {
 					labelAvisoCadastroCliente.setText("Cliente cadastrado com sucesso!");
@@ -410,7 +454,8 @@ public class Controller implements Initializable{
 					colunaSexo.setCellValueFactory(new PropertyValueFactory<Cliente,String>("sexo"));
 					colunaDataDeNascimento.setCellValueFactory(new PropertyValueFactory<Cliente,String>("dataDeNascimento"));
 					tabelaDeClientes.setItems(listaClientes);
-					
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+				
 					System.out.println("Lista de Clientes na aba clientes Atualizada!");
 					
 					listaClientesHome.setAll(FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes()));
@@ -424,6 +469,7 @@ public class Controller implements Initializable{
 				}
 			});
 
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		// Tela de Veículos
 	
@@ -436,6 +482,7 @@ public class Controller implements Initializable{
 			colunaAnoDeFabricacao.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeFabricacao"));
 			colunaAnoDeVenda.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeVenda"));
 			tabelaDeVeiculos.setItems(listaVeiculos);	
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 			//Slider
 			labelSliderAnoDeFabricacao.textProperty().bind(Bindings.format("%.00f", anoDeFabricacao.valueProperty()));
@@ -444,7 +491,8 @@ public class Controller implements Initializable{
 			// Cria Choicebox de sexo do Cliente
 			ObservableList<String> opcoesDeSexo = FXCollections.observableArrayList("Masculino", "Feminino");
 			sexoCliente.setItems(opcoesDeSexo);
-	
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 			// Botão Cadastra Veículo
 			botaoCadastraVeiculo.setOnAction((e) -> {
 	
@@ -454,7 +502,8 @@ public class Controller implements Initializable{
 	
 				if (veiculoDAO.inserirVeiculoBanco(veiculo)) {
 					labelAvisoCadastroVeiculo.setText("Veículo cadastrado com sucesso!");
-					
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+				
 					// Atualiza Lista de Veículos na Aba Veículos
 					listaVeiculos.setAll(FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos()));
 					colunaPlacaVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("placaVeiculo"));
@@ -465,6 +514,7 @@ public class Controller implements Initializable{
 					colunaAnoDeVenda.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeVenda"));
 					tabelaDeVeiculos.setItems(listaVeiculos);	
 					System.out.println("Lista de Veículos na aba veículos Atualizada!");
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 					
 					// Atualiza Lista de Veículos na Home
 					listaVeiculosHome.setAll(FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos()));
@@ -478,6 +528,7 @@ public class Controller implements Initializable{
 				}
 			});
 
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		// Tela de Aluguéis	
 
@@ -491,6 +542,7 @@ public class Controller implements Initializable{
 			colunaTaxasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("taxas"));
 			colunaTotalAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorTotal"));
 			colunaNomeClienteAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 				@Override
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 					return new SimpleStringProperty(c.getValue().getCliente().getNome());                
@@ -501,6 +553,7 @@ public class Controller implements Initializable{
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 					return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
 				}
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 			}); 
 			colunaPlacaVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
@@ -515,6 +568,8 @@ public class Controller implements Initializable{
 					return new SimpleStringProperty(c.getValue().getVeiculo().getNomeVeiculo());                
 				}
 			});
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 			colunaKMPreAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPre"));
 			colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));
 			tabelaDeAlugueis.setItems(listaAlugueis);	
@@ -523,7 +578,8 @@ public class Controller implements Initializable{
 
 			datePickerDataDeInicio.setValue(hoje);
 			datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
-	
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 			// Botão de Aluga Veículos
 			botaoAlugaVeiculo.setOnAction((e) -> {
 				RadioButton valorDaDiariaSelecionada = (RadioButton) radioValorDiaria.getSelectedToggle();
@@ -532,6 +588,7 @@ public class Controller implements Initializable{
 				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), Double.valueOf(diariaSelecionada), tabelaDeVeiculosHome.getSelectionModel().getSelectedItem() , tabelaDeClientesHome.getSelectionModel().getSelectedItem(), Integer.parseInt(kilometragemInicialAluguel.getText()));
 				System.out.println(aluguel);
 				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 				if (aluguelDAO.alugaVeiculo(aluguel)) {
 					labelAvisoCadastroAluguel.setText("===== Aluguel cadastrado com sucesso!======");
@@ -541,6 +598,8 @@ public class Controller implements Initializable{
 					colunaIdAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("idAluguel"));
 					colunaDataDeInicioAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
 					colunaDataDeTerminoAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 					colunaQtdDiariasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("quantidadeDeDiarias"));
 					colunaValorDiariaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorDiaria"));
 					colunaTaxasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("taxas"));
@@ -556,6 +615,7 @@ public class Controller implements Initializable{
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 							return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
 						}
+						// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			
 					}); 
 					colunaPlacaVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
@@ -564,6 +624,8 @@ public class Controller implements Initializable{
 							return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 						}
 					}); 
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 					colunaNomeVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 						@Override
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
@@ -574,7 +636,8 @@ public class Controller implements Initializable{
 					colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));					
 					tabelaDeAlugueis.setItems(listaAlugueis);
 					System.out.println("Lista de Aluguéis na aba alugueis Atualizada!");
-					
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+				
 					
 					// Atualiza lista de aluguéis na Home
 					listaAlugueisHome.setAll(FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis()));
@@ -586,12 +649,16 @@ public class Controller implements Initializable{
 							return new SimpleStringProperty(c.getValue().getVeiculo().getNomeVeiculo());                
 						}
 					});
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 					colunaPlacaVeiculoDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 						@Override
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 							return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 						}
 					}); 
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 					colunaNomeClienteDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 						@Override
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
@@ -606,7 +673,8 @@ public class Controller implements Initializable{
 				}
 			});		
 			
-			
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+		
 			botaoDevolveVeiculo.setOnAction((e) -> {
 				Aluguel aluguelSelecionadoDevolucao = tabelaDevolucao.getSelectionModel().getSelectedItem();
 				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
@@ -614,6 +682,7 @@ public class Controller implements Initializable{
 				aluguelSelecionadoDevolucao.setKmPos(Integer.parseInt(textFieldKilometragemFinalDevolucao.getText()));
 				aluguelDAO.devolveVeiculo(aluguelSelecionadoDevolucao);
 				labelAluguelSelecionadoDevolucao.setText("Devolução feita com sucesso!");
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 				
 				// Atualiza Lista de Alugueis na Aba Alugueis
 				listaAlugueis.setAll(FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis()));
@@ -625,6 +694,8 @@ public class Controller implements Initializable{
 				colunaTaxasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("taxas"));
 				colunaTotalAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorTotal"));
 				colunaNomeClienteAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 						return new SimpleStringProperty(c.getValue().getCliente().getNome());                
@@ -637,6 +708,8 @@ public class Controller implements Initializable{
 					}
 		
 				}); 
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+
 				colunaPlacaVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
@@ -653,6 +726,7 @@ public class Controller implements Initializable{
 				colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));					
 				tabelaDeAlugueis.setItems(listaAlugueis);
 				System.out.println("Lista de Aluguéis na aba alugueis Atualizada!");
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 				
 				
 				// Atualiza lista de aluguéis na Home
@@ -678,7 +752,8 @@ public class Controller implements Initializable{
 					}
 				}); 	
 				System.out.println("Lista de Aluguéis na Home Atualizada!");
-				
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+			
 			});
 	
 		}	

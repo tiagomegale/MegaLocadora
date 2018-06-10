@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 import connection.ConnectionManager;
 import domain.Cliente;
@@ -16,6 +17,7 @@ public class ClienteDAO {
 	private PreparedStatement statement = null;
 	private ResultSet rs = null;
 
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	public ClienteDAO() {
 		this.conexao = ConnectionManager.getMysqlConnection();
 	}
@@ -25,6 +27,7 @@ public class ClienteDAO {
 	}
 
 	// Método Privado que busca no banco usando CPF
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	private ResultSet buscaClienteNoBancoPorCPF(String CPF) {
 
 		String sql = "select nome, cpf, endereco, telefone, sexo, dataDeNascimento from CLIENTES where cpf = ?"; 
@@ -34,6 +37,7 @@ public class ClienteDAO {
 			this.statement.setString(1, CPF);
 			rs = statement.executeQuery();
 
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		} catch (SQLException e) {
 			System.err.println("____ERRO_____Erro para gerar o RS buscando por CPF no Banco.____ERRO_____" + e.getMessage());
 			e.printStackTrace();
@@ -43,6 +47,7 @@ public class ClienteDAO {
 
 	}
 
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	// Método Privado que transforma o resultado da busca em um cliente
 	private Cliente transformaResultSetEmCliente(ResultSet rs) {
 		ResultSet resultSet = rs;
@@ -52,6 +57,7 @@ public class ClienteDAO {
 			resultSet.next();
 			clienteSendoBuscado = new Cliente(resultSet.getString("nome"), resultSet.getString("cpf"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
 			return clienteSendoBuscado;
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		} catch (SQLException e) {
 			System.err.println("____ERRO_____Erro para transformar Result Set em Cliente. Retornando NULL.____ERRO_____" + e.getMessage());
@@ -61,6 +67,7 @@ public class ClienteDAO {
 
 	}	
 
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	// Método público que vai ser usado pela aplicação
 	public Cliente encontraClientePorCPF(String CPF) {
 		String CPFSendoBuscado = CPF;
@@ -70,6 +77,7 @@ public class ClienteDAO {
 	// Método privado que busca no banco a lista de todos os clientes
 	private ResultSet listaTodos() {
 		String sql = "select nome, cpf, endereco, telefone, sexo, dataDeNascimento from CLIENTES order by nome";
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -79,6 +87,7 @@ public class ClienteDAO {
 			e.printStackTrace();
 		}
 
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		return rs;
 
 	}
@@ -88,6 +97,7 @@ public class ClienteDAO {
 
 		ArrayList<Cliente> listaDeClientes = new ArrayList<Cliente>();
 		Connection conexao;
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		try {
 			conexao = ConnectionManager.getMysqlConnection();
@@ -97,6 +107,7 @@ public class ClienteDAO {
 			while (resultSet.next()) {
 				Cliente cliente = new Cliente(resultSet.getString("nome"), resultSet.getString("cpf"), resultSet.getString("endereco"), resultSet.getString("telefone"), resultSet.getString("sexo").charAt(0), resultSet.getDate("dataDeNascimento").toLocalDate());
 				listaDeClientes.add(cliente);
+				// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			}
 
 		} catch (SQLException e) {
@@ -106,6 +117,7 @@ public class ClienteDAO {
 
 		return listaDeClientes;
 	}	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	public boolean inserirClienteBanco(Cliente cliente) {
 		String sql = "insert into CLIENTES (nome,cpf,endereco,telefone,sexo,dataDeNascimento) values (? , ? , ? , ? , ? , ?)";
@@ -115,6 +127,7 @@ public class ClienteDAO {
 			this.statement.setString(1, cliente.getNome());
 			this.statement.setString(2, cliente.getCPF());
 			this.statement.setString(3, cliente.getEndereco());
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			this.statement.setString(4, cliente.getTelefone());
 			this.statement.setString(5, String.valueOf(cliente.getSexo()));
 			this.statement.setDate(6, Date.valueOf(cliente.getDataDeNascimento()));
@@ -124,6 +137,7 @@ public class ClienteDAO {
 		} catch (SQLException e) {
 			System.out.println("____ERRO_____Erro para criar novo clientes.____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			return false;
 		}
 	}

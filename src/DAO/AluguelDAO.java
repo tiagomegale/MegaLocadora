@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+//Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 import connection.ConnectionManager;
 import domain.Aluguel;
@@ -16,6 +17,7 @@ import domain.Veiculo;
 public class AluguelDAO {
 	
 	final static LocalDate hoje = LocalDate.now();
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	private Connection conexao = null;
 	private PreparedStatement statement = null;
@@ -24,6 +26,7 @@ public class AluguelDAO {
 	public AluguelDAO() {
 		this.conexao = ConnectionManager.getMysqlConnection();
 	}
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	public AluguelDAO(Connection conexao) {
 		this.conexao = conexao;
@@ -38,11 +41,13 @@ public class AluguelDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		return rs;
 
 	}
 	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	// Método publico que retorna um Array de Veiculos
 	public static ArrayList<Aluguel> obterListaDeAlugueis(){
 
@@ -53,6 +58,7 @@ public class AluguelDAO {
 			conexao = ConnectionManager.getMysqlConnection();
 			AluguelDAO aluguelDAO = new AluguelDAO(conexao);
 			ResultSet resultSet = aluguelDAO.listaTodos();
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 			while (resultSet.next()) {
 				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
@@ -61,6 +67,7 @@ public class AluguelDAO {
 											  resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
 											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),
 											  resultSet.getInt("quantidadeDeDiarias"),
+											// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 											  resultSet.getDouble("valorDiaria"),
 											  resultSet.getDouble("taxas"),
 											  resultSet.getDouble("valorTotal"),
@@ -70,6 +77,7 @@ public class AluguelDAO {
 											  resultSet.getInt("kmPos"));
 				listaDeAlugueis.add(aluguel);
 			}
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -79,6 +87,7 @@ public class AluguelDAO {
 
 	}	
 
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	public static ArrayList<Aluguel> obterListaDeAlugueisAtivos(){
 
 		ArrayList<Aluguel> listaDeAlugueis = new ArrayList<Aluguel>();
@@ -88,6 +97,7 @@ public class AluguelDAO {
 			conexao = ConnectionManager.getMysqlConnection();
 			AluguelDAO aluguelDAO = new AluguelDAO(conexao);
 			ResultSet resultSet = aluguelDAO.listaTodos();
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 			while (resultSet.next()) {
 				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
@@ -97,6 +107,7 @@ public class AluguelDAO {
 											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),
 											  resultSet.getInt("quantidadeDeDiarias"),
 											  resultSet.getDouble("valorDiaria"),
+											// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 											  resultSet.getDouble("taxas"),
 											  resultSet.getDouble("valorTotal"),
 											  veiculo,
@@ -106,7 +117,8 @@ public class AluguelDAO {
 				
 				if (aluguel.getDataDeTerminoAluguel().isEqual(hoje) || aluguel.getDataDeTerminoAluguel().isAfter(hoje)) {
 					listaDeAlugueis.add(aluguel);
-				}
+					// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
+			}
 			}
 
 		} catch (SQLException e) {
@@ -115,6 +127,7 @@ public class AluguelDAO {
 
 		return listaDeAlugueis;
 
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	}	
 	
 	
@@ -124,6 +137,7 @@ public class AluguelDAO {
 		try {
 			this.statement = conexao.prepareStatement(sql);
 			this.statement.setDate(1, Date.valueOf(aluguel.getDataDeInicioAluguel()));
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			this.statement.setDate(2, Date.valueOf(aluguel.getDataDeTerminoAluguel()));
 			this.statement.setInt(3,  aluguel.getQuantidadeDeDiarias());
 			this.statement.setDouble(4, aluguel.getValorDiaria());
@@ -133,6 +147,7 @@ public class AluguelDAO {
 			this.statement.setString(8, aluguel.getCliente().getCPF());
 			this.statement.setString(9, aluguel.getVeiculo().getPlacaVeiculo());
 			this.statement.setString(10, aluguel.getVeiculo().getNomeVeiculo());
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			this.statement.setInt(11, aluguel.getKmPre());
 			this.statement.setInt(12, aluguel.getKmPos());
 			this.statement.executeUpdate();
@@ -142,6 +157,7 @@ public class AluguelDAO {
 			System.out.println("____ERRO_____Erro ao criar novo Aluguel:____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
 			return false;
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		}
 	}	
 	
@@ -151,6 +167,7 @@ public class AluguelDAO {
 		try {
 			this.statement = conexao.prepareStatement(sql);
 			this.statement.setDate(1, Date.valueOf(aluguel.getDataDeTerminoAluguel()));
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			this.statement.setInt(2, aluguel.getKmPos());
 			this.statement.setInt(3,  aluguel.getIdAluguel());
 			this.statement.executeUpdate();
@@ -160,6 +177,7 @@ public class AluguelDAO {
 			System.out.println("____ERRO_____Erro ao criar novo Aluguel:____ERRO_____ " + e.getMessage());
 			e.printStackTrace();
 			return false;
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		}
 	}	
 	

@@ -8,6 +8,7 @@ public class Veiculo {
 	String marcaVeiculo;
 	int anoDeFabricacao;
 	int anoDeVenda;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 	public String getPlacaVeiculo() {
 		return placaVeiculo;
@@ -16,6 +17,7 @@ public class Veiculo {
 		this.placaVeiculo = placaVeiculo;
 	}
 	public String getNomeVeiculo() {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		return nomeVeiculo;
 	}
 	public void setNomeVeiculo(String nomeVeiculo) {
@@ -25,6 +27,7 @@ public class Veiculo {
 		return anoDeFabricacao;
 	}
 	public void setAnoDeFabricacao(int anoDeFabricacao) {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		this.anoDeFabricacao = anoDeFabricacao;
 	}
 	public int getAnoDeVenda() {
@@ -34,6 +37,7 @@ public class Veiculo {
 		this.anoDeVenda = anoDeVenda;
 	}
 	public String getModeloVeiculo() {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		return modeloVeiculo;
 	}
 	public void setModeloVeiculo(String modeloVeiculo) {
@@ -43,6 +47,7 @@ public class Veiculo {
 		return marcaVeiculo;
 	}
 	public void setMarcaVeiculo(String marcaVeiculo) {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		this.marcaVeiculo = marcaVeiculo;
 	}
 	
@@ -52,6 +57,7 @@ public class Veiculo {
 		this.nomeVeiculo = nomeVeiculo;
 	}
 	
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	public Veiculo(String placaVeiculo, String nomeVeiculo, String modeloVeiculo, String marcaVeiculo,
 			int anoDeFabricacao, int anoDeVenda) {
 		super();
@@ -61,6 +67,7 @@ public class Veiculo {
 		this.marcaVeiculo = marcaVeiculo;
 		this.anoDeFabricacao = anoDeFabricacao;
 		this.anoDeVenda = anoDeVenda;
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	}
 	
 	@Override

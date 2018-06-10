@@ -8,6 +8,7 @@ public class Cliente {
 	String CPF;
 	String endereco;
 	String telefone;
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	char sexo;
 	LocalDate dataDeNascimento;
 	
@@ -16,6 +17,7 @@ public class Cliente {
 	}
 	
 	public void setNome(String nome) {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		this.nome = nome;
 	}
 	
@@ -25,6 +27,7 @@ public class Cliente {
 	
 	public void setCPF(String CPF) {
 		this.CPF = CPF;
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	}
 
 	public String getEndereco() {
@@ -34,6 +37,7 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 
 	public String getTelefone() {
 		return telefone;
@@ -43,6 +47,7 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	public char getSexo() {
 		return sexo;
 	}
@@ -52,6 +57,7 @@ public class Cliente {
 	}
 
 	public LocalDate getDataDeNascimento() {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		return dataDeNascimento;
 	}
 
@@ -61,6 +67,7 @@ public class Cliente {
 
 	public Cliente(String nome, String CPF, String endereco, String telefone, char sexo, LocalDate dataDeNascimento) {
 		super();
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		this.nome = nome;
 		this.CPF = CPF;
 		this.endereco = endereco;
@@ -70,6 +77,7 @@ public class Cliente {
 	}
 	
 	public Cliente(String nome, String CPF) {
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 		super();
 		this.nome = nome;
 		this.CPF = CPF;
@@ -79,6 +87,7 @@ public class Cliente {
 	public String toString() {
 		return "\nCliente [nome=" + nome + ", CPF=" + CPF + ", endereco=" + endereco + ", telefone=" + telefone
 				+ ", sexo=" + sexo + ", dataDeNascimento=" + dataDeNascimento + "]";
+		// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	}
 
 	

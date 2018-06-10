@@ -1,0 +1,4 @@
+"idAluguel";"dataDeInicioAluguel";"dataDeTerminoAluguel";"quantidadeDeDiarias";"valorDiaria";"taxas";"valorTotal";"nomeClienteAluguel";"cpfClienteAluguel";"placaVeiculoAluguel";"nomeVeiculoAluguel";"kmPre";"kmPos"
+27;"2018-06-10";"2018-06-10";9;49.9;67.365;1055.3849999999998;"Pato Donald";"638.410.172-66";"ARS-6852";"Classic";768;788
+28;"2018-06-10";"2018-06-10";0;109.9;0.0;0.0;"Boromir";"893.002.118-20";"NFB-5329";"Edge";8872;788
+29;"2018-06-10";"2018-06-10";10;109.9;164.85;2747.5;"Boromir";"893.002.118-20";"IAL-0583";"Onix";555;444

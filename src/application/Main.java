@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
+	// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -18,6 +18,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
+			// Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
 			e.printStackTrace();
 		}
 	}

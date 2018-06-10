@@ -37,10 +37,3 @@ CREATE TABLE `VEICULOS` (
   UNIQUE KEY `Placa` (`placa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-SELECT * FROM MEGALOCADORA.ALUGUEIS;
-SELECT * FROM MEGALOCADORA.CLIENTES;
-SELECT * FROM MEGALOCADORA.VEICULOS;
-
-insert into ALUGUEIS (dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos) values ('2018-05-01' , '2018-05-04'  , 3  , 40.90 , 15.00 ,  55.90, 'Tiago Megale', '067', 'HMP-0774', 'Civic', 829, 880);
-
-
