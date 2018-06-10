@@ -4,10 +4,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.Interval;
-
 import DAO.AluguelDAO;
 import DAO.ClienteDAO;
 import DAO.VeiculoDAO;

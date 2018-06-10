@@ -115,11 +115,11 @@
                            <children>
                               <AnchorPane layoutX="28.0" layoutY="91.0">
                                  <children>
-                                    <Label layoutX="97.0" layoutY="46.0" text="CPF" />
-                                    <Label layoutX="92.0" layoutY="5.0" text="Nome" />
+                                    <Label layoutX="100.0" layoutY="46.0" text="CPF" />
+                                    <Label layoutX="90.0" layoutY="5.0" text="Nome" />
                                     <Label layoutX="68.0" layoutY="88.0" text="Endereço" />
-                                    <Label layoutX="71.0" layoutY="196.0" text="Telefone" />
-                                    <Label layoutX="76.0" layoutY="238.0" text="Gênero" />
+                                    <Label layoutX="72.0" layoutY="196.0" text="Telefone" />
+                                    <Label layoutX="97.0" layoutY="238.0" text="Sexo" />
                                     <Label layoutY="279.0" text="Data de Nascimento" />
                                     <TextField fx:id="nomeCliente" layoutX="136.0" prefHeight="27.0" prefWidth="165.0" />
                                     <TextField fx:id="cpfCliente" layoutX="136.0" layoutY="41.0" prefHeight="27.0" prefWidth="165.0" />
@@ -127,10 +127,10 @@
                                     <TextField fx:id="telefoneCliente" layoutX="136.0" layoutY="191.0" />
                                     <ChoiceBox fx:id="sexoCliente" layoutX="138.0" layoutY="233.0" prefHeight="27.0" prefWidth="165.0" />
                                     <DatePicker fx:id="dataDeNascimento" layoutX="135.0" layoutY="274.0" prefHeight="27.0" prefWidth="165.0" />
-                                    <Button fx:id="botaoCadastraCliente" layoutX="140.0" layoutY="319.0" mnemonicParsing="false" text="Cadastrar Novo Cliente" />
+                                    <Button fx:id="botaoCadastraCliente" layoutY="319.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="301.0" text="Cadastrar Novo Cliente" />
                                  </children>
                               </AnchorPane>
-                              <Label fx:id="labelAvisoCadastroCliente" layoutX="162.0" layoutY="422.0" prefHeight="61.0" prefWidth="161.0" text="." wrapText="true" />
+                              <Label fx:id="labelAvisoCadastroCliente" layoutX="28.0" layoutY="450.0" prefHeight="61.0" prefWidth="302.0" text="." wrapText="true" />
                               <TableView fx:id="tabelaDeClientes" layoutX="355.0" prefHeight="735.0" prefWidth="925.0">
                                  <columns>
                                     <TableColumn fx:id="colunaNome" prefWidth="179.0" text="Nome" />
@@ -154,9 +154,26 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="753.0" prefWidth="1024.0">
                            <children>
-                              <Label layoutX="83.0" layoutY="121.0" text="Nome" />
-                              <Label layoutX="85.0" layoutY="67.0" text="Placa" />
-                              <Label fx:id="labelAvisoCadastroVeiculo" layoutX="99.0" layoutY="456.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
+                              <AnchorPane layoutX="105.0" layoutY="93.0">
+                                 <children>
+                                    <Label layoutX="11.0" layoutY="50.0" text="Nome" />
+                                    <Label layoutX="14.0" layoutY="5.0" text="Placa" />
+                                    <Label layoutX="2.0" layoutY="99.0" text="Modelo" />
+                                    <Label layoutX="9.0" layoutY="148.0" text="Marca" />
+                                    <Label layoutX="2.0" layoutY="181.0" prefHeight="34.0" prefWidth="143.0" text="Ano de Fabricação:" wrapText="true" />
+                                    <Label layoutY="237.0" prefHeight="40.0" prefWidth="98.0" text="Ano de Venda: " wrapText="true" />
+                                    <TextField fx:id="placaVeiculo" layoutX="57.0" />
+                                    <TextField fx:id="nomeVeiculo" layoutX="57.0" layoutY="45.0" />
+                                    <TextField fx:id="modeloVeiculo" layoutX="57.0" layoutY="94.0" />
+                                    <TextField fx:id="marcaVeiculo" layoutX="57.0" layoutY="143.0" />
+                                    <Slider fx:id="anoDeFabricacao" blockIncrement="1.0" layoutX="4.0" layoutY="205.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="220.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
+                                    <Slider fx:id="anoDeVenda" blockIncrement="1.0" layoutX="3.0" layoutY="264.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="221.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
+                                    <Button fx:id="botaoCadastraVeiculo" layoutY="315.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="223.0" text="Cadastrar Novo Veículo" />
+                                    <Label fx:id="labelSliderAnoDeFabricacao" layoutX="126.0" layoutY="189.0" prefHeight="19.0" prefWidth="79.0" wrapText="true" />
+                                    <Label fx:id="labelSliderAnoDeVenda" layoutX="95.0" layoutY="248.0" prefHeight="19.0" prefWidth="121.0" wrapText="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Label fx:id="labelAvisoCadastroVeiculo" layoutX="29.0" layoutY="445.0" prefHeight="53.0" prefWidth="300.0" text="." wrapText="true" />
                               <TableView fx:id="tabelaDeVeiculos" layoutX="355.0" prefHeight="735.0" prefWidth="925.0">
                                  <columns>
                                     <TableColumn fx:id="colunaPlacaVeiculo" prefWidth="126.0" text="Placa" />
@@ -167,19 +184,11 @@
                                     <TableColumn fx:id="colunaAnoDeVenda" minWidth="0.0" prefWidth="139.0" text="Ano de Venda" />
                                  </columns>
                               </TableView>
-                              <Label layoutX="83.0" layoutY="163.0" text="Modelo" />
-                              <Label layoutX="83.0" layoutY="210.0" text="Marca" />
-                              <Label layoutX="83.0" layoutY="243.0" prefHeight="34.0" prefWidth="143.0" text="Ano de Fabricação:" wrapText="true" />
-                              <Label layoutX="81.0" layoutY="299.0" prefHeight="40.0" prefWidth="98.0" text="Ano de Venda: " wrapText="true" />
-                              <TextField fx:id="placaVeiculo" layoutX="138.0" layoutY="62.0" />
-                              <TextField fx:id="nomeVeiculo" layoutX="138.0" layoutY="116.0" />
-                              <TextField fx:id="modeloVeiculo" layoutX="138.0" layoutY="158.0" />
-                              <TextField fx:id="marcaVeiculo" layoutX="138.0" layoutY="205.0" />
-                              <Slider fx:id="anoDeFabricacao" blockIncrement="1.0" layoutX="85.0" layoutY="267.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="220.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
-                              <Slider fx:id="anoDeVenda" blockIncrement="1.0" layoutX="84.0" layoutY="326.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="221.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
-                              <Button fx:id="botaoCadastraVeiculo" layoutX="149.0" layoutY="377.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
-                              <Label fx:id="labelSliderAnoDeFabricacao" layoutX="207.0" layoutY="251.0" prefHeight="19.0" prefWidth="79.0" wrapText="true" />
-                              <Label fx:id="labelSliderAnoDeVenda" layoutX="176.0" layoutY="310.0" prefHeight="19.0" prefWidth="121.0" wrapText="true" />
+                              <Label layoutX="36.0" layoutY="35.0" text="Cadastrar Veículos">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                   </content>
