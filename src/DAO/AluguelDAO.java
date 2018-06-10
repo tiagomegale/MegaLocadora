@@ -27,7 +27,7 @@ public class AluguelDAO {
 	}
 
 	private ResultSet listaTodos() {
-		String sql = "select dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos from ALUGUEIS order by dataDeInicioAluguel";
+		String sql = "select idAluguel, dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos from ALUGUEIS order by dataDeInicioAluguel";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -54,7 +54,8 @@ public class AluguelDAO {
 			while (resultSet.next()) {
 				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
 				Cliente cliente = new Cliente(resultSet.getString("cpfClienteAluguel"),resultSet.getString("nomeClienteAluguel"));
-				Aluguel aluguel = new Aluguel(resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
+				Aluguel aluguel = new Aluguel(resultSet.getInt("idAluguel"),
+											  resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
 											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),
 											  resultSet.getInt("quantidadeDeDiarias"),
 											  resultSet.getDouble("valorDiaria"),

@@ -171,6 +171,9 @@ public class Controller implements Initializable{
 	TableView<Aluguel> tabelaDeAlugueis;
 
 	@FXML
+	TableColumn<Aluguel, String> colunaIdAluguel;
+	
+	@FXML
 	TableColumn<Aluguel, String> colunaDataDeInicioAluguel;
 
 	@FXML
@@ -308,6 +311,7 @@ public class Controller implements Initializable{
 
 			// Cria Tabela de Aluguéis
 			ObservableList<Aluguel> listaAlugueis = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
+			colunaIdAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("idAluguel"));
 			colunaDataDeInicioAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
 			colunaDataDeTerminoAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
 			colunaQtdDiariasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("quantidadeDeDiarias"));
@@ -372,6 +376,7 @@ public class Controller implements Initializable{
 	
 					// Atualiza Lista de Alugueis
 					listaAlugueis.setAll(FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis()));
+					colunaIdAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("idAluguel"));
 					colunaDataDeInicioAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
 					colunaDataDeTerminoAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
 					colunaQtdDiariasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("quantidadeDeDiarias"));

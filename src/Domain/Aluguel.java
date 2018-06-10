@@ -5,6 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Aluguel {
 
+	int idAluguel;
 	LocalDate dataDeInicioAluguel;
 	LocalDate dataDeTerminoAluguel;
 	int quantidadeDeDiarias;
@@ -15,6 +16,14 @@ public class Aluguel {
 	Cliente cliente;
 	int kmPre;
 	int kmPos;
+	
+	public int getIdAluguel() {
+		return idAluguel;
+	}
+
+	public void setIdAluguel(int idAluguel) {
+		this.idAluguel = idAluguel;
+	}
 	
 	public LocalDate getDataDeInicioAluguel() {
 		return dataDeInicioAluguel;
@@ -96,12 +105,15 @@ public class Aluguel {
 		this.kmPos = kmPos;
 	}
 
+	
+	
+
 	@Override
 	public String toString() {
-		return "\nAluguel [dataDeInicioAluguel=" + dataDeInicioAluguel + ", dataDeTerminoAluguel=" + dataDeTerminoAluguel
-				+ ", quantidadeDeDiarias=" + quantidadeDeDiarias + ", valorDiaria=" + valorDiaria + ", taxas=" + taxas
-				+ ", valorTotal=" + valorTotal + ", veiculo=" + veiculo + ", cliente=" + cliente + ", kmPre=" + kmPre
-				+ ", kmPos=" + kmPos + "]";
+		return "\nAluguel [idAluguel=" + idAluguel + ", dataDeInicioAluguel=" + dataDeInicioAluguel
+				+ ", dataDeTerminoAluguel=" + dataDeTerminoAluguel + ", quantidadeDeDiarias=" + quantidadeDeDiarias
+				+ ", valorDiaria=" + valorDiaria + ", taxas=" + taxas + ", valorTotal=" + valorTotal + ", veiculo="
+				+ veiculo + ", cliente=" + cliente + ", kmPre=" + kmPre + ", kmPos=" + kmPos + "]";
 	}
 
 	public Aluguel(LocalDate dataDeTerminoAluguel, double valorDiaria, Veiculo veiculo, Cliente cliente, int kmPre) {
@@ -122,10 +134,11 @@ public class Aluguel {
 		
 	}
 
-	public Aluguel(LocalDate dataDeInicioAluguel, LocalDate dataDeTerminoAluguel, int quantidadeDeDiarias,
+	public Aluguel(int idAluguel, LocalDate dataDeInicioAluguel, LocalDate dataDeTerminoAluguel, int quantidadeDeDiarias,
 			double valorDiaria, double taxas, double valorTotal, Veiculo veiculo, Cliente cliente, int kmPre,
 			int kmPos) {
 		super();
+		this.idAluguel = idAluguel;
 		this.dataDeInicioAluguel = dataDeInicioAluguel;
 		this.dataDeTerminoAluguel = dataDeTerminoAluguel;
 		this.quantidadeDeDiarias = quantidadeDeDiarias;
