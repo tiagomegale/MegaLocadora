@@ -224,7 +224,39 @@ public class Controller implements Initializable{
 	@FXML
 	private TextField textFieldBuscaVeiculoPorPlaca;
 	
+	// Form de Cadastro de Devolução
+	// Tabela de Devolução
+	@FXML
+	TableView<Aluguel> tabelaDevolucao;
 	
+	@FXML
+	TableColumn<Aluguel, String> colunaDataInicioDevolucao;
+	
+	@FXML
+	TableColumn<Aluguel, String> colunaDataTerminoDevolucao;
+		
+	@FXML
+	TableColumn<Aluguel, String> colunaNomeVeiculoDevolucao;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaPlacaVeiculoDevolucao;
+		
+	@FXML
+	TableColumn<Aluguel, String> colunaNomeClienteDevolucao;
+		
+	// Form Devolucao
+	@FXML
+	Label labelSelecioneUmAluguel;
+	
+	@FXML
+	Label labelAluguelSelecionadoDevolucao;
+	
+	@FXML
+	TextField textFieldKilometragemFinalDevolucao;
+	
+	@FXML
+	Button botaoDevolveVeiculo;
+
 	
 	// Tabela e Colunas de Alugueis
 	@FXML
@@ -319,6 +351,36 @@ public class Controller implements Initializable{
 				colunaPlacaVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placaVeiculo"));
 				colunaNomeVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("nomeVeiculo"));
 				tabelaDeVeiculosHome.setItems(listaVeiculosHome);	
+			});
+			
+			// Tabela Devolução
+			ObservableList<Aluguel> listaAlugueisHome = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
+			colunaDataInicioDevolucao.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
+			colunaDataTerminoDevolucao.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
+			colunaNomeVeiculoDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+					return new SimpleStringProperty(c.getValue().getVeiculo().getNomeVeiculo());                
+				}
+			});
+			colunaPlacaVeiculoDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+					return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
+				}
+			}); 
+			colunaNomeClienteDevolucao.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+					return new SimpleStringProperty(c.getValue().getCliente().getNome());                
+				}
+			}); 	
+			tabelaDevolucao.setItems(listaAlugueisHome);	
+			
+			tabelaDevolucao.setOnMouseClicked((e) -> {
+				Aluguel aluguelSelecionadoDevolucao = tabelaDevolucao.getSelectionModel().getSelectedItem();
+				labelAluguelSelecionadoDevolucao.setText(aluguelSelecionadoDevolucao.toString());
+				labelSelecioneUmAluguel.setText("Aluguel Selecionado: ");
 			});
 			
 
