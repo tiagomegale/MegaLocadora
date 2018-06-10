@@ -129,7 +129,7 @@ public class Aluguel {
 			this.dataDeInicioAluguel = LocalDate.now();
 		}
 		this.quantidadeDeDiarias = (int) ChronoUnit.DAYS.between(dataDeInicioAluguel, dataDeTerminoAluguel);
-		this.taxas = valorDiaria * 0.15;
+		this.taxas = (valorDiaria * 0.15) * quantidadeDeDiarias;
 		this.valorTotal = (valorDiaria + taxas) * quantidadeDeDiarias;
 		
 	}

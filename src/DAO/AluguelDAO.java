@@ -53,7 +53,7 @@ public class AluguelDAO {
 
 			while (resultSet.next()) {
 				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
-				Cliente cliente = new Cliente(resultSet.getString("cpfClienteAluguel"),resultSet.getString("nomeClienteAluguel"));
+				Cliente cliente = new Cliente(resultSet.getString("nomeClienteAluguel"),resultSet.getString("cpfClienteAluguel"));
 				Aluguel aluguel = new Aluguel(resultSet.getInt("idAluguel"),
 											  resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
 											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),

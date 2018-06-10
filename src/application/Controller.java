@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -33,6 +34,7 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -165,7 +167,19 @@ public class Controller implements Initializable{
 	@FXML
 	private DatePicker datePickerDataDeTermino;
 
-
+	@FXML
+	private RadioButton radioValorDiaria49;
+	
+	@FXML
+	private RadioButton radioValorDiaria59;
+	
+	@FXML
+	private RadioButton radioValorDiaria109;
+	
+	@FXML
+	private ToggleGroup radioValorDiaria;
+	
+	
 	// Tabela e Colunas de Alugueis
 	@FXML
 	TableView<Aluguel> tabelaDeAlugueis;
@@ -367,7 +381,10 @@ public class Controller implements Initializable{
 				VeiculoDAO veiculoDAO = new VeiculoDAO();
 				ClienteDAO clienteDAO = new ClienteDAO();
 	
-				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), 50.90, veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()), 4);
+				RadioButton valorDaDiariaSelecionada = (RadioButton) radioValorDiaria.getSelectedToggle();
+				String diariaSelecionada = valorDaDiariaSelecionada.getText();
+				
+				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), Double.valueOf(diariaSelecionada), veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()), 4);
 				System.out.println(aluguel);
 				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
 	
