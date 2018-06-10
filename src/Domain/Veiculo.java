@@ -1,33 +1,75 @@
 package domain;
 
+import java.time.LocalDate;
+
 public class Veiculo {
 	
-	String marca;
-	String placa;
+	String placaVeiculo;
+	String nomeVeiculo;
+	String modeloVeiculo;
+	String marcaVeiculo;
+	LocalDate anoDeFabricacao;
+	LocalDate anoDeVenda;
 	
-	public String getMarca() {
-		return marca;
+	public String getPlacaVeiculo() {
+		return placaVeiculo;
 	}
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setPlacaVeiculo(String placaVeiculo) {
+		this.placaVeiculo = placaVeiculo;
 	}
-	public String getPlaca() {
-		return placa;
+	public String getNomeVeiculo() {
+		return nomeVeiculo;
 	}
-	public void setPlaca(String placa) {
-		this.placa = placa;
+	public void setNomeVeiculo(String nomeVeiculo) {
+		this.nomeVeiculo = nomeVeiculo;
+	}
+	public String getModeloVeiculo() {
+		return modeloVeiculo;
+	}
+	public void setModeloVeiculo(String modeloVeiculo) {
+		this.modeloVeiculo = modeloVeiculo;
+	}
+	public String getMarcaVeiculo() {
+		return marcaVeiculo;
+	}
+	public void setMarcaVeiculo(String marcaVeiculo) {
+		this.marcaVeiculo = marcaVeiculo;
+	}
+	public LocalDate getAnoDeFabricacao() {
+		return anoDeFabricacao;
+	}
+	public void setAnoDeFabricacao(LocalDate anoDeFabricacao) {
+		this.anoDeFabricacao = anoDeFabricacao;
+	}
+	public LocalDate getAnoDeVenda() {
+		return anoDeVenda;
+	}
+	public void setAnoDeVenda(LocalDate anoDeVenda) {
+		this.anoDeVenda = anoDeVenda;
+	}
+	
+	public Veiculo(String placaVeiculo, String nomeVeiculo, String modeloVeiculo, String marcaVeiculo,
+			LocalDate anoDeFabricacao, LocalDate anoDeVenda) {
+		super();
+		this.placaVeiculo = placaVeiculo;
+		this.nomeVeiculo = nomeVeiculo;
+		this.modeloVeiculo = modeloVeiculo;
+		this.marcaVeiculo = marcaVeiculo;
+		this.anoDeFabricacao = anoDeFabricacao;
+		this.anoDeVenda = anoDeVenda;
+	}
+	
+	public Veiculo(String placaVeiculo, String nomeVeiculo) {
+		super();
+		this.placaVeiculo = placaVeiculo;
+		this.nomeVeiculo = nomeVeiculo;
 	}
 	
 	@Override
 	public String toString() {
-		return "\nVeiculo [placa=" + placa + ", marca=" + marca + "]";
+		return "\nVeiculo [placaVeiculo=" + placaVeiculo + ", nomeVeiculo=" + nomeVeiculo + ", modeloVeiculo="
+				+ modeloVeiculo + ", marcaVeiculo=" + marcaVeiculo + ", anoDeFabricacao=" + anoDeFabricacao
+				+ ", anoDeVenda=" + anoDeVenda + "]";
 	}
-	
-	public Veiculo(String placa, String marca) {
-		super();
-		this.placa = placa;
-		this.marca = marca;
-	}
-
 	
 }

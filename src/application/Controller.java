@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import org.joda.time.DateTime;
@@ -15,6 +16,7 @@ import connection.ConnectionManager;
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -37,6 +40,7 @@ import javafx.util.Callback;
 
 public class Controller implements Initializable{
 	
+	// Painéis da Home
 	@FXML
 	private TabPane tabPaneConteudo;
 	
@@ -44,7 +48,8 @@ public class Controller implements Initializable{
 	private Pane paneHome;
 	
 	
-	// Cadastro de Clientes
+	
+	// Form de Cadastro de Clientes
 	@FXML
 	private TextField nomeCliente;
 	
@@ -69,31 +74,7 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelAvisoCadastroCliente;
 
-	
-	// Cadastro de Veículos
-	@FXML
-	private TextField marcaVeiculo;
-
-	@FXML
-	private TextField placaVeiculo;
-
-	@FXML
-	private Button botaoCadastraVeiculo;
-
-	@FXML
-	private Label labelAvisoCadastroVeiculo;
-
-	
-	// Cadastro de Aluguel
-	@FXML
-	private Button botaoAlugaVeiculo;
-	
-	@FXML
-	private Label labelAvisoCadastroAluguel;
-	
-	
-	
-	// Tabela e Coluna de Clientes
+	// Tabela e Colunas de Clientes
 	@FXML
 	TableView<Cliente> tabelaDeClientes;
 	
@@ -117,16 +98,73 @@ public class Controller implements Initializable{
 	
 
 	
+	// Form de Cadastro de Veículos
+	@FXML
+	private TextField placaVeiculo;
+
+	@FXML
+	private TextField nomeVeiculo;
+
+	@FXML
+	private TextField modeloVeiculo;
 	
+	@FXML
+	private TextField marcaVeiculo;
+
+	@FXML
+	private Slider anoDeFabricacao;
+
+	@FXML
+	private Label labelSliderAnoDeFabricacao;
+	
+	@FXML
+	private Slider anoDeVenda;
+
+	@FXML
+	private Label labelSliderAnoDeVenda;
+	
+	@FXML
+	private Button botaoCadastraVeiculo;
+
+	@FXML
+	private Label labelAvisoCadastroVeiculo;
+
 	// Tabela e Colunas de Veículos
 	@FXML
 	TableView<Veiculo> tabelaDeVeiculos;
 	
 	@FXML
-	TableColumn<Veiculo, String> colunaPlaca;
+	TableColumn<Veiculo, String> colunaPlacaVeiculo;
 	
 	@FXML
-	TableColumn<Veiculo, String> colunaMarca;
+	TableColumn<Veiculo, String> colunaNomeVeiculo;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaModeloVeiculo;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaMarcaVeiculo;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaAnoDeFabricacao;
+	
+	@FXML
+	TableColumn<Veiculo, String> colunaAnoDeVenda;
+	
+	
+	
+	// Form de Cadastro de Aluguel
+	@FXML
+	private Button botaoAlugaVeiculo;
+	
+	@FXML
+	private Label labelAvisoCadastroAluguel;
+		
+	@FXML
+	private DatePicker datePickerDataDeInicio;
+	
+	@FXML
+	private DatePicker datePickerDataDeTermino;
 	
 	
 	// Tabela e Colunas de Alugueis
@@ -151,20 +189,14 @@ public class Controller implements Initializable{
 	@FXML
 	TableColumn<Aluguel, String> colunaNomeAluguel;
 	
-	
-	// Date Picker Aluguel
-	@FXML
-	private DatePicker datePickerDataDeInicio;
-	
-	@FXML
-	private DatePicker datePickerDataDeTermino;
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		System.out.println("tentando abrir lista");
-		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
+		//Slider
+		labelSliderAnoDeFabricacao.textProperty().bind(Bindings.format("%.00f", anoDeFabricacao.valueProperty()));
+		labelSliderAnoDeVenda.textProperty().bind(Bindings.format("%.00f", anoDeVenda.valueProperty()));
+
 
 		// Cria Choicebox de sexo do Cliente
 		ObservableList<String> opcoesDeSexo = FXCollections.observableArrayList("Masculino", "Feminino");
@@ -183,8 +215,12 @@ public class Controller implements Initializable{
 		
 		// Cria Tabela de Veículos
 		ObservableList<Veiculo> listaVeiculos = FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos());
-		colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Placa"));
-		colunaMarca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Marca"));
+		colunaPlacaVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("placaVeiculo"));
+		colunaNomeVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("nomeVeiculo"));
+		colunaModeloVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("modeloVeiculo"));
+		colunaMarcaVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("marcaVeiculo"));
+		colunaAnoDeFabricacao.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeFabricacao"));
+		colunaAnoDeVenda.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeVenda"));
 		tabelaDeVeiculos.setItems(listaVeiculos);	
 		
 		// Cria Tabela de Aluguéis
@@ -194,13 +230,13 @@ public class Controller implements Initializable{
 		colunaPlacaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 	        @Override
 	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-	            return new SimpleStringProperty(c.getValue().getVeiculo().getPlaca());                
+	            return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 	        }
 		}); 
 		colunaMarcaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 	        @Override
 	        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-	            return new SimpleStringProperty(c.getValue().getVeiculo().getMarca());                
+	            return new SimpleStringProperty(c.getValue().getVeiculo().getMarcaVeiculo());                
 	        }
 		}); 				
 		colunaCPFAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
@@ -218,12 +254,11 @@ public class Controller implements Initializable{
 		}); 				
 		tabelaDeAlugueis.setItems(listaAlugueis);	
 
-		
 		// Imprime no console a lista para simples verificação
+		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
 
-		
 		// Inicia o Date Picker e seta a data de início pra hoje.
 		final LocalDate hoje = LocalDate.now();
 		datePickerDataDeInicio.setValue(hoje);
@@ -266,15 +301,28 @@ public class Controller implements Initializable{
 
 		
 		botaoCadastraVeiculo.setOnAction((e) -> {
-			Veiculo veiculo = new Veiculo(placaVeiculo.getText(),marcaVeiculo.getText());
+			
+			// Tratar todas as datas de fabricacao e  como inteiro
+
+			DateTimeFormatter apenasAno = DateTimeFormatter.ofPattern("yyyy");
+			String anoDeFabricacaoSelecionadaNoSlider = Double.toString(anoDeFabricacao.getValue());
+			
+			System.out.println(LocalDate.parse(anoDeFabricacaoSelecionadaNoSlider, apenasAno));
+			
+			Veiculo veiculo = new Veiculo(placaVeiculo.getText(), nomeVeiculo.getText(), modeloVeiculo.getText(), marcaVeiculo.getText(), LocalDate.parse(Double.toString(anoDeFabricacao.getValue()), apenasAno), LocalDate.parse(Double.toString(anoDeVenda.getValue()), apenasAno));
 			System.out.println(veiculo);
 			VeiculoDAO veiculoDAO = new VeiculoDAO(ConnectionManager.getMysqlConnection());
+			
 			
 			if (veiculoDAO.inserirVeiculoBanco(veiculo)) {
 				labelAvisoCadastroVeiculo.setText("Veículo cadastrado com sucesso!");
 				listaVeiculos.setAll(FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos()));
-				colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Placa"));
-				colunaMarca.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("Marca"));
+				colunaPlacaVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("placaVeiculo"));
+				colunaNomeVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("nomeVeiculo"));
+				colunaModeloVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("modeloVeiculo"));
+				colunaMarcaVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("marcaVeiculo"));
+				colunaAnoDeFabricacao.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeFabricacao"));
+				colunaAnoDeVenda.setCellValueFactory(new PropertyValueFactory<Veiculo,String>("anoDeVenda"));
 				tabelaDeVeiculos.setItems(listaVeiculos);	
 				System.out.println("Lista de Veículos Atualizada!");
 			} else {
@@ -301,13 +349,13 @@ public class Controller implements Initializable{
 				colunaPlacaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 			        @Override
 			        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-			            return new SimpleStringProperty(c.getValue().getVeiculo().getPlaca());                
+			            return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 			        }
 				}); 
 				colunaMarcaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 			        @Override
 			        public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-			            return new SimpleStringProperty(c.getValue().getVeiculo().getMarca());                
+			            return new SimpleStringProperty(c.getValue().getVeiculo().getMarcaVeiculo());                
 			        }
 				}); 		
 				colunaCPFAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {

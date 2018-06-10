@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class VeiculoDAO {
 	// Método privado que busca no banco usando Placa
 	private ResultSet buscaVeiculoNoBancoPorPlaca(String Placa) {
 
-		String sql = "select Placa, Marca from VEICULOS where Placa = ?"; 
+		String sql = "select placa, nome, modelo, marca, anoDeFabricacao, anoDeVenda from VEICULOS where placa = ?"; 
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -49,7 +50,7 @@ public class VeiculoDAO {
 		try {
 			Veiculo veiculoSendoBuscado = null;
 			resultSet.next();
-			veiculoSendoBuscado = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
+			veiculoSendoBuscado = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getDate("anoDeFabricacao").toLocalDate(), resultSet.getDate("anoDeVenda").toLocalDate());
 			return veiculoSendoBuscado;
 
 		} catch (SQLException e) {
@@ -69,7 +70,7 @@ public class VeiculoDAO {
 
 	// Método privado que busca no banco a lista de todos oss veiculos
 	private ResultSet listaTodos() {
-		String sql = "select Placa, Marca from VEICULOS order by Placa";
+		String sql = "select placa, nome, modelo, marca, anoDeFabricacao, anoDeVenda from VEICULOS order by placa";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -95,7 +96,7 @@ public class VeiculoDAO {
 			ResultSet resultSet = veiculoDAO.listaTodos();
 
 			while (resultSet.next()) {
-				Veiculo veiculo = new Veiculo(resultSet.getString("Placa"),resultSet.getString("Marca"));
+				Veiculo veiculo = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getDate("anoDeFabricacao").toLocalDate(), resultSet.getDate("anoDeVenda").toLocalDate());
 				listaDeVeiculos.add(veiculo);
 			}
 
@@ -109,12 +110,16 @@ public class VeiculoDAO {
 	}
 
 	public boolean inserirVeiculoBanco(Veiculo veiculo) {
-		String sql = "insert into VEICULOS (Placa,Marca) values (? , ?)";
+		String sql = "insert into VEICULOS (placa, nome, modelo, marca, anoDeFabricacao, anoDeVenda) values (? , ? , ? , ? , ? , ? )";
 
 		try {
 			this.statement = conexao.prepareStatement(sql);
-			this.statement.setString(1, veiculo.getPlaca());
-			this.statement.setString(2, veiculo.getMarca());
+			this.statement.setString(1, veiculo.getPlacaVeiculo());
+			this.statement.setString(2, veiculo.getNomeVeiculo());
+			this.statement.setString(3, veiculo.getModeloVeiculo());
+			this.statement.setString(4, veiculo.getMarcaVeiculo());
+			this.statement.setDate(5, Date.valueOf(veiculo.getAnoDeFabricacao()));
+			this.statement.setDate(6, Date.valueOf(veiculo.getAnoDeVenda()));
 			this.statement.executeUpdate();	
 			System.out.println("Insercao ok");
 			return true;

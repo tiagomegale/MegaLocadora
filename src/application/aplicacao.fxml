@@ -66,27 +66,27 @@
                               <Label fx:id="labelAvisoCadastroVeiculo" layoutX="99.0" layoutY="456.0" prefHeight="53.0" prefWidth="161.0" text="." wrapText="true" />
                               <TableView fx:id="tabelaDeVeiculos" layoutX="355.0" prefHeight="735.0" prefWidth="925.0">
                                  <columns>
-                                    <TableColumn fx:id="colunaPlaca" prefWidth="126.0" text="Placa" />
-                                    <TableColumn fx:id="colunaNome" prefWidth="160.0" text="Nome" />
-                                    <TableColumn fx:id="colunaModelo" prefWidth="186.0" text="Modelo" />
-                                    <TableColumn fx:id="colunaMarca" prefWidth="176.0" text="Marca" />
+                                    <TableColumn fx:id="colunaPlacaVeiculo" prefWidth="126.0" text="Placa" />
+                                    <TableColumn fx:id="colunaNomeVeiculo" prefWidth="160.0" text="Nome" />
+                                    <TableColumn fx:id="colunaModeloVeiculo" prefWidth="186.0" text="Modelo" />
+                                    <TableColumn fx:id="colunaMarcaVeiculo" prefWidth="176.0" text="Marca" />
                                     <TableColumn fx:id="colunaAnoDeFabricacao" minWidth="0.0" prefWidth="139.0" text="Ano de Fabricação" />
                                     <TableColumn fx:id="colunaAnoDeVenda" minWidth="0.0" prefWidth="139.0" text="Ano de Venda" />
                                  </columns>
                               </TableView>
                               <Label layoutX="83.0" layoutY="163.0" text="Modelo" />
                               <Label layoutX="83.0" layoutY="210.0" text="Marca" />
-                              <Label layoutX="83.0" layoutY="253.0" prefHeight="34.0" prefWidth="96.0" text="Ano de Fabricação" wrapText="true" />
-                              <Label layoutX="81.0" layoutY="310.0" prefHeight="40.0" prefWidth="68.0" text="Ano de Venda" wrapText="true" />
+                              <Label layoutX="83.0" layoutY="243.0" prefHeight="34.0" prefWidth="143.0" text="Ano de Fabricação:" wrapText="true" />
+                              <Label layoutX="81.0" layoutY="299.0" prefHeight="40.0" prefWidth="98.0" text="Ano de Venda: " wrapText="true" />
                               <TextField fx:id="placaVeiculo" layoutX="138.0" layoutY="62.0" />
                               <TextField fx:id="nomeVeiculo" layoutX="138.0" layoutY="116.0" />
                               <TextField fx:id="modeloVeiculo" layoutX="138.0" layoutY="158.0" />
                               <TextField fx:id="marcaVeiculo" layoutX="138.0" layoutY="205.0" />
-                              <Slider fx:id="anoDeFabricacao" blockIncrement="1.0" layoutX="169.0" layoutY="253.0" majorTickUnit="2.0" max="2018.0" min="2010.0" minorTickCount="1" prefHeight="38.0" prefWidth="136.0" snapToTicks="true" value="2018.0" />
-                              <Slider fx:id="anoDeVenda" blockIncrement="1.0" layoutX="169.0" layoutY="316.0" majorTickUnit="2.0" max="2018.0" min="2010.0" minorTickCount="1" prefHeight="38.0" prefWidth="136.0" snapToTicks="true" value="2018.0" />
+                              <Slider fx:id="anoDeFabricacao" blockIncrement="1.0" layoutX="85.0" layoutY="267.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="220.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
+                              <Slider fx:id="anoDeVenda" blockIncrement="1.0" layoutX="84.0" layoutY="326.0" majorTickUnit="1.0" max="2018.0" min="2010.0" minorTickCount="0" prefHeight="38.0" prefWidth="221.0" showTickMarks="true" snapToTicks="true" value="2018.0" />
                               <Button fx:id="botaoCadastraVeiculo" layoutX="149.0" layoutY="377.0" mnemonicParsing="false" text="Cadastrar Novo Veículo" />
-                              <Label fx:id="labelSliderAnoDeFabricacao" layoutX="169.0" layoutY="244.0" prefHeight="19.0" prefWidth="136.0" text="." wrapText="true" />
-                              <Label fx:id="labelSliderAnoDeVenda" layoutX="169.0" layoutY="307.0" prefHeight="19.0" prefWidth="136.0" text="." wrapText="true" />
+                              <Label fx:id="labelSliderAnoDeFabricacao" layoutX="207.0" layoutY="251.0" prefHeight="19.0" prefWidth="79.0" wrapText="true" />
+                              <Label fx:id="labelSliderAnoDeVenda" layoutX="176.0" layoutY="310.0" prefHeight="19.0" prefWidth="121.0" wrapText="true" />
                            </children>
                         </AnchorPane>
                   </content>
