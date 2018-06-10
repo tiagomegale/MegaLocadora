@@ -1,7 +1,6 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +49,7 @@ public class VeiculoDAO {
 		try {
 			Veiculo veiculoSendoBuscado = null;
 			resultSet.next();
-			veiculoSendoBuscado = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getDate("anoDeFabricacao").toLocalDate(), resultSet.getDate("anoDeVenda").toLocalDate());
+			veiculoSendoBuscado = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getInt("anoDeFabricacao"), resultSet.getInt("anoDeVenda"));
 			return veiculoSendoBuscado;
 
 		} catch (SQLException e) {
@@ -96,7 +95,7 @@ public class VeiculoDAO {
 			ResultSet resultSet = veiculoDAO.listaTodos();
 
 			while (resultSet.next()) {
-				Veiculo veiculo = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getDate("anoDeFabricacao").toLocalDate(), resultSet.getDate("anoDeVenda").toLocalDate());
+				Veiculo veiculo = new Veiculo(resultSet.getString("placa"),resultSet.getString("nome"),resultSet.getString("modelo"),resultSet.getString("marca"),resultSet.getInt("anoDeFabricacao"), resultSet.getInt("anoDeVenda"));
 				listaDeVeiculos.add(veiculo);
 			}
 
@@ -118,8 +117,8 @@ public class VeiculoDAO {
 			this.statement.setString(2, veiculo.getNomeVeiculo());
 			this.statement.setString(3, veiculo.getModeloVeiculo());
 			this.statement.setString(4, veiculo.getMarcaVeiculo());
-			this.statement.setDate(5, Date.valueOf(veiculo.getAnoDeFabricacao()));
-			this.statement.setDate(6, Date.valueOf(veiculo.getAnoDeVenda()));
+			this.statement.setInt(5, veiculo.getAnoDeFabricacao());
+			this.statement.setInt(6, veiculo.getAnoDeVenda());
 			this.statement.executeUpdate();	
 			System.out.println("Insercao ok");
 			return true;

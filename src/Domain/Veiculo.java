@@ -1,15 +1,13 @@
 package domain;
 
-import java.time.LocalDate;
-
 public class Veiculo {
 	
 	String placaVeiculo;
 	String nomeVeiculo;
 	String modeloVeiculo;
 	String marcaVeiculo;
-	LocalDate anoDeFabricacao;
-	LocalDate anoDeVenda;
+	int anoDeFabricacao;
+	int anoDeVenda;
 	
 	public String getPlacaVeiculo() {
 		return placaVeiculo;
@@ -23,6 +21,18 @@ public class Veiculo {
 	public void setNomeVeiculo(String nomeVeiculo) {
 		this.nomeVeiculo = nomeVeiculo;
 	}
+	public int getAnoDeFabricacao() {
+		return anoDeFabricacao;
+	}
+	public void setAnoDeFabricacao(int anoDeFabricacao) {
+		this.anoDeFabricacao = anoDeFabricacao;
+	}
+	public int getAnoDeVenda() {
+		return anoDeVenda;
+	}
+	public void setAnoDeVenda(int anoDeVenda) {
+		this.anoDeVenda = anoDeVenda;
+	}
 	public String getModeloVeiculo() {
 		return modeloVeiculo;
 	}
@@ -35,21 +45,17 @@ public class Veiculo {
 	public void setMarcaVeiculo(String marcaVeiculo) {
 		this.marcaVeiculo = marcaVeiculo;
 	}
-	public LocalDate getAnoDeFabricacao() {
-		return anoDeFabricacao;
-	}
-	public void setAnoDeFabricacao(LocalDate anoDeFabricacao) {
-		this.anoDeFabricacao = anoDeFabricacao;
-	}
-	public LocalDate getAnoDeVenda() {
-		return anoDeVenda;
-	}
-	public void setAnoDeVenda(LocalDate anoDeVenda) {
-		this.anoDeVenda = anoDeVenda;
+
+
+	
+	public Veiculo(String placaVeiculo, String nomeVeiculo) {
+		super();
+		this.placaVeiculo = placaVeiculo;
+		this.nomeVeiculo = nomeVeiculo;
 	}
 	
 	public Veiculo(String placaVeiculo, String nomeVeiculo, String modeloVeiculo, String marcaVeiculo,
-			LocalDate anoDeFabricacao, LocalDate anoDeVenda) {
+			int anoDeFabricacao, int anoDeVenda) {
 		super();
 		this.placaVeiculo = placaVeiculo;
 		this.nomeVeiculo = nomeVeiculo;
@@ -58,13 +64,6 @@ public class Veiculo {
 		this.anoDeFabricacao = anoDeFabricacao;
 		this.anoDeVenda = anoDeVenda;
 	}
-	
-	public Veiculo(String placaVeiculo, String nomeVeiculo) {
-		super();
-		this.placaVeiculo = placaVeiculo;
-		this.nomeVeiculo = nomeVeiculo;
-	}
-	
 	@Override
 	public String toString() {
 		return "\nVeiculo [placaVeiculo=" + placaVeiculo + ", nomeVeiculo=" + nomeVeiculo + ", modeloVeiculo="
