@@ -102,5 +102,26 @@ public class AluguelDAO {
 			return false;
 		}
 	}	
+	
+	public boolean devolveVeiculo(Aluguel aluguel) {
+		String sql = "UPDATE ALUGUEIS SET dataDeTerminoAluguel = ?, kmPos = ? WHERE idAluguel = ?";
+		
+		try {
+			this.statement = conexao.prepareStatement(sql);
+			this.statement.setDate(1, Date.valueOf(aluguel.getDataDeTerminoAluguel()));
+			this.statement.setInt(2, aluguel.getKmPos());
+			this.statement.setInt(3,  aluguel.getIdAluguel());
+			this.statement.executeUpdate();
+			System.out.println("Atualizacao de Aluguel ok");
+			return true;
+		} catch (SQLException e) {
+			System.out.println("____ERRO_____Erro ao criar novo Aluguel:____ERRO_____ " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}	
+	
+	
+	
 
 }

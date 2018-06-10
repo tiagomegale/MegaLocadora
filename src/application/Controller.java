@@ -309,7 +309,7 @@ public class Controller implements Initializable{
 		System.out.println("---- Lista de Clientes:\n" + ClienteDAO.obterListaDeClientes());
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
-
+		final LocalDate hoje = LocalDate.now();
 		
 		// HOME
 			//Tabela de Clientes Home
@@ -350,7 +350,7 @@ public class Controller implements Initializable{
 				listaVeiculosHome.setAll(FXCollections.observableArrayList(veiculoDAO.encontraVeiculoPorPlaca(textFieldBuscaVeiculoPorPlaca.getText())));
 				colunaPlacaVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placaVeiculo"));
 				colunaNomeVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("nomeVeiculo"));
-				tabelaDeVeiculosHome.setItems(listaVeiculosHome);	
+				tabelaDeVeiculosHome.setItems(listaVeiculosHome);
 			});
 			
 			// Tabela Devolução
@@ -383,6 +383,14 @@ public class Controller implements Initializable{
 				labelSelecioneUmAluguel.setText("Aluguel Selecionado: ");
 			});
 			
+			botaoDevolveVeiculo.setOnAction((e) -> {
+				Aluguel aluguelSelecionadoDevolucao = tabelaDevolucao.getSelectionModel().getSelectedItem();
+				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
+				aluguelSelecionadoDevolucao.setDataDeTerminoAluguel(hoje);
+				aluguelSelecionadoDevolucao.setKmPos(Integer.parseInt(textFieldKilometragemFinalDevolucao.getText()));
+				aluguelDAO.devolveVeiculo(aluguelSelecionadoDevolucao);
+				labelAluguelSelecionadoDevolucao.setText("Devolução feita com sucesso!");
+			});
 
 		// Tela de Clientes
 
@@ -508,7 +516,7 @@ public class Controller implements Initializable{
 			tabelaDeAlugueis.setItems(listaAlugueis);	
 	
 			// Inicia o Date Picker e seta a data de início pra hoje.
-			final LocalDate hoje = LocalDate.now();
+
 			datePickerDataDeInicio.setValue(hoje);
 			datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
 	
