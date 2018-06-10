@@ -105,9 +105,6 @@ public class Aluguel {
 		this.kmPos = kmPos;
 	}
 
-	
-	
-
 	@Override
 	public String toString() {
 		return "\nAluguel [idAluguel=" + idAluguel + ", dataDeInicioAluguel=" + dataDeInicioAluguel

@@ -45,8 +45,6 @@ public class Veiculo {
 	public void setMarcaVeiculo(String marcaVeiculo) {
 		this.marcaVeiculo = marcaVeiculo;
 	}
-
-
 	
 	public Veiculo(String placaVeiculo, String nomeVeiculo) {
 		super();
@@ -64,6 +62,7 @@ public class Veiculo {
 		this.anoDeFabricacao = anoDeFabricacao;
 		this.anoDeVenda = anoDeVenda;
 	}
+	
 	@Override
 	public String toString() {
 		return "\nVeiculo [placaVeiculo=" + placaVeiculo + ", nomeVeiculo=" + nomeVeiculo + ", modeloVeiculo="

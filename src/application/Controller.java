@@ -206,6 +206,9 @@ public class Controller implements Initializable{
 	@FXML
 	private ToggleGroup radioValorDiaria;
 	
+	@FXML
+	private TextField kilometragemInicialAluguel;
+	
 	
 	// Tabela e Colunas de Alugueis
 	@FXML
@@ -273,17 +276,15 @@ public class Controller implements Initializable{
 			colunaNomeVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("nomeVeiculo"));
 			tabelaDeVeiculosHome.setItems(listaVeiculosHome);	
 			
-			//Troca os Labels pros valores selecionados
-
+			//Troca os Labels da Home pros valores selecionados nas tabelas de cliente e veículos
 			tabelaDeClientesHome.setOnMouseClicked((e) -> {
 				Cliente clienteSelecionadoHome = tabelaDeClientesHome.getSelectionModel().getSelectedItem();
-				labelClienteSelecionadoHome.setText(clienteSelecionadoHome.toString());
+				labelClienteSelecionadoHome.setText(clienteSelecionadoHome.getNome() + ". CPF: " + clienteSelecionadoHome.getCPF());
 			});
 			
-
 			tabelaDeVeiculosHome.setOnMouseClicked((e) -> {
 				Veiculo veiculoSelecionadoHome = tabelaDeVeiculosHome.getSelectionModel().getSelectedItem();
-				labelVeiculoSelecionadoHome.setText(veiculoSelecionadoHome.toString());
+				labelVeiculoSelecionadoHome.setText(veiculoSelecionadoHome.getMarcaVeiculo() + " " + veiculoSelecionadoHome.getNomeVeiculo() + " de Placa: " + veiculoSelecionadoHome.getPlacaVeiculo());
 			});
 			
 			
@@ -409,7 +410,6 @@ public class Controller implements Initializable{
 			});
 			colunaKMPreAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPre"));
 			colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));
-
 			tabelaDeAlugueis.setItems(listaAlugueis);	
 	
 			// Inicia o Date Picker e seta a data de início pra hoje.
@@ -417,24 +417,12 @@ public class Controller implements Initializable{
 			datePickerDataDeInicio.setValue(hoje);
 			datePickerDataDeTermino.setValue(LocalDate.now().plusDays(1));
 	
-			DateTime hojeDateTime = new DateTime();
-			Interval interval = new Interval(hojeDateTime,hojeDateTime.plus(Days.days(5)) );
-			System.out.println("Tempo" + interval.toDuration().getStandardDays());
-			System.out.println("Hours = " + interval.toDuration().getStandardHours());
-	
-			// para calcular a diaria faz o mod 24, se for maior que 3, adiciona 1 diária
-			String.valueOf(datePickerDataDeInicio.getValue());
-			String.valueOf(datePickerDataDeTermino.getValue());
-	
 			// Botão de Aluga Veículos
 			botaoAlugaVeiculo.setOnAction((e) -> {
-				VeiculoDAO veiculoDAO = new VeiculoDAO();
-				ClienteDAO clienteDAO = new ClienteDAO();
-	
 				RadioButton valorDaDiariaSelecionada = (RadioButton) radioValorDiaria.getSelectedToggle();
 				String diariaSelecionada = valorDaDiariaSelecionada.getText();
 				
-				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), Double.valueOf(diariaSelecionada), veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()), 4);
+				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), Double.valueOf(diariaSelecionada), tabelaDeVeiculosHome.getSelectionModel().getSelectedItem() , tabelaDeClientesHome.getSelectionModel().getSelectedItem(), Integer.parseInt(kilometragemInicialAluguel.getText()));
 				System.out.println(aluguel);
 				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
 	
@@ -486,7 +474,5 @@ public class Controller implements Initializable{
 			});		
 	
 		}	
-
-
 
 }
