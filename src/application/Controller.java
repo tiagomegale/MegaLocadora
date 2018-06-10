@@ -171,23 +171,45 @@ public class Controller implements Initializable{
 	TableView<Aluguel> tabelaDeAlugueis;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaDataDeInicio;
+	TableColumn<Aluguel, String> colunaDataDeInicioAluguel;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaDataDeTermino;
+	TableColumn<Aluguel, String> colunaDataDeTerminoAluguel;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaPlacaAluguel;
+	TableColumn<Aluguel, String> colunaQtdDiariasAluguel;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaMarcaAluguel;
+	TableColumn<Aluguel, String> colunaValorDiariaAluguel;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaCPFAluguel;
+	TableColumn<Aluguel, String> colunaTaxasAluguel;
 
 	@FXML
-	TableColumn<Aluguel, String> colunaNomeAluguel;
+	TableColumn<Aluguel, String> colunaTotalAluguel;
 
+	@FXML
+	TableColumn<Aluguel, String> colunaNomeClienteAluguel;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaCPFClienteluguel;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaPlacaVeiculoAluguel;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaNomeVeiculoAluguel;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaKMPreAluguel;
+
+	@FXML
+	TableColumn<Aluguel, String> colunaKMPosAluguel;	
+	
+	
+	
+	
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -286,33 +308,40 @@ public class Controller implements Initializable{
 
 			// Cria Tabela de Aluguéis
 			ObservableList<Aluguel> listaAlugueis = FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis());
-			colunaDataDeInicio.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeInicio"));
-			colunaDataDeTermino.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeTermino"));
-			colunaPlacaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+			colunaDataDeInicioAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
+			colunaDataDeTerminoAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
+			colunaQtdDiariasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("quantidadeDeDiarias"));
+			colunaValorDiariaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorDiaria"));
+			colunaTaxasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("taxas"));
+			colunaTotalAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorTotal"));
+			colunaNomeClienteAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 				@Override
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-					return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
+					return new SimpleStringProperty(c.getValue().getCliente().getNome());                
 				}
-			}); 
-			colunaMarcaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
-				@Override
-				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-					return new SimpleStringProperty(c.getValue().getVeiculo().getMarcaVeiculo());                
-				}
-			}); 				
-			colunaCPFAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+			}); 	
+			colunaCPFClienteluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 				@Override
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 					return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
 				}
 	
-			}); 		
-			colunaNomeAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+			}); 
+			colunaPlacaVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 				@Override
 				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-					return new SimpleStringProperty(c.getValue().getCliente().getNome());                
+					return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 				}
-			}); 				
+			}); 
+			colunaNomeVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+					return new SimpleStringProperty(c.getValue().getVeiculo().getNomeVeiculo());                
+				}
+			});
+			colunaKMPreAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPre"));
+			colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));
+
 			tabelaDeAlugueis.setItems(listaAlugueis);	
 	
 			// Inicia o Date Picker e seta a data de início pra hoje.
@@ -334,7 +363,7 @@ public class Controller implements Initializable{
 				VeiculoDAO veiculoDAO = new VeiculoDAO();
 				ClienteDAO clienteDAO = new ClienteDAO();
 	
-				Aluguel aluguel = new Aluguel(String.valueOf(datePickerDataDeInicio.getValue()),String.valueOf(datePickerDataDeTermino.getValue()), veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()));
+				Aluguel aluguel = new Aluguel(datePickerDataDeTermino.getValue(), 50.90, veiculoDAO.encontraVeiculoPorPlaca(placaVeiculo.getText()) , clienteDAO.encontraClientePorCPF(cpfCliente.getText()), 4);
 				System.out.println(aluguel);
 				AluguelDAO aluguelDAO = new AluguelDAO(ConnectionManager.getMysqlConnection());
 	
@@ -343,33 +372,39 @@ public class Controller implements Initializable{
 	
 					// Atualiza Lista de Alugueis
 					listaAlugueis.setAll(FXCollections.observableArrayList(AluguelDAO.obterListaDeAlugueis()));
-					colunaDataDeInicio.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeInicio"));
-					colunaDataDeTermino.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("DataDeTermino"));
-					colunaPlacaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+					colunaDataDeInicioAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeInicioAluguel"));
+					colunaDataDeTerminoAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("dataDeTerminoAluguel"));
+					colunaQtdDiariasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("quantidadeDeDiarias"));
+					colunaValorDiariaAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorDiaria"));
+					colunaTaxasAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("taxas"));
+					colunaTotalAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("valorTotal"));
+					colunaNomeClienteAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+						@Override
+						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+							return new SimpleStringProperty(c.getValue().getCliente().getNome());                
+						}
+					}); 	
+					colunaCPFClienteluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+						@Override
+						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
+							return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
+						}
+			
+					}); 
+					colunaPlacaVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 						@Override
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
 							return new SimpleStringProperty(c.getValue().getVeiculo().getPlacaVeiculo());                
 						}
 					}); 
-					colunaMarcaAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
+					colunaNomeVeiculoAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
 						@Override
 						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-							return new SimpleStringProperty(c.getValue().getVeiculo().getMarcaVeiculo());                
+							return new SimpleStringProperty(c.getValue().getVeiculo().getNomeVeiculo());                
 						}
-					}); 		
-					colunaCPFAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
-						@Override
-						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-							return new SimpleStringProperty(c.getValue().getCliente().getCPF());                
-						}
-	
-					}); 		
-					colunaNomeAluguel.setCellValueFactory(new Callback<CellDataFeatures<Aluguel, String>, ObservableValue<String>>() {
-						@Override
-						public ObservableValue<String> call(CellDataFeatures<Aluguel, String> c) {
-							return new SimpleStringProperty(c.getValue().getCliente().getNome());                
-						}
-					}); 				
+					});
+					colunaKMPreAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPre"));
+					colunaKMPosAluguel.setCellValueFactory(new PropertyValueFactory<Aluguel,String>("kmPos"));					
 					tabelaDeAlugueis.setItems(listaAlugueis);
 					System.out.println("Lista de Aluguéis Atualizada!");
 	

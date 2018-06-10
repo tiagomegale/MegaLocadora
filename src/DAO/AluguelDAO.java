@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,9 +26,8 @@ public class AluguelDAO {
 		this.conexao = conexao;
 	}
 
-
 	private ResultSet listaTodos() {
-		String sql = "select DataDeInicio, DataDeTermino, Placa, Marca, CPF, Nome from ALUGUEIS order by DataDeInicio";
+		String sql = "select dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos from ALUGUEIS order by dataDeInicioAluguel";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -39,8 +39,7 @@ public class AluguelDAO {
 		return rs;
 
 	}
-
-
+	
 	// Método publico que retorna um Array de Veiculos
 	public static ArrayList<Aluguel> obterListaDeAlugueis(){
 
@@ -53,9 +52,18 @@ public class AluguelDAO {
 			ResultSet resultSet = aluguelDAO.listaTodos();
 
 			while (resultSet.next()) {
-				Veiculo veiculo = new Veiculo(resultSet.getString("Placa"), resultSet.getString("Marca"));
-				Cliente cliente = new Cliente(resultSet.getString("cpf"),resultSet.getString("nome"));
-				Aluguel aluguel = new Aluguel(resultSet.getString("DataDeInicio"), resultSet.getString("DataDeTermino"), veiculo, cliente);
+				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
+				Cliente cliente = new Cliente(resultSet.getString("cpfClienteAluguel"),resultSet.getString("nomeClienteAluguel"));
+				Aluguel aluguel = new Aluguel(resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
+											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),
+											  resultSet.getInt("quantidadeDeDiarias"),
+											  resultSet.getDouble("valorDiaria"),
+											  resultSet.getDouble("taxas"),
+											  resultSet.getDouble("valorTotal"),
+											  veiculo,
+											  cliente,
+											  resultSet.getInt("kmPre"),
+											  resultSet.getInt("kmPos"));
 				listaDeAlugueis.add(aluguel);
 			}
 
@@ -66,19 +74,24 @@ public class AluguelDAO {
 		return listaDeAlugueis;
 
 	}	
-
-
+	
 	public boolean alugaVeiculo(Aluguel aluguel) {
-		String sql = "insert into ALUGUEIS (DataDeInicio, DataDeTermino, Placa, Marca, CPF, Nome) values (? , ? , ? , ? , ? , ? )";
+		String sql = "insert into ALUGUEIS (dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos) values (? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";
 
 		try {
 			this.statement = conexao.prepareStatement(sql);
-			this.statement.setString(1, aluguel.getDataDeInicio());
-			this.statement.setString(2, aluguel.getDataDeTermino());
-			this.statement.setString(3, aluguel.getVeiculo().getPlaca());
-			this.statement.setString(4, aluguel.getVeiculo().getMarca());
-			this.statement.setString(5, aluguel.getCliente().getCPF());
-			this.statement.setString(6, aluguel.getCliente().getNome());
+			this.statement.setDate(1, Date.valueOf(aluguel.getDataDeInicioAluguel()));
+			this.statement.setDate(2, Date.valueOf(aluguel.getDataDeTerminoAluguel()));
+			this.statement.setInt(3,  aluguel.getQuantidadeDeDiarias());
+			this.statement.setDouble(4, aluguel.getValorDiaria());
+			this.statement.setDouble(5, aluguel.getTaxas());
+			this.statement.setDouble(6, aluguel.getValorTotal());
+			this.statement.setString(7, aluguel.getCliente().getNome());
+			this.statement.setString(8, aluguel.getCliente().getCPF());
+			this.statement.setString(9, aluguel.getVeiculo().getPlacaVeiculo());
+			this.statement.setString(10, aluguel.getVeiculo().getNomeVeiculo());
+			this.statement.setInt(11, aluguel.getKmPre());
+			this.statement.setInt(12, aluguel.getKmPos());
 			this.statement.executeUpdate();
 			System.out.println("Insercao de Aluguel ok");
 			return true;

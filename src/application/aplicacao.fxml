@@ -95,24 +95,27 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <DatePicker fx:id="datePickerDataDeInicio" disable="true" editable="false" layoutX="90.0" layoutY="54.0" prefHeight="27.0" prefWidth="219.0" promptText="Data de Início: Hoje" />
-                                 </children>
-                              </Pane>
-                              <Button fx:id="botaoAlugaVeiculo" layoutX="135.0" layoutY="187.0" mnemonicParsing="false" text="Alugar Veículo" />
-                              <TableView fx:id="tabelaDeAlugueis" layoutX="408.0" prefHeight="735.0" prefWidth="872.0">
+                              <DatePicker fx:id="datePickerDataDeInicio" disable="true" editable="false" layoutX="26.0" layoutY="34.0" prefHeight="27.0" prefWidth="111.0" promptText="Data de Início: Hoje" />
+                              <Button fx:id="botaoAlugaVeiculo" layoutX="28.0" layoutY="116.0" mnemonicParsing="false" text="Alugar Veículo" />
+                              <TableView fx:id="tabelaDeAlugueis" layoutX="149.0" prefHeight="661.0" prefWidth="1131.0">
                                  <columns>
-                                    <TableColumn fx:id="colunaDataDeInicio" prefWidth="75.0" text="Data De Início" />
-                                    <TableColumn fx:id="colunaDataDeTermino" prefWidth="75.0" text="Data de Término" />
-                                    <TableColumn fx:id="colunaPlacaAluguel" prefWidth="75.0" text="Placa" />
-                                    <TableColumn fx:id="colunaMarcaAluguel" prefWidth="75.0" text="Marca" />
-                                    <TableColumn fx:id="colunaCPFAluguel" prefWidth="75.0" text="CPF" />
-                                    <TableColumn fx:id="colunaNomeAluguel" prefWidth="75.0" text="Nome" />
+                                    <TableColumn fx:id="colunaIdAluguel" prefWidth="40.0" text="Id" />
+                                    <TableColumn fx:id="colunaDataDeInicioAluguel" prefWidth="93.0" text="Início" />
+                                    <TableColumn fx:id="colunaDataDeTerminoAluguel" prefWidth="93.0" text="Término" />
+                                    <TableColumn fx:id="colunaQtdDiariasAluguel" prefWidth="93.0" text="Qtd. Diárias" />
+                                    <TableColumn fx:id="colunaValorDiariaAluguel" prefWidth="88.0" text="Valor Diária" />
+                                    <TableColumn fx:id="colunaTaxasAluguel" prefWidth="53.0" text="Taxas" />
+                                    <TableColumn fx:id="colunaTotalAluguel" prefWidth="69.0" text="Total" />
+                                    <TableColumn fx:id="colunaNomeClienteAluguel" prefWidth="166.0" text="Nome Do Cliente" />
+                                    <TableColumn fx:id="colunaCPFClienteluguel" prefWidth="121.0" text="CPF" />
+                                    <TableColumn fx:id="colunaPlacaVeiculoAluguel" prefWidth="91.0" text="Placa" />
+                                    <TableColumn fx:id="colunaNomeVeiculoAluguel" prefWidth="81.0" text="Veículo" />
+                                    <TableColumn fx:id="colunaKMPreAluguel" prefWidth="74.0" text="Km Pré" />
+                                    <TableColumn fx:id="colunaKMPosAluguel" prefWidth="69.0" text="Km Pós" />
                                  </columns>
                               </TableView>
-                              <DatePicker fx:id="datePickerDataDeTermino" layoutX="91.0" layoutY="110.0" prefHeight="27.0" prefWidth="219.0" promptText="Selecione Data de término" />
-                              <Label fx:id="labelAvisoCadastroAluguel" layoutX="91.0" layoutY="294.0" prefHeight="61.0" prefWidth="238.0" text="." wrapText="true" />
+                              <DatePicker fx:id="datePickerDataDeTermino" layoutX="26.0" layoutY="74.0" prefHeight="27.0" prefWidth="111.0" promptText="Selecione Data de término" />
+                              <Label fx:id="labelAvisoCadastroAluguel" layoutX="30.0" layoutY="167.0" prefHeight="61.0" prefWidth="103.0" text="." wrapText="true" />
                            </children>
                         </AnchorPane>
                     </content>
