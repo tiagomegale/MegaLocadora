@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import connection.ConnectionManager;
@@ -13,6 +14,8 @@ import domain.Cliente;
 import domain.Veiculo;
 
 public class AluguelDAO {
+	
+	final static LocalDate hoje = LocalDate.now();
 
 	private Connection conexao = null;
 	private PreparedStatement statement = null;
@@ -27,7 +30,7 @@ public class AluguelDAO {
 	}
 
 	private ResultSet listaTodos() {
-		String sql = "select idAluguel, dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos from ALUGUEIS order by dataDeInicioAluguel";
+		String sql = "select idAluguel, dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos from ALUGUEIS order by dataDeTerminoAluguel";
 
 		try {
 			this.statement = this.conexao.prepareStatement(sql);
@@ -75,6 +78,45 @@ public class AluguelDAO {
 		return listaDeAlugueis;
 
 	}	
+
+	public static ArrayList<Aluguel> obterListaDeAlugueisAtivos(){
+
+		ArrayList<Aluguel> listaDeAlugueis = new ArrayList<Aluguel>();
+		Connection conexao;
+
+		try {
+			conexao = ConnectionManager.getMysqlConnection();
+			AluguelDAO aluguelDAO = new AluguelDAO(conexao);
+			ResultSet resultSet = aluguelDAO.listaTodos();
+
+			while (resultSet.next()) {
+				Veiculo veiculo = new Veiculo(resultSet.getString("placaVeiculoAluguel"), resultSet.getString("nomeVeiculoAluguel"));
+				Cliente cliente = new Cliente(resultSet.getString("nomeClienteAluguel"),resultSet.getString("cpfClienteAluguel"));
+				Aluguel aluguel = new Aluguel(resultSet.getInt("idAluguel"),
+											  resultSet.getDate("dataDeInicioAluguel").toLocalDate(),
+											  resultSet.getDate("dataDeTerminoAluguel").toLocalDate(),
+											  resultSet.getInt("quantidadeDeDiarias"),
+											  resultSet.getDouble("valorDiaria"),
+											  resultSet.getDouble("taxas"),
+											  resultSet.getDouble("valorTotal"),
+											  veiculo,
+											  cliente,
+											  resultSet.getInt("kmPre"),
+											  resultSet.getInt("kmPos"));
+				
+				if (aluguel.getDataDeTerminoAluguel().isEqual(hoje) || aluguel.getDataDeTerminoAluguel().isAfter(hoje)) {
+					listaDeAlugueis.add(aluguel);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listaDeAlugueis;
+
+	}	
+	
 	
 	public boolean alugaVeiculo(Aluguel aluguel) {
 		String sql = "insert into ALUGUEIS (dataDeInicioAluguel, dataDeTerminoAluguel, quantidadeDeDiarias, valorDiaria, taxas, valorTotal, nomeClienteAluguel, cpfClienteAluguel, placaVeiculoAluguel, nomeVeiculoAluguel, kmPre, kmPos) values (? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";

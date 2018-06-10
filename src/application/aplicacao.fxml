@@ -72,17 +72,17 @@
                                  </children>
                               </AnchorPane>
                               <Separator layoutX="704.0" layoutY="18.0" orientation="VERTICAL" prefHeight="699.0" prefWidth="5.0" />
-                              <Label layoutX="751.0" layoutY="33.0" text="Devolver Veículos">
+                              <Label layoutX="734.0" layoutY="43.0" text="Devolver Veículos">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="41.0" layoutY="33.0" text="Alugar Veículos">
+                              <Label layoutX="41.0" layoutY="43.0" text="Alugar Veículos">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <AnchorPane layoutX="41.0" layoutY="109.0">
+                              <AnchorPane layoutX="41.0" layoutY="137.0">
                                  <children>
                                     <TextField fx:id="textFieldBuscaClientePorCPF" layoutY="2.0" prefHeight="27.0" prefWidth="243.0" promptText="Buscar Cliente por CPF" />
                                     <TableView fx:id="tabelaDeClientesHome" layoutY="38.0" prefHeight="220.0" prefWidth="311.0">
@@ -94,7 +94,7 @@
                                     <Button fx:id="botaoBuscarClientePorCPF" layoutX="249.0" layoutY="2.0" mnemonicParsing="false" text="Buscar" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="42.0" layoutY="409.0">
+                              <AnchorPane layoutX="42.0" layoutY="439.0">
                                  <children>
                                     <TextField fx:id="textFieldBuscaVeiculoPorPlaca" layoutY="3.0" prefHeight="27.0" prefWidth="240.0" promptText="Buscar Veículo por Placa" />
                                     <TableView fx:id="tabelaDeVeiculosHome" layoutY="40.0" prefHeight="220.0" prefWidth="309.0">
@@ -106,7 +106,7 @@
                                     <Button fx:id="botaoBuscarVeiculoPorPlaca" layoutX="247.0" layoutY="3.0" mnemonicParsing="false" text="Buscar" />
                                  </children>
                               </AnchorPane>
-                              <TableView fx:id="tabelaDevolucao" layoutX="736.0" layoutY="109.0" prefHeight="432.0" prefWidth="506.0">
+                              <TableView fx:id="tabelaDevolucao" layoutX="736.0" layoutY="137.0" prefHeight="432.0" prefWidth="506.0">
                                 <columns>
                                   <TableColumn fx:id="colunaDataInicioDevolucao" prefWidth="82.0" text="Início" />
                                   <TableColumn fx:id="colunaDataTerminoDevolucao" prefWidth="99.0" text="Término" />
@@ -115,15 +115,18 @@
                                     <TableColumn fx:id="colunaNomeClienteDevolucao" prefWidth="160.0" text="Cliente" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="943.0" layoutY="629.0" text="Kilometragem Final do veículo:" />
-                              <TextField fx:id="textFieldKilometragemFinalDevolucao" layoutX="1150.0" layoutY="624.0" prefHeight="27.0" prefWidth="92.0" />
-                              <Button fx:id="botaoDevolveVeiculo" layoutX="941.0" layoutY="661.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="301.0" text="Devolver Veículo" />
-                              <Label fx:id="labelAluguelSelecionadoDevolucao" alignment="TOP_LEFT" layoutX="737.0" layoutY="562.0" prefHeight="53.0" prefWidth="502.0" wrapText="true">
+                              <Label layoutX="943.0" layoutY="657.0" text="Kilometragem Final do veículo:" />
+                              <TextField fx:id="textFieldKilometragemFinalDevolucao" layoutX="1150.0" layoutY="652.0" prefHeight="27.0" prefWidth="92.0" />
+                              <Button fx:id="botaoDevolveVeiculo" layoutX="941.0" layoutY="689.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="301.0" text="Devolver Veículo" />
+                              <Label fx:id="labelAluguelSelecionadoDevolucao" alignment="TOP_LEFT" layoutX="737.0" layoutY="590.0" prefHeight="53.0" prefWidth="502.0" wrapText="true">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelSelecioneUmAluguel" layoutX="736.0" layoutY="546.0" text="Selecione um Aluguel:" />
+                              <Label fx:id="labelSelecioneUmAluguel" layoutX="736.0" layoutY="574.0" text="Selecione um Aluguel:" />
+                              <Label fx:id="labelSelecioneUmAluguel1" layoutX="736.0" layoutY="110.0" text="Lista de Alugueis Ativos" />
+                              <Label fx:id="labelSelecioneUmAluguel11" layoutX="42.0" layoutY="416.0" text="Lista de Veículos Cadastrados:" />
+                              <Label fx:id="labelSelecioneUmAluguel12" layoutX="41.0" layoutY="113.0" text="Lista de Clientes Cadastrados:" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
