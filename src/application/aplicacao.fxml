@@ -28,7 +28,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label fx:id="labelAvisoCadastroAluguel" layoutX="351.0" layoutY="16.0" prefHeight="61.0" prefWidth="328.0" text=".." wrapText="true" />
+                              <Label fx:id="labelAvisoCadastroAluguel" layoutX="351.0" layoutY="16.0" prefHeight="61.0" prefWidth="328.0" wrapText="true" />
                               <AnchorPane layoutX="378.0" layoutY="110.0">
                                  <children>
                                     <Label fx:id="labelVeiculoSelecionadoHome" layoutX="135.0" layoutY="29.0" prefHeight="28.0" prefWidth="166.0" wrapText="true">
@@ -151,7 +151,7 @@
                                     <Button fx:id="botaoCadastraCliente" layoutY="319.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="301.0" text="Cadastrar Novo Cliente" />
                                  </children>
                               </AnchorPane>
-                              <Label fx:id="labelAvisoCadastroCliente" layoutX="28.0" layoutY="450.0" prefHeight="61.0" prefWidth="302.0" text="." wrapText="true" />
+                              <Label fx:id="labelAvisoCadastroCliente" layoutX="28.0" layoutY="450.0" prefHeight="61.0" prefWidth="302.0" wrapText="true" />
                               <TableView fx:id="tabelaDeClientes" layoutX="355.0" prefHeight="735.0" prefWidth="925.0">
                                  <columns>
                                     <TableColumn fx:id="colunaNome" prefWidth="179.0" text="Nome" />
@@ -194,7 +194,7 @@
                                     <Label fx:id="labelSliderAnoDeVenda" layoutX="95.0" layoutY="248.0" prefHeight="19.0" prefWidth="121.0" wrapText="true" />
                                  </children>
                               </AnchorPane>
-                              <Label fx:id="labelAvisoCadastroVeiculo" layoutX="29.0" layoutY="445.0" prefHeight="53.0" prefWidth="300.0" text="." wrapText="true" />
+                              <Label fx:id="labelAvisoCadastroVeiculo" layoutX="29.0" layoutY="445.0" prefHeight="53.0" prefWidth="300.0" wrapText="true" />
                               <TableView fx:id="tabelaDeVeiculos" layoutX="355.0" prefHeight="735.0" prefWidth="925.0">
                                  <columns>
                                     <TableColumn fx:id="colunaPlacaVeiculo" prefWidth="126.0" text="Placa" />
