@@ -49,7 +49,33 @@ public class Controller implements Initializable{
 	private Pane paneHome;
 
 
+	// HOME
+	// Tabela e Colunas de Clientes
+	@FXML
+	TableView<Cliente> tabelaDeClientesHome;
 
+	@FXML
+	TableColumn<Cliente, String> colunaNomeHome;
+
+	@FXML
+	TableColumn<Cliente, String> colunaCPFHome;
+
+	@FXML
+	TableView<Veiculo> tabelaDeVeiculosHome;
+
+	@FXML
+	TableColumn<Veiculo, String> colunaPlacaVeiculoHome;
+
+	@FXML
+	TableColumn<Veiculo, String> colunaNomeVeiculoHome;
+
+	@FXML
+	private Label labelClienteSelecionadoHome;
+	
+	@FXML
+	private Label labelVeiculoSelecionadoHome;
+	
+	
 	// Form de Cadastro de Clientes
 	@FXML
 	private TextField nomeCliente;
@@ -75,6 +101,7 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelAvisoCadastroCliente;
 
+	
 	// Tabela e Colunas de Clientes
 	@FXML
 	TableView<Cliente> tabelaDeClientes;
@@ -223,10 +250,6 @@ public class Controller implements Initializable{
 	@FXML
 	TableColumn<Aluguel, String> colunaKMPosAluguel;	
 	
-	
-	
-	
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -236,11 +259,38 @@ public class Controller implements Initializable{
 		System.out.println("---- Lista de Veiculos:\n" + VeiculoDAO.obterListaDeVeiculos());
 		System.out.println("---- Lista de Alugueis:\n" + AluguelDAO.obterListaDeAlugueis());
 
+		
+		// HOME
+			//Tabela de Clientes Home
+			ObservableList<Cliente> listaClientesHome = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
+			colunaNomeHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+			colunaCPFHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("CPF"));
+			tabelaDeClientesHome.setItems(listaClientesHome);
+		
+			//Tabela de Veículos Home
+			ObservableList<Veiculo> listaVeiculosHome = FXCollections.observableArrayList(VeiculoDAO.obterListaDeVeiculos());
+			colunaPlacaVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placaVeiculo"));
+			colunaNomeVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("nomeVeiculo"));
+			tabelaDeVeiculosHome.setItems(listaVeiculosHome);	
+			
+			//Troca os Labels pros valores selecionados
+
+			tabelaDeClientesHome.setOnMouseClicked((e) -> {
+				Cliente clienteSelecionadoHome = tabelaDeClientesHome.getSelectionModel().getSelectedItem();
+				labelClienteSelecionadoHome.setText(clienteSelecionadoHome.toString());
+			});
+			
+
+			tabelaDeVeiculosHome.setOnMouseClicked((e) -> {
+				Veiculo veiculoSelecionadoHome = tabelaDeVeiculosHome.getSelectionModel().getSelectedItem();
+				labelVeiculoSelecionadoHome.setText(veiculoSelecionadoHome.toString());
+			});
+			
+			
 
 		// Tela de Clientes
 
 			// Cria Tabela de Clientes
-	
 			ObservableList<Cliente> listaClientes = FXCollections.observableArrayList(ClienteDAO.obterListaDeClientes());
 			colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
 			colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente,String>("CPF"));
