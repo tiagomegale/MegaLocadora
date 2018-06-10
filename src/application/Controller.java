@@ -75,6 +75,13 @@ public class Controller implements Initializable{
 	@FXML
 	private Label labelVeiculoSelecionadoHome;
 	
+	@FXML
+	private Label labelSelecioneUmCliente;
+	
+	@FXML
+	private Label labelSelecioneUmVeiculo;
+	
+	
 	
 	// Form de Cadastro de Clientes
 	@FXML
@@ -209,6 +216,19 @@ public class Controller implements Initializable{
 	@FXML
 	private TextField kilometragemInicialAluguel;
 	
+	@FXML
+	private Button botaoBuscarClientePorCPF;
+	
+	@FXML
+	private Button botaoBuscarVeiculoPorPlaca;
+	
+	@FXML
+	private TextField textFieldBuscaClientePorCPF;
+	
+	@FXML
+	private TextField textFieldBuscaVeiculoPorPlaca;
+	
+	
 	
 	// Tabela e Colunas de Alugueis
 	@FXML
@@ -280,13 +300,30 @@ public class Controller implements Initializable{
 			tabelaDeClientesHome.setOnMouseClicked((e) -> {
 				Cliente clienteSelecionadoHome = tabelaDeClientesHome.getSelectionModel().getSelectedItem();
 				labelClienteSelecionadoHome.setText(clienteSelecionadoHome.getNome() + ". CPF: " + clienteSelecionadoHome.getCPF());
+				labelSelecioneUmCliente.setText("Cliente selecionado: ");
 			});
 			
 			tabelaDeVeiculosHome.setOnMouseClicked((e) -> {
 				Veiculo veiculoSelecionadoHome = tabelaDeVeiculosHome.getSelectionModel().getSelectedItem();
 				labelVeiculoSelecionadoHome.setText(veiculoSelecionadoHome.getMarcaVeiculo() + " " + veiculoSelecionadoHome.getNomeVeiculo() + " de Placa: " + veiculoSelecionadoHome.getPlacaVeiculo());
+				labelSelecioneUmVeiculo.setText("Veículo selecionado: ");
 			});
 			
+			botaoBuscarClientePorCPF.setOnAction((e) -> {
+					ClienteDAO clienteDAO = new ClienteDAO(ConnectionManager.getMysqlConnection());
+					listaClientesHome.setAll(FXCollections.observableArrayList(clienteDAO.encontraClientePorCPF(textFieldBuscaClientePorCPF.getText())));
+					colunaNomeHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+					colunaCPFHome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("CPF"));
+					tabelaDeClientesHome.setItems(listaClientesHome);	
+			});
+			
+			botaoBuscarVeiculoPorPlaca.setOnAction((e) -> {
+				VeiculoDAO veiculoDAO = new VeiculoDAO(ConnectionManager.getMysqlConnection());
+				listaVeiculosHome.setAll(FXCollections.observableArrayList(veiculoDAO.encontraVeiculoPorPlaca(textFieldBuscaVeiculoPorPlaca.getText())));
+				colunaPlacaVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placaVeiculo"));
+				colunaNomeVeiculoHome.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("nomeVeiculo"));
+				tabelaDeVeiculosHome.setItems(listaVeiculosHome);	
+			});
 			
 
 		// Tela de Clientes
