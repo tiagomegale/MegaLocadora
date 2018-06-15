@@ -9,7 +9,6 @@ import DAO.ClienteDAO;
 import DAO.VeiculoDAO;
 import connection.ConnectionManager;
 //Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
-
 import domain.Aluguel;
 import domain.Cliente;
 import domain.Veiculo;
@@ -19,7 +18,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 //Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,7 +27,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 //Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
-
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -39,7 +36,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 //Feito por Tiago Megale - LTP3 Manhã / 2018 - 1o Semestre			
-
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
